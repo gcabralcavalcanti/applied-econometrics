@@ -29,12 +29,4 @@ Viés de variável omitida (infraestrutura de notificação, urbanização, capi
 observados); subnotificação do SINAN correlacionada com os regressores; risco de falácia ecológica;
 denominador de população total (não mulheres em risco); ausência de dados de internet sobrepostos à janela.
 
-## Seções em revisão / finais (uma de cada vez)
-Todas as seções (introdução, dados, estratégia, resultados, robustez, resposta ao parecerista, conclusão)
-estão FINAIS após a rodada de revisão adversarial. Não reescrever sem instrução explícita.
-
-## Arquivos de referência
-- master_supporting_docs/REFERENCIAS.md — bibliografia real anotada (com DOIs).
-- quality_reports/ — pareceres do brutal-reviewer e do Revisor 2 do inferno.
-
--- TRABALHE UMA DE CADA VEZ
+[trecho removido]

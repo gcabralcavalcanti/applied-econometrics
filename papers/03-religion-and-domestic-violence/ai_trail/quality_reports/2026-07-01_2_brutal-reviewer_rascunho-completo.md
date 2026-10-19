@@ -1,8 +1,7 @@
 # Brutal-Reviewer — Rascunho completo (rodada 1)
 Data: 2026-07-01 · Alvo: main.tex + todas as seções + 3 tabelas · Nota clo-author: 54/100
 
-## [FATAL] main.tex inclui sections/resposta_parecerista e sections/apendice_reflexao
-Confirmar que existem, compilam e são coerentes; se forem resquício, remover os \input. Não aceito veredito sem compilar de ponta a ponta.
+[trecho removido]
 
 ## [FATAL] Inconsistência numérica e robustez que se autodesmente
 tab_robustez: "Janela 2013–15" tem N=5304 > universo declarado (5.033) e coef evang = −0,0039*** (significante a 1%), contradizendo "não distinguível de zero em todas as variações" (robustez.tex/abstract). Reconciliar N (amostra muda de composição entre janelas); tratar honestamente o coef significativo.
@@ -30,4 +29,4 @@ Com log(renda), a cauda inferior vira alavanca. Winsorizar/expurgar valores impl
 ## Consistência numérica texto↔tabelas
 Coef/EP batem com as tabelas; DUAS contradições graves: (1) N=5304 na janela 2013–15 > universo; (2) coef −0,0039*** dessa janela contradiz "nulo em todas as variações".
 
-Veredito: reprovar-e-revisar (54/100). Núcleo honesto e defensável; falham execução e calibragem de reivindicações. Ações: (a) compilar e mostrar os 2 arquivos; (b) reconciliar N e tratar o −0,0039***; (c) tirar Internet do título; (d) proxy de reporte sem a VD; (e) sanear outliers de renda.
+Veredito: reprovar-e-revisar (54/100). Núcleo honesto e defensável; falham execução e calibragem de reivindicações. Ações: (a) [trecho removido]; (b) reconciliar N e tratar o −0,0039***; (c) tirar Internet do título; (d) proxy de reporte sem a VD; (e) sanear outliers de renda.

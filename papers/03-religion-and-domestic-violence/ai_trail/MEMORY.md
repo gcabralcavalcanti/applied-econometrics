@@ -1,4 +1,4 @@
-# Project Memory — Q4 (Grupo 02)
+# Project Memory — Q4
 
 Trilha de decisões (marcações [LEARN]). Mais recentes ao fim.
 
@@ -7,7 +7,7 @@ Trilha de decisões (marcações [LEARN]). Mais recentes ao fim.
 "Meu Município") começa em 2021 e não se sobrepõe ao SINAN (≤2019). Reenquadrado como CORTE TRANSVERSAL
 municipal ~2011–2013 (associativo, não causal).
 [LEARN:dados] SINAN codifica `sexo_paciente` como 0/1 (não 'F'). Validado que **0 = feminino** (via
-predominância feminina entre vítimas de agressor conjugal). O pipeline herdado filtrava por 'F' → contava
+predominância feminina entre vítimas de agressor conjugal). O pipeline [trecho removido] filtrava por 'F' → contava
 ZERO vítimas. Bug corrigido.
 [LEARN:dados] Violência doméstica definida por vínculo do agressor (autor_conjugue/ex, namorado/ex, pai, mãe,
 padrasto, madrasta, filho, irmão), vítima feminina. Doméstica = 36,3% das notificações totais.
