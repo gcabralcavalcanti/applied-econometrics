@@ -9,6 +9,8 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
+GREEK = {"alpha": "α", "beta": "β", "gamma": "γ", "delta": "δ", "pi": "π", "sigma": "σ", "varepsilon": "ε",
+         "epsilon": "ε", "geq": "≥", "leq": "≤"}
 _NUM = re.compile(r"[-−]?\d[\d.,]*(?:[eE][-+]?\d+)?")
 
 
@@ -22,10 +24,13 @@ def _clean(cell: str) -> str:
     s = s.replace("$<$", "<").replace("$>$", ">").replace("\\geq", ">=")
     s = re.sub(r"\\[`'^~\"]\{?([A-Za-z])\}?", r"\1", s)  # \'i -> i
     s = re.sub(r"\\c\{(\w)\}|\\c (\w)", lambda m: m.group(1) or m.group(2), s)
-    s = s.replace("\\%", "%").replace("\\$", "$").replace("\\,", " ").replace("\\ ", " ")
-    s = re.sub(r"\\[a-zA-Z]+\*?", " ", s)               # remaining commands (\hline, \pi ...)
+    for cmd, ch in GREEK.items():
+        s = re.sub(r"\\" + cmd + r"(?![a-zA-Z])", ch, s)
+    s = s.replace("\\%", "%").replace("\\$", "$").replace("\\,", " ").replace("\\ ", " ").replace("\\!", "")
+    s = s.replace("\\:", " ").replace("---", "—").replace("--", "–")
+    s = re.sub(r"\\[a-zA-Z]+\*?", " ", s)               # remaining commands (\hline, \cr ...)
     s = s.replace("$", "").replace("{", "").replace("}", "").replace("!", "")
-    return re.sub(r"\s+", " ", s).strip()
+    return re.sub(r"\s+", " ", s).strip().rstrip("\\").strip()
 
 
 def parse_number(text: str, decimal_comma: bool = False):
@@ -59,7 +64,8 @@ def _rows(tex: str) -> list[list[str]]:
     body = tex
     if "\\begin{tabular}" in tex:
         body = tex.split("\\begin{tabular}", 1)[1].split("\\end{tabular}", 1)[0]
-        body = body.split("}", 2)[-1] if body.lstrip().startswith("{@") else body.split("}", 1)[1]
+        spec = re.match(r"\s*\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*\}", body)   # column spec, nested braces
+        body = body[spec.end():] if spec else body
     rows = []
     for line in re.split(r"\\\\", body):
         line = re.sub(r"\\(?:hline|toprule|midrule|bottomrule)|\\cline\{[^}]*\}|\\\[-?[\d.]+ex\]", "", line)

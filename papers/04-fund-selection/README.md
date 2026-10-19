@@ -54,5 +54,5 @@ persistence table backwards and the reviewer caught it; the case is in `reports/
 Cost of the memo with its review: about US$ 0.004.
 
 ## Run
-`python run_all.py 04` (offline from `data/`) · `python code/01_fetch_and_build.py` to pull everything again from the CVM.
+`python run_all.py 04` (offline from `data/`) · `python code/01_fetch_and_build.py` to pull everything again from the CVM. Summary with the main tables and figures: `final-report.pdf`.
 All inputs are public CVM and BCB data.

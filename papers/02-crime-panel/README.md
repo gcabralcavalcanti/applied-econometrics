@@ -45,4 +45,4 @@ classic simultaneity sign (counties hire police where crime is high), so none of
 `python -m aecon.review` checks every sentence above against the tables: see `reports/review_02-crime-panel.md`.
 
 ## Run
-`python run_all.py 02` · tables in `output/` (LaTeX, decimal comma, as submitted), figures as PDF and PNG.
+`python run_all.py 02` · tables in `output/` (LaTeX, decimal comma, as submitted), figures as PDF and PNG. Summary with the main tables and figures: `final-report.pdf`.

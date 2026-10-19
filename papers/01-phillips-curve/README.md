@@ -42,4 +42,4 @@ Reading: Brazilian inflation is driven by inertia and expectations; labour-marke
 `python -m aecon.review` checks every sentence above against the tables: see `reports/review_01-phillips-curve.md`.
 
 ## Run
-`python run_all.py 01` · tables in `output/` (LaTeX, as submitted), figures as PDF. Code comments and table labels are in Portuguese.
+`python run_all.py 01` · tables in `output/` (LaTeX, as submitted), figures as PDF. Code comments and table labels are in Portuguese. Summary with the main tables and figures: `final-report.pdf`.

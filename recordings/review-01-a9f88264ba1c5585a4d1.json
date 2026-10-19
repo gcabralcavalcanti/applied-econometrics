@@ -1,7 +1,7 @@
 {
  "task": "review-01",
  "model": "claude-haiku-5-5",
- "recorded_at": "2026-10-19T20:56:46.099662+00:00",
+ "recorded_at": "2026-10-19T21:23:18.323183+00:00",
  "answer": {
   "statements": [
    {
@@ -9,16 +9,16 @@
     "numbers": [
      {
       "text_value": "-0.002",
-      "fact_id": "F46",
+      "fact_id": "F74",
       "verdict": "match"
      },
      {
       "text_value": "0.010",
-      "fact_id": "F48",
+      "fact_id": "F75",
       "verdict": "match"
      }
     ],
-    "reason": "F46 gives -0.002 and F48 gives SE (0.010) with no stars, so the static slope is insignificant.",
+    "reason": "F74 gives -0.002 and F75 gives SE (0.010) with no stars, so the static unemployment coefficient is insignificant.",
     "interpretation": "ok"
    },
    {
@@ -26,21 +26,21 @@
     "numbers": [
      {
       "text_value": "0.398",
-      "fact_id": "F50",
+      "fact_id": "F92",
       "verdict": "match"
      },
      {
       "text_value": "0.686",
-      "fact_id": "F52",
+      "fact_id": "F100",
       "verdict": "match"
      },
      {
       "text_value": "0.007",
-      "fact_id": "F47",
+      "fact_id": "F84",
       "verdict": "match"
      }
     ],
-    "reason": "F50 and F52 are 0.398*** and 0.686***, significant at 1%; F47 gives unemployment 0.007 with SE 0.008, insignificant.",
+    "reason": "F92 and F100 carry *** (significant at 1%) and F84 gives 0.007 with no stars, so the statement matches the dynamic model's table.",
     "interpretation": "ok"
    },
    {
@@ -48,21 +48,21 @@
     "numbers": [
      {
       "text_value": "0.000",
-      "fact_id": "F66",
+      "fact_id": "F80",
       "verdict": "match"
      },
      {
       "text_value": "0.421",
-      "fact_id": "F67",
+      "fact_id": "F118",
       "verdict": "match"
      },
      {
       "text_value": "169",
-      "fact_id": "F65",
+      "fact_id": "F114",
       "verdict": "match"
      }
     ],
-    "reason": "F66 gives static R² 0.000, F67 dynamic R² 0.421, and F65 gives 169 observations for the dynamic model.",
+    "reason": "F80 gives static R² 0.000, F118 gives dynamic R² 0.421, and F114 gives 169 observations for the dynamic model.",
     "interpretation": "ok"
    },
    {
@@ -74,7 +74,7 @@
       "verdict": "match"
      }
     ],
-    "reason": "F63 reports p = 0.432 for H0: γ+δ=1, which fails to reject; the statement's wording that the data do not reject is appropriate, though a vertical curve is only one reading of a unit-sum restriction.",
+    "reason": "F63 gives p = 0.432 for H0: γ+δ=1, which is not rejected; the statement correctly words this as 'not rejected' rather than confirming the null.",
     "interpretation": "ok"
    },
    {
@@ -91,7 +91,7 @@
       "verdict": "match"
      }
     ],
-    "reason": "F32 is the usual SE 0.111 and F33 the HAC SE 0.177; the HAC coefficient stays 0.686*** (F31), so significance holds.",
+    "reason": "F32 gives the usual SE 0.111 and F33 gives the HAC SE 0.177 for the expectation term; with the coefficient 0.686*** kept, it stays significant.",
     "interpretation": "ok"
    },
    {
@@ -113,7 +113,7 @@
       "verdict": "match"
      }
     ],
-    "reason": "F101 gives expectation 0.783 with seasonal dummies, F119 gives R² 0.523, and F86 gives unemployment 0.001 in the no-COVID sample.",
+    "reason": "F101 gives 0.783 for the expectation with seasonal dummies, F119 gives R² 0.523, and F86 gives unemployment 0.001 in the sem-COVID model.",
     "interpretation": "ok"
    }
   ]

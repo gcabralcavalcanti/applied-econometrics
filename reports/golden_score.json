@@ -163,7 +163,7 @@
   },
   {
    "id": "G3",
-   "planted": "wrong value (0.440)",
+   "planted": "wrong value (0.439)",
    "expected_flag": true,
    "flagged": true,
    "correct": true
@@ -177,14 +177,14 @@
   },
   {
    "id": "G5",
-   "planted": "IRR misread (about 0.8% fewer)",
+   "planted": "IRR misread (about 0.8% more)",
    "expected_flag": true,
    "flagged": true,
    "correct": true
   },
   {
    "id": "G6",
-   "planted": "wrong value (5,030)",
+   "planted": "wrong value (5,046)",
    "expected_flag": true,
    "flagged": true,
    "correct": true
@@ -205,7 +205,7 @@
   },
   {
    "id": "G9",
-   "planted": "wrong value (0.170)",
+   "planted": "wrong value (0.171)",
    "expected_flag": true,
    "flagged": true,
    "correct": true

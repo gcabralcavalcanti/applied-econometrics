@@ -126,6 +126,6 @@ if __name__ == "__main__":
     print(f"Menu: {len(mn)} fund-years, {mn['fund'].nunique()} funds")
     qt = month_end_quotas(set(mn["fund"])).drop(columns="date")
     qt["net_assets"] = qt["net_assets"].round(0)
-    qt.to_csv(DATA / "monthly_quotas.csv.gz", index=False, compression="gzip")
+    qt.to_csv(DATA / "monthly_quotas.csv.gz", index=False, compression={"method": "gzip", "mtime": 0})
     cdi().to_csv(DATA / "cdi.csv", index=False)
     print("Saved data/menu.csv, data/monthly_quotas.csv.gz, data/cdi.csv")

@@ -1,7 +1,7 @@
 {
  "task": "golden-01",
  "model": "claude-haiku-5-5",
- "recorded_at": "2026-10-19T20:56:50.620320+00:00",
+ "recorded_at": "2026-10-19T21:23:23.112182+00:00",
  "answer": {
   "statements": [
    {
@@ -9,11 +9,11 @@
     "numbers": [
      {
       "text_value": "-0.002",
-      "fact_id": "F46",
+      "fact_id": "F74",
       "verdict": "match"
      }
     ],
-    "reason": "F46/F74 show the static unemployment coefficient is -0.002 with no stars, consistent with the statement.",
+    "reason": "F74 gives the static unemployment coefficient as -0.002 with no stars, so it is insignificant as the statement says.",
     "interpretation": "ok"
    },
    {
@@ -25,7 +25,7 @@
       "verdict": "mismatch"
      }
     ],
-    "reason": "The dynamic model's lagged inflation coefficient is 0.398 (F26/F50/F92), not 0.389.",
+    "reason": "The dynamic model's lagged inflation coefficient is 0.398 (F26/F92), not 0.389.",
     "interpretation": "wrong"
    },
    {
@@ -37,7 +37,7 @@
       "verdict": "match"
      }
     ],
-    "reason": "Dynamic unemployment coefficient is 0.007 (F47), but its standard error is 0.008 (F49) so t≈0.9 and it is not significant at 5%; no stars are shown.",
+    "reason": "The dynamic unemployment coefficient is 0.007 (F47), but its standard error is 0.008 (F24/F49), so t is about 0.9 and it is not significant at 5%; no stars are shown.",
     "interpretation": "wrong"
    },
    {
@@ -49,7 +49,7 @@
       "verdict": "match"
      }
     ],
-    "reason": "F52 gives 0.686 with *** in the dynamic model, so it is significant at 1%.",
+    "reason": "The Focus expectation coefficient is 0.686 with three stars (F52), meaning significance at 1%.",
     "interpretation": "ok"
    },
    {
@@ -61,7 +61,7 @@
       "verdict": "match"
      }
     ],
-    "reason": "F63 gives p = 0.432 for H0: gamma+delta=1, which only fails to reject the restriction; it does not prove the long-run curve is vertical.",
+    "reason": "F63 is a p-value of 0.432 for H0: gamma+delta=1, which only fails to reject; it does not prove the long-run curve is vertical.",
     "interpretation": "wrong"
    },
    {
@@ -73,7 +73,7 @@
       "verdict": "mismatch"
      }
     ],
-    "reason": "The static model's Durbin-Watson statistic is 0.927 (F58/F78), not 1.927.",
+    "reason": "The static model's Durbin-Watson statistic is 0.927 (F1/F58/F78), not 1.927.",
     "interpretation": "wrong"
    },
    {
@@ -90,7 +90,7 @@
       "verdict": "match"
      }
     ],
-    "reason": "F32 and F33 show the expectation standard error rises from 0.111 to 0.177 under HAC, and the coefficient 0.686*** stays significant (F31).",
+    "reason": "The HAC standard error on expectations is 0.177 versus 0.111 usual (F32/F33), and the coefficient stays 0.686***, so it stays significant.",
     "interpretation": "ok"
    },
    {
@@ -107,7 +107,7 @@
       "verdict": "match"
      }
     ],
-    "reason": "HAC changes only the standard error (F33); the coefficient stays 0.686 (F31), so the statement's claim that the coefficient falls is contradicted by the tables.",
+    "reason": "HAC changes only the standard error (0.177); the coefficient stays 0.686 (F31), so the claim that the estimate falls to 0.177 is a misreading.",
     "interpretation": "wrong"
    },
    {
@@ -129,7 +129,7 @@
       "verdict": "match"
      }
     ],
-    "reason": "F66 gives R² 0.000 for the static model, F67 gives 0.421 for the dynamic model, and F65 gives 169 observations.",
+    "reason": "R² rises from 0.000 (F66) to 0.421 (F67) with 169 observations in the dynamic model (F65).",
     "interpretation": "ok"
    },
    {
@@ -138,10 +138,10 @@
      {
       "text_value": "65.24",
       "fact_id": "F2",
-      "verdict": "mismatch"
+      "verdict": "not_in_tables"
      }
     ],
-    "reason": "The Breusch-Godfrey statistic for the static model is 56.24 (F2), not 65.24.",
+    "reason": "The tables report a Breusch-Godfrey statistic of 56.24 (F2), not 65.24, and that statistic does not match the stated value.",
     "interpretation": "wrong"
    }
   ]

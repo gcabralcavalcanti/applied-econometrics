@@ -75,6 +75,13 @@ n_pib = int(pib.iloc[:, 0].str.extract(r"(\d{7})")[0].notna().sum())
 cov = len(ctl) / n_pib
 r.add("merge coverage: controls / municipalities in the GDP table", cov > 0.95,
       f"{len(ctl)} of {n_pib} ({cov:.1%}); the rest failed the name match or the income filter", cov, WARN)
+CAPITALS = {"1200401", "2704302", "1600303", "1302603", "2927408", "2304400", "5300108", "3205309", "5208707",
+            "2111300", "5103403", "5002704", "3106200", "1501402", "2507507", "4106902", "2611606", "2211001",
+            "3304557", "2408102", "4314902", "1100205", "1400100", "4205407", "3550308", "2800308", "1721000"}
+lost = sorted(CAPITALS - set(xs["municipio_id"].str.zfill(7)))
+r.add("all 27 state capitals are in the base", not lost,
+      "all present" if not lost else f"missing capitals {lost}: a failed name match drops the largest cities",
+      len(lost))
 r.in_range(ctl["evangelical_density"], 0, 100, "evangelical density", "% of residents")
 r.in_range(ctl["renda_percapita"], 500, 200_000, "GDP per capita (after filter and winsorising)", "R$")
 

@@ -20,15 +20,20 @@ public APIs ──► raw data ──► data checks (JSON report) ──► mod
 | [04](papers/04-fund-selection/) | Picking funds for a retail menu: do past winners repeat, and what do fees cost? | CVM open data (daily reports, factsheets, registers), CDI | Past returns barely help; each point of fees costs 0.74 points a year in equity funds; an AI-written committee memo, checked twice |
 
 Each paper's README is one page, in the same order: question, data, specification and refinement, result, AI review.
+Each paper also has a `final-report.pdf` that the pipeline builds from its own outputs: the question and result, the
+data-check summary, the main tables and the main figures. Running the pipeline again rebuilds it (byte for byte, if the
+outputs did not change).
 
 ## Data checks
 
 Every paper has a checks script that runs between building the base and the first regression, and writes
 `output/data_checks.json` with the input fingerprints (SHA-256) and one line per check: missing values, gaps in
 dates, units, ranges, duplicates, panel balance, merge coverage, and codes against the official IBGE list.
-A FAIL stops the run; a WARN is reported. Current state: 47 pass, 9 warnings, 0 fail. Two examples of what they caught:
+A FAIL stops the run; a WARN is reported. Current state: 48 pass, 9 warnings, 0 fail. Examples of what they caught:
 in 03, 43% of municipalities have a year with no record, and the original code averaged their rate over the years that
-exist (the paper now re-estimates with the full 3-year denominator; the conclusion holds); in 04, the public fund data
+exist (the paper now re-estimates with the full 3-year denominator; the conclusion holds); also in 03, the coursework
+version matched census and GDP tables by name and silently lost São Paulo, Rio de Janeiro and Brasília (a new check now
+requires all 27 state capitals; the inputs are now downloaded by the code and all 5,565 municipalities match); in 04, the public fund data
 carry admin fees of up to 90,000% a year and expense ratios in the millions (unit errors), zero quotas and ±50% monthly
 jumps, all counted and excluded before any model.
 
@@ -78,14 +83,15 @@ Python 3.10+ (tested on 3.14, Windows 11).
 
 ```bash
 pip install -r requirements.txt
-python run_all.py              # every paper: build base, checks, models, tables; then compare tables with the snapshot
+python run_all.py              # every paper: base, checks, models, tables, final-report.pdf; then the snapshot check
 python run_all.py --download   # papers 01 and 04 pull their data again (BCB, CVM: ~750 MB; changes the numbers)
 python run_all.py --review     # also the AI reviewer and the AI committee memo (live with a key, recorded without)
-python -m pytest               # 25 tests, no API calls
+python -m pytest               # 26 tests, no API calls
 ```
 
-`run_all.py` ends by comparing the 18 tables with the versions submitted for grading (`tests/table_snapshot.json`):
-they are byte-for-byte identical.
+`run_all.py` ends by comparing the 13 tables of papers 01 and 02 with the versions submitted for grading
+(`tests/table_snapshot.json`): they are byte-for-byte identical. Paper 03 now runs on inputs this repository downloads
+itself, so its tables differ from the coursework version (16 more municipalities; same conclusion).
 
 ## Origin and role
 
@@ -94,11 +100,12 @@ semester of 2026), written in a group. Only my parts are here; the reports with 
 - **01: all of it.** Data pipeline, estimation and diagnostics code, tables, figures and the interpretation.
 - **02: the code.** Panel set-up, every estimation, the packaged tests and every table and figure. The by-hand test
   calculations and the written interpretation were a teammate's and are not published; the README here is mine.
-- **03: I finished it.** The topic and the first data pipeline came from a teammate. I re-scoped the design when the data
-  could not support it, fixed the pipeline, ran the estimation and robustness checks, and ran the AI review loop.
+- **03: I finished it.** The topic and a first pipeline came from a teammate; neither that code nor the data files
+  downloaded for it are here. I re-scoped the design when the data could not support it, wrote the aggregation, base and
+  analysis code in this folder, ran the estimation, the robustness checks and the AI review loop.
 
 The AI review layer, the data checks, the refinement in 03, paper 04 and this structure were added afterwards. Paper 04
 uses only public CVM and BCB data.
 The coursework rule for 01 and 02 allowed AI only for code support; the econometric choices and interpretation are mine.
-03 required AI: the full trail (prompts, decision log, four adversarial reviews, reflection) is in
+03 required AI: the decision log and the four adversarial AI reviews are in
 `papers/03-religion-and-domestic-violence/ai_trail/` (Portuguese). Code comments and table labels are in Portuguese, as submitted.

@@ -35,10 +35,10 @@ def _cell(paper, table, row_part, col_part):
 
 def test_extracts_known_cells():
     assert _cell("01-phillips-curve", "q2_tab_phillips_dinamica", "Inflação defasada", "Dinâmica")["value"] == 0.398
-    se = _cell("02-crime-panel", "q3_tab_cluster", "prisao) _1 (std. error)", "Cluster")
+    se = _cell("02-crime-panel", "q3_tab_cluster", "prisao) β_1 (std. error)", "Cluster")
     assert se["value"] == 0.064 and se["kind"] == "se"
-    assert _cell("03-religion-and-domestic-violence", "tab_poisson", "Densidade", "IRR")["value"] == 0.9923
-    assert _cell("03-religion-and-domestic-violence", "_stats", "evang_M1_p", "value")["value"] == 0.318
+    assert _cell("03-religion-and-domestic-violence", "tab_poisson", "Densidade", "IRR")["value"] == 1.0081
+    assert _cell("03-religion-and-domestic-violence", "_stats", "evang_M1_p", "value")["value"] == 0.325
 
 
 def test_tables_identical_to_submitted_version():
@@ -46,5 +46,14 @@ def test_tables_identical_to_submitted_version():
     run_all = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(run_all)
     snapshot = json.loads(run_all.SNAPSHOT.read_text(encoding="utf-8"))
-    assert len(snapshot) == 18
+    assert len(snapshot) == 13
     assert run_all.verify()
+
+
+def test_final_reports_are_built_from_the_outputs():
+    from aecon import report
+    for paper in report.MAIN:
+        out = report.build(paper)
+        first = out.read_bytes()
+        assert first[:4] == b"%PDF" and len(first) > 20_000
+        assert report.build(paper).read_bytes() == first     # same outputs -> same PDF

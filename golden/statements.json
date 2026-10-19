@@ -1,38 +1,206 @@
 {
  "01-phillips-curve": [
-  {"id": "G1", "text": "In the static model the unemployment coefficient is -0.002, with no stars: there is no static trade-off.", "expected_numbers": "ok", "expected_interpretation": "ok"},
-  {"id": "G2", "text": "In the dynamic model, lagged inflation has a coefficient of 0.389.", "expected_numbers": "error", "expected_interpretation": "ok", "planted": "digits swapped (0.398)"},
-  {"id": "G3", "text": "Unemployment is significant at the 5% level in the dynamic model, with a coefficient of 0.007.", "expected_numbers": "ok", "expected_interpretation": "wrong", "planted": "significance claimed without stars"},
-  {"id": "G4", "text": "Expectations dominate: the Focus coefficient is 0.686, significant at 1%.", "expected_numbers": "ok", "expected_interpretation": "ok"},
-  {"id": "G5", "text": "The test of gamma + delta = 1 gives p = 0.432, which proves that the long-run Phillips curve is vertical.", "expected_numbers": "ok", "expected_interpretation": "wrong", "planted": "non-rejection read as proof"},
-  {"id": "G6", "text": "The Durbin-Watson statistic of the static model is 1.927.", "expected_numbers": "error", "expected_interpretation": "ok", "planted": "wrong value (0.927)"},
-  {"id": "G7", "text": "With Newey-West errors the standard error on the expectation term rises from 0.111 to 0.177, and the coefficient stays significant.", "expected_numbers": "ok", "expected_interpretation": "ok"},
-  {"id": "G8", "text": "HAC errors change the estimates: the expectation coefficient falls from 0.686 to 0.177.", "expected_numbers": "any", "expected_interpretation": "wrong", "planted": "standard error read as a coefficient"},
-  {"id": "G9", "text": "The dynamic model raises R² from 0.000 to 0.421 on 169 monthly observations.", "expected_numbers": "ok", "expected_interpretation": "ok"},
-  {"id": "G10", "text": "In the static model the Breusch-Godfrey statistic is LM = 65.24.", "expected_numbers": "error", "expected_interpretation": "ok", "planted": "wrong value (56.24)"}
+  {
+   "id": "G1",
+   "text": "In the static model the unemployment coefficient is -0.002, with no stars: there is no static trade-off.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "ok"
+  },
+  {
+   "id": "G2",
+   "text": "In the dynamic model, lagged inflation has a coefficient of 0.389.",
+   "expected_numbers": "error",
+   "expected_interpretation": "ok",
+   "planted": "digits swapped (0.398)"
+  },
+  {
+   "id": "G3",
+   "text": "Unemployment is significant at the 5% level in the dynamic model, with a coefficient of 0.007.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "wrong",
+   "planted": "significance claimed without stars"
+  },
+  {
+   "id": "G4",
+   "text": "Expectations dominate: the Focus coefficient is 0.686, significant at 1%.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "ok"
+  },
+  {
+   "id": "G5",
+   "text": "The test of gamma + delta = 1 gives p = 0.432, which proves that the long-run Phillips curve is vertical.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "wrong",
+   "planted": "non-rejection read as proof"
+  },
+  {
+   "id": "G6",
+   "text": "The Durbin-Watson statistic of the static model is 1.927.",
+   "expected_numbers": "error",
+   "expected_interpretation": "ok",
+   "planted": "wrong value (0.927)"
+  },
+  {
+   "id": "G7",
+   "text": "With Newey-West errors the standard error on the expectation term rises from 0.111 to 0.177, and the coefficient stays significant.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "ok"
+  },
+  {
+   "id": "G8",
+   "text": "HAC errors change the estimates: the expectation coefficient falls from 0.686 to 0.177.",
+   "expected_numbers": "any",
+   "expected_interpretation": "wrong",
+   "planted": "standard error read as a coefficient"
+  },
+  {
+   "id": "G9",
+   "text": "The dynamic model raises R² from 0.000 to 0.421 on 169 monthly observations.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "ok"
+  },
+  {
+   "id": "G10",
+   "text": "In the static model the Breusch-Godfrey statistic is LM = 65.24.",
+   "expected_numbers": "error",
+   "expected_interpretation": "ok",
+   "planted": "wrong value (56.24)"
+  }
  ],
  "02-crime-panel": [
-  {"id": "G1", "text": "Pooled OLS gives an elasticity of the crime rate with respect to the probability of arrest of -0.633.", "expected_numbers": "ok", "expected_interpretation": "ok"},
-  {"id": "G2", "text": "In the two-way fixed-effects model, a 1% higher probability of arrest goes with a crime rate 0.360 percentage points lower.", "expected_numbers": "ok", "expected_interpretation": "wrong", "planted": "elasticity read as percentage points"},
-  {"id": "G3", "text": "County fixed effects shrink the arrest coefficient to -0.359.", "expected_numbers": "error", "expected_interpretation": "ok", "planted": "digits swapped (county FE = -0.395)"},
-  {"id": "G4", "text": "Clustering by county raises the standard error on police per capita from 0.027 to 0.093.", "expected_numbers": "ok", "expected_interpretation": "ok"},
-  {"id": "G5", "text": "Clustering by county changes the police coefficient from 0.422 to 0.093.", "expected_numbers": "any", "expected_interpretation": "wrong", "planted": "standard error read as a coefficient"},
-  {"id": "G6", "text": "The Breusch-Pagan test gives LM = 119.60.", "expected_numbers": "error", "expected_interpretation": "ok", "planted": "wrong value (191.60)"},
-  {"id": "G7", "text": "More police per capita reduces crime: the two-way fixed-effects coefficient is 0.422.", "expected_numbers": "ok", "expected_interpretation": "wrong", "planted": "positive sign read as a reduction, causal wording"},
-  {"id": "G8", "text": "The White test (LM = 410.04, p < 0.0001) rejects homoskedasticity.", "expected_numbers": "ok", "expected_interpretation": "ok"},
-  {"id": "G9", "text": "Because the arrest coefficient is significant (-0.360), the panel shows that arrests cause crime to fall.", "expected_numbers": "ok", "expected_interpretation": "wrong", "planted": "causal claim from observational panel"},
-  {"id": "G10", "text": "The panel has 630 observations and the pooled R² is 0.805.", "expected_numbers": "ok", "expected_interpretation": "ok"}
+  {
+   "id": "G1",
+   "text": "Pooled OLS gives an elasticity of the crime rate with respect to the probability of arrest of -0.633.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "ok"
+  },
+  {
+   "id": "G2",
+   "text": "In the two-way fixed-effects model, a 1% higher probability of arrest goes with a crime rate 0.360 percentage points lower.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "wrong",
+   "planted": "elasticity read as percentage points"
+  },
+  {
+   "id": "G3",
+   "text": "County fixed effects shrink the arrest coefficient to -0.359.",
+   "expected_numbers": "error",
+   "expected_interpretation": "ok",
+   "planted": "digits swapped (county FE = -0.395)"
+  },
+  {
+   "id": "G4",
+   "text": "Clustering by county raises the standard error on police per capita from 0.027 to 0.093.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "ok"
+  },
+  {
+   "id": "G5",
+   "text": "Clustering by county changes the police coefficient from 0.422 to 0.093.",
+   "expected_numbers": "any",
+   "expected_interpretation": "wrong",
+   "planted": "standard error read as a coefficient"
+  },
+  {
+   "id": "G6",
+   "text": "The Breusch-Pagan test gives LM = 119.60.",
+   "expected_numbers": "error",
+   "expected_interpretation": "ok",
+   "planted": "wrong value (191.60)"
+  },
+  {
+   "id": "G7",
+   "text": "More police per capita reduces crime: the two-way fixed-effects coefficient is 0.422.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "wrong",
+   "planted": "positive sign read as a reduction, causal wording"
+  },
+  {
+   "id": "G8",
+   "text": "The White test (LM = 410.04, p < 0.0001) rejects homoskedasticity.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "ok"
+  },
+  {
+   "id": "G9",
+   "text": "Because the arrest coefficient is significant (-0.360), the panel shows that arrests cause crime to fall.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "wrong",
+   "planted": "causal claim from observational panel"
+  },
+  {
+   "id": "G10",
+   "text": "The panel has 630 observations and the pooled R² is 0.805.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "ok"
+  }
  ],
  "03-religion-and-domestic-violence": [
-  {"id": "G1", "text": "With state fixed effects and HC1 errors, the evangelical-density coefficient is 0.0009 (SE 0.0009).", "expected_numbers": "ok", "expected_interpretation": "ok"},
-  {"id": "G2", "text": "Evangelical density significantly increases recorded domestic violence (coefficient 0.0009).", "expected_numbers": "ok", "expected_interpretation": "wrong", "planted": "significance claimed (p = 0.32) and causal wording"},
-  {"id": "G3", "text": "Adding the non-domestic notification proxy raises R² to 0.404.", "expected_numbers": "error", "expected_interpretation": "ok", "planted": "wrong value (0.440)"},
-  {"id": "G4", "text": "The Poisson model with a population offset gives a coefficient of -0.0077, an incidence-rate ratio of 0.9923.", "expected_numbers": "ok", "expected_interpretation": "ok"},
-  {"id": "G5", "text": "The Poisson IRR of 0.9923 means each extra point of evangelical density goes with 99.23% fewer recorded cases.", "expected_numbers": "ok", "expected_interpretation": "wrong", "planted": "IRR misread (about 0.8% fewer)"},
-  {"id": "G6", "text": "The sample covers 5,300 municipalities.", "expected_numbers": "error", "expected_interpretation": "ok", "planted": "wrong value (5,030)"},
-  {"id": "G7", "text": "Notification intensity matters: the proxy coefficient is 0.4244 and significant at 1%.", "expected_numbers": "ok", "expected_interpretation": "ok"},
-  {"id": "G8", "text": "Since the coefficient is not significant, the paper proves that evangelical density has no effect on domestic violence.", "expected_numbers": "ok", "expected_interpretation": "wrong", "planted": "absence of evidence read as proof"},
-  {"id": "G9", "text": "The base model's R² is 0.710.", "expected_numbers": "error", "expected_interpretation": "ok", "planted": "wrong value (0.170)"},
-  {"id": "G10", "text": "In the WLS model the coefficient turns negative (-0.0028) but is not significant.", "expected_numbers": "ok", "expected_interpretation": "ok"}
+  {
+   "id": "G1",
+   "text": "With state fixed effects and HC1 errors, the evangelical-density coefficient is 0.0009 (SE 0.0009).",
+   "expected_numbers": "ok",
+   "expected_interpretation": "ok"
+  },
+  {
+   "id": "G2",
+   "text": "Evangelical density significantly increases recorded domestic violence (coefficient 0.0009).",
+   "expected_numbers": "ok",
+   "expected_interpretation": "wrong",
+   "planted": "significance claimed (p = 0.32) and causal wording"
+  },
+  {
+   "id": "G3",
+   "text": "Adding the non-domestic notification proxy raises R² to 0.404.",
+   "expected_numbers": "error",
+   "expected_interpretation": "ok",
+   "planted": "wrong value (0.439)"
+  },
+  {
+   "id": "G4",
+   "text": "The Poisson model with a population offset gives a coefficient of 0.0080, an incidence-rate ratio of 1.0081.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "ok"
+  },
+  {
+   "id": "G5",
+   "text": "The Poisson IRR of 1.0081 means each extra point of evangelical density goes with 100.81% more recorded cases.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "wrong",
+   "planted": "IRR misread (about 0.8% more)"
+  },
+  {
+   "id": "G6",
+   "text": "The sample covers 5,300 municipalities.",
+   "expected_numbers": "error",
+   "expected_interpretation": "ok",
+   "planted": "wrong value (5,046)"
+  },
+  {
+   "id": "G7",
+   "text": "Notification intensity matters: the proxy coefficient is 0.4237 and significant at 1%.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "ok"
+  },
+  {
+   "id": "G8",
+   "text": "Since the coefficient is not significant, the paper proves that evangelical density has no effect on domestic violence.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "wrong",
+   "planted": "absence of evidence read as proof"
+  },
+  {
+   "id": "G9",
+   "text": "The base model's R² is 0.710.",
+   "expected_numbers": "error",
+   "expected_interpretation": "ok",
+   "planted": "wrong value (0.171)"
+  },
+  {
+   "id": "G10",
+   "text": "In the WLS model the coefficient is 0.0019 and not significant.",
+   "expected_numbers": "ok",
+   "expected_interpretation": "ok"
+  }
  ]
 }

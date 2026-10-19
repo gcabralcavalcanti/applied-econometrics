@@ -1,9 +1,9 @@
 """
 run_all.py - single entry point. For each paper: (download) -> build the base -> data checks
--> estimation -> tables. Then it compares every table with the version submitted for grading.
+-> estimation -> tables -> final-report.pdf. Then it compares the tables of papers 01-02 with the versions submitted for grading.
 
     python run_all.py                 # all papers, from the shipped data
-    python run_all.py --download      # papers 01 and 04 pull their data again first (changes the sample)
+    python run_all.py --download      # papers 01, 03 and 04 pull their data again first (changes the sample)
     python run_all.py 01 03           # only some papers
     python run_all.py --verify        # only compare the tables on disk with the snapshot
     python run_all.py --review        # also the AI reviewer and the AI committee memo (live with a key,
@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parent
 PAPERS = ROOT / "papers"
 SNAPSHOT = ROOT / "tests" / "table_snapshot.json"
 # UTF-8 everywhere (Windows consoles default to cp1252; tables contain accents)
-ENV = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"}
+ENV = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8", "SOURCE_DATE_EPOCH": "0"}  # fixed dates in PDFs
 
 STEPS = {
     "01": ("01-phillips-curve", [
@@ -38,15 +38,17 @@ STEPS = {
 }
 
 
-def run(script: Path) -> None:
-    print(f"\n{'=' * 70}\n>>> {script.relative_to(ROOT)}\n{'=' * 70}", flush=True)
-    result = subprocess.run([sys.executable, str(script)], cwd=script.parent.parent, env=ENV)
+def run(script: Path, *args: str) -> None:
+    print(f"\n{'=' * 70}\n>>> {script.relative_to(ROOT)} {' '.join(args)}\n{'=' * 70}", flush=True)
+    result = subprocess.run([sys.executable, str(script), *args], cwd=script.parent.parent, env=ENV)
     if result.returncode != 0:
         sys.exit(f"FAILED: {script.relative_to(ROOT)}")
 
 
 def table_files() -> list[Path]:
-    return sorted(p for p in PAPERS.glob("0[1-3]-*/output/**/*")
+    # papers 01-02 are compared with the versions submitted for grading; paper 03 now runs on inputs this
+    # repository downloads itself, so its tables are not the submitted ones (see its README)
+    return sorted(p for p in PAPERS.glob("0[1-2]-*/output/**/*")
                   if p.suffix == ".tex" or p.name == "_stats.txt")
 
 
@@ -77,13 +79,15 @@ if __name__ == "__main__":
     for key in chosen:
         folder, steps = STEPS[key]
         code = PAPERS / folder / "code"
-        if "--download" in args and key in ("01", "04"):
-            steps = [{"01": "q2_1_baixa_series.py", "04": "01_fetch_and_build.py"}[key]] + steps
+        if "--download" in args and key in ("01", "03", "04"):
+            steps = [{"01": "q2_1_baixa_series.py", "03": "00_baixa_ibge.py",
+                      "04": "01_fetch_and_build.py"}[key]] + steps
         for s in steps:
             run(code / s)
+        run(ROOT / "aecon" / "report.py", key)   # papers/<paper>/final-report.pdf
     if "--download" not in args and not verify():
         sys.exit("Some tables differ from the submitted version.")
     if "--review" in args:
         run(ROOT / "aecon" / "review.py")
         run(PAPERS / "04-fund-selection" / "code" / "04_memo.py")
-    print("\nAll done. Tables and figures in papers/*/output, data checks in papers/*/output/data_checks.json.")
+    print("\nAll done. Final reports in papers/*/final-report.pdf; tables, figures and data checks in papers/*/output.")

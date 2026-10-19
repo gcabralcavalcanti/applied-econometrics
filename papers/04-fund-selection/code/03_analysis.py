@@ -75,7 +75,7 @@ panel["quintile"] = panel.groupby(["pair", "asset_class"])["past"].transform(
     lambda s: pd.qcut(s.rank(method="first"), 5, labels=False) + 1)
 panel["cost_tercile"] = panel.groupby(["pair", "asset_class"])["expense_ratio"].transform(
     lambda s: pd.qcut(s.rank(method="first"), 3, labels=False) + 1 if s.notna().sum() >= 3 else np.nan)
-panel.to_csv(OUT / "panel_fund_year.csv.gz", index=False, compression="gzip")
+panel.to_csv(OUT / "panel_fund_year.csv.gz", index=False, compression={"method": "gzip", "mtime": 0})
 
 
 def star(p):
@@ -203,3 +203,51 @@ results["montecarlo"] = {c: {name: {"median": round(float(np.median(mc[(c, name)
                              for name in RULES} for c in CLASSES}
 (OUT / "results.json").write_text(json.dumps(results, indent=1), encoding="utf-8")
 print(json.dumps(results, indent=1))
+
+
+# ---------------------------------------------------------------- figures
+import matplotlib  # noqa: E402
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt  # noqa: E402
+
+COLORS = {"Equity": "#2a78d6", "Multi-asset": "#eb6834", "Fixed income": "#1baf7a"}
+INK, MUTED = "#0b0b0b", "#52514e"
+plt.rcParams.update({"font.size": 9, "axes.edgecolor": MUTED, "axes.labelcolor": INK, "xtick.color": MUTED,
+                     "ytick.color": MUTED, "axes.spines.top": False, "axes.spines.right": False,
+                     "svg.hashsalt": "aecon", "pdf.fonttype": 42})
+
+fig, ax = plt.subplots(figsize=(6.4, 3.4))
+width = 0.26
+for i, c in enumerate(CLASSES):
+    vals = [terc.loc[c, k] for k in (1, 2, 3)]
+    xs = np.arange(3) + (i - 1) * (width + 0.02)
+    ax.bar(xs, vals, width, color=COLORS[c], label=c)
+    ax.text(xs[2], vals[2] + 0.12, f"{vals[2]:.1f}", ha="center", va="bottom", fontsize=8, color="white")
+ax.axhline(0, color=MUTED, lw=0.8)
+ax.set_xticks(range(3), ["Cheapest third", "Middle third", "Most expensive third"])
+ax.set_ylabel("Next-year excess over CDI (p.p.)")
+ax.set_title("The most expensive third lost the most to the CDI", loc="left", fontsize=10, color=INK)
+ax.legend(frameon=False, ncol=3, loc="lower left", fontsize=8)
+fig.tight_layout()
+fig.savefig(OUT / "fig_costs.png", dpi=160, metadata={"Software": None})
+plt.close(fig)
+
+fig, axes = plt.subplots(1, 3, figsize=(7.6, 2.9), sharey=True)
+names = list(RULES)
+for ax, c in zip(axes, CLASSES):
+    for j, name in enumerate(names):
+        w = mc[(c, name)]
+        lo, med, hi = np.percentile(w, 5), np.median(w), np.percentile(w, 95)
+        ax.plot([lo, hi], [j, j], color=COLORS[c], lw=2, solid_capstyle="round")
+        ax.plot(med, j, "o", ms=6, color=COLORS[c], mec="white", mew=1.2)
+        ax.text(med, j - 0.18, f"{med:.2f}", ha="center", va="bottom", fontsize=7.5, color=INK)
+    ax.axvline(1, color=MUTED, lw=0.8, ls="--")
+    ax.set_title(c, fontsize=9, color=INK, loc="left")
+axes[0].set_yticks(range(len(names)), names, fontsize=8)
+axes[0].set_ylim(len(names) - 0.5, -0.8)
+fig.supxlabel("Wealth after 10 years relative to the CDI", fontsize=9, color=INK)
+fig.suptitle("Monte Carlo: median (dot) and 5th-95th percentile (line); 1.00 = same as the CDI",
+             x=0.01, ha="left", fontsize=9, color=INK)
+fig.tight_layout()
+fig.savefig(OUT / "fig_montecarlo.png", dpi=160, metadata={"Software": None})
+plt.close(fig)

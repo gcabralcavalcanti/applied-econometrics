@@ -1,16 +1,16 @@
 {
  "paper": "03-religion-and-domestic-violence",
- "run_at": "2026-10-19T20:59:51+00:00",
+ "run_at": "2026-10-19T21:26:54+00:00",
  "summary": {
-  "pass": 13,
+  "pass": 14,
   "warn": 1,
   "fail": 0
  },
  "inputs": {
-  "sinan_mun_ano.csv": "951d458ea5cf31f5",
-  "tabela2094_ibge.csv": "b17953a337f507c2",
-  "ibge_pib_2010_com_id_municipio.csv": "9c45920f350dd0b4",
-  "base_corte_2011_2013.csv": "191133d55b1a2fb9"
+  "sinan_mun_ano.csv": "d39fe22d63cab5fc",
+  "tabela2094_ibge.csv": "79e65d788b7f8c6e",
+  "ibge_pib_2010_com_id_municipio.csv": "3034986ab8c302b8",
+  "base_corte_2011_2013.csv": "ada04bdf22ba5526"
  },
  "checks": [
   {
@@ -38,8 +38,8 @@
   {
    "check": "SINAN sex coding produces female victims (0/1 coding, not 'F')",
    "status": "pass",
-   "detail": "750,248 female domestic-violence notifications",
-   "value": 750248
+   "detail": "749,741 female domestic-violence notifications",
+   "value": 749741
   },
   {
    "check": "municipality codes have 7 digits",
@@ -50,13 +50,19 @@
   {
    "check": "merge coverage: controls / municipalities in the GDP table",
    "status": "pass",
-   "detail": "5546 of 5565 (99.7%); the rest failed the name match or the income filter",
-   "value": 0.9965858041329739
+   "detail": "5565 of 5565 (100.0%); the rest failed the name match or the income filter",
+   "value": 1.0
+  },
+  {
+   "check": "all 27 state capitals are in the base",
+   "status": "pass",
+   "detail": "all present",
+   "value": 0
   },
   {
    "check": "range: evangelical density",
    "status": "pass",
-   "detail": "all 5546 values in [0, 100] % of residents",
+   "detail": "all 5565 values in [0, 100] % of residents",
    "value": {
     "min": 0.422684,
     "max": 85.836425,
@@ -66,23 +72,23 @@
   {
    "check": "range: GDP per capita (after filter and winsorising)",
    "status": "pass",
-   "detail": "all 5546 values in [500, 200000] R$",
+   "detail": "all 5565 values in [500, 200000] R$",
    "value": {
-    "min": 2988.374091,
-    "max": 64964.351412,
+    "min": 2988.455443,
+    "max": 64846.910548,
     "outside": 0
    }
   },
   {
    "check": "IBGE API: every code in the base is an official municipality",
    "status": "pass",
-   "detail": "5030 codes checked against 5571 official municipalities",
+   "detail": "5046 codes checked against 5571 official municipalities",
    "value": 0
   },
   {
    "check": "IBGE API: names in the GDP table match the official names",
    "status": "pass",
-   "detail": "0 of 5030 differ (renamed since 2010 or spelling): ",
+   "detail": "0 of 5046 differ (renamed since 2010 or spelling): ",
    "value": 0
   },
   {
@@ -106,14 +112,14 @@
   {
    "check": "every municipality has notifications in all 3 years (2011-2013)",
    "status": "warn",
-   "detail": "2163 municipalities (43.0%) have a year with no record; their rate is averaged over the years that exist, which overstates it",
-   "value": 2163
+   "detail": "2170 municipalities (43.0%) have a year with no record; their rate is averaged over the years that exist, which overstates it",
+   "value": 2170
   },
   {
    "check": "share of municipalities with zero recorded cases",
    "status": "pass",
-   "detail": "15.4% (motivates the Poisson model)",
-   "value": 0.1536779324055666
+   "detail": "15.3% (motivates the Poisson model)",
+   "value": 0.15338882282996433
   }
  ]
 }
