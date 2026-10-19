@@ -1,0 +1,144 @@
+{
+ "task": "golden-03",
+ "model": "claude-haiku-5-5",
+ "recorded_at": "2026-10-19T20:57:09.408602+00:00",
+ "answer": {
+  "statements": [
+   {
+    "id": "G1",
+    "numbers": [
+     {
+      "text_value": "0.0009",
+      "fact_id": "F38",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.0009",
+      "fact_id": "F43",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Column (1) VD MQO coefficient is 0.0009 with SE (0.0009), matching F38 and F43.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "G2",
+    "numbers": [
+     {
+      "text_value": "0.0009",
+      "fact_id": "F38",
+      "verdict": "match"
+     }
+    ],
+    "reason": "The coefficient 0.0009 in column (1) has SE (0.0009) and no stars (F43), so it is not significant; claiming significant increase contradicts the tables.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G3",
+    "numbers": [
+     {
+      "text_value": "0.404",
+      "fact_id": "F103",
+      "verdict": "mismatch"
+     }
+    ],
+    "reason": "The R² for column 4 (with the non-domestic proxy) is 0.481 (F103), and column 3 is 0.440; 0.404 matches neither.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G4",
+    "numbers": [
+     {
+      "text_value": "-0.0077",
+      "fact_id": "F31",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.9923",
+      "fact_id": "F32",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Poisson coefficient -0.0077 and IRR 0.9923 match F31 and F32, with exp(-0.0077)≈0.9923.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "G5",
+    "numbers": [
+     {
+      "text_value": "0.9923",
+      "fact_id": "F32",
+      "verdict": "match"
+     },
+     {
+      "text_value": "99.23%",
+      "fact_id": "",
+      "verdict": "not_in_tables"
+     }
+    ],
+    "reason": "An IRR of 0.9923 means a ~0.77% decrease in the expected rate per point, not 99.23% fewer cases (misreading of the IRR).",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G6",
+    "numbers": [
+     {
+      "text_value": "5,300",
+      "fact_id": "F144",
+      "verdict": "mismatch"
+     }
+    ],
+    "reason": "The sample has 5,030 municipalities (N_base and all N rows), not 5,300.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G7",
+    "numbers": [
+     {
+      "text_value": "0.4244",
+      "fact_id": "F70",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Proxy coefficient 0.4244 matches F70 and is marked *** (p<0.01), consistent with the statement.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "G8",
+    "numbers": [
+     {
+      "text_value": "0.0009",
+      "fact_id": "F38",
+      "verdict": "match"
+     }
+    ],
+    "reason": "The evangelical coefficient is insignificant (F43), but a non-rejection cannot prove absence of effect, and the design is associational.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G9",
+    "numbers": [
+     {
+      "text_value": "0.710",
+      "fact_id": "F77",
+      "verdict": "mismatch"
+     }
+    ],
+    "reason": "The base model R² (column 1, F77 and F145) is 0.170, not 0.710.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G10",
+    "numbers": [
+     {
+      "text_value": "-0.0028",
+      "fact_id": "F42",
+      "verdict": "match"
+     }
+    ],
+    "reason": "WLS coefficient -0.0028 (F42) has SE (0.0022) with no stars, so it is not significant, matching the statement.",
+    "interpretation": "ok"
+   }
+  ]
+ }
+}

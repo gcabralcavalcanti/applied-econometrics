@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["recommendation", "findings", "risks", "next_steps"],
+  "properties": {
+    "recommendation": {"type": "string"},
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text", "facts"],
+        "properties": {
+          "text": {"type": "string"},
+          "facts": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "risks": {"type": "array", "items": {"type": "string"}},
+    "next_steps": {"type": "array", "items": {"type": "string"}}
+  }
+}

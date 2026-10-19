@@ -1,0 +1,36 @@
+[
+ {
+  "caught": 17,
+  "planted_errors": 18,
+  "false_alarms": 0,
+  "clean_statements": 12,
+  "llm": {
+   "mode": "live",
+   "model": "claude-haiku-5-5",
+   "api_calls": 3,
+   "recorded_answers_used": 0,
+   "input_tokens": 19560,
+   "output_tokens": 3312,
+   "estimated_cost_usd": 0.00361
+  },
+  "missed": [
+   "G10"
+  ]
+ },
+ {
+  "caught": 18,
+  "planted_errors": 18,
+  "false_alarms": 0,
+  "clean_statements": 12,
+  "llm": {
+   "mode": "live",
+   "model": "claude-haiku-5-5",
+   "api_calls": 3,
+   "recorded_answers_used": 0,
+   "input_tokens": 19560,
+   "output_tokens": 3380,
+   "estimated_cost_usd": 0.00365
+  },
+  "missed": []
+ }
+]

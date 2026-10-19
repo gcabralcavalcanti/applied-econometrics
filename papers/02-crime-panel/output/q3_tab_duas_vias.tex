@@ -1,0 +1,28 @@
+\begin{table}[htbp]\centering
+\caption{Efeitos fixos de condado vs.\ painel de duas vias (condado $+$ ano)}\label{tab:q3_duas_vias}
+\small
+\begin{tabular}{lcc}
+\toprule
+ & \textbf{EF condado} & \textbf{EF duas vias} \\
+ & (1) & (2) \\
+\midrule
+ln(prob.\ pris\~ao) $\beta_1$ & -0,395*** & -0,360*** \\
+ & (0,034) & (0,033) \\
+ln(prob.\ condena\c{c}\~ao) & -0,309*** & -0,286*** \\
+ & (0,022) & (0,021) \\
+ln(prob.\ encarc.) & -0,211*** & -0,184*** \\
+ & (0,033) & (0,033) \\
+ln(senten\c{c}a m\'edia) & 0,032 & -0,003 \\
+ & (0,026) & (0,027) \\
+ln(pol\'icia p.c.) $\beta_2$ & 0,422*** & 0,422*** \\
+ & (0,028) & (0,027) \\
+\midrule
+Efeitos fixos de condado & Sim & Sim \\
+Efeitos fixos de ano & N\~ao & Sim \\
+Erros-padrao & Convencional & Convencional \\
+N (obs.) & 630 & 630 \\
+$R^2$ & 0,373 & 0,370 \\
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}{\footnotesize\itshape Erros-padrao entre parenteses. *** p$<$0,01; ** p$<$0,05; * p$<$0,10. Dep.: ln(taxa de crime). $R^2$ \textit{within}. Os efeitos fixos de ano captam choques macro comuns a todos os condados em cada ano.}
+\end{table}

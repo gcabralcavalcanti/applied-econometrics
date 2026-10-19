@@ -1,0 +1,28 @@
+\begin{table}[!htbp] \centering
+  \caption{Modelo dinâmico: erros-padrão MQO usual vs.\ HAC (Newey--West)}
+\begin{tabular}{@{\extracolsep{5pt}}lcc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+& \multicolumn{2}{c}{\textit{Dependent variable: IPCA mensal}} \
+\cr \cline{2-3}
+\\[-1.8ex] & \multicolumn{1}{c}{MQO usual} & \multicolumn{1}{c}{MQO + HAC ($L=4$)}  \\
+\\[-1.8ex] & (1) & (2) \\
+\hline \\[-1.8ex]
+ Desemprego $u_t$ & 0.007$^{}$ & 0.007$^{}$ \\
+& (0.008) & (0.007) \\
+ Inflação defasada $\pi_{t-1}$ & 0.398$^{***}$ & 0.398$^{***}$ \\
+& (0.063) & (0.051) \\
+ Expectativa $E_t[\pi_{t+1}]$ & 0.686$^{***}$ & 0.686$^{***}$ \\
+& (0.111) & (0.177) \\
+ Intercept & -0.066$^{}$ & -0.066$^{}$ \\
+& (0.097) & (0.111) \\
+\hline \\[-1.8ex]
+ Observations & 169 & 169 \\
+ $R^2$ & 0.421 & 0.421 \\
+ Adjusted $R^2$ & 0.411 & 0.411 \\
+ Residual Std. Error & 0.286 (df=165) & 0.286 (df=165) \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:} & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabular}
+\end{table}

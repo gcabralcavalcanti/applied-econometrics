@@ -1,0 +1,168 @@
+[
+ {
+  "id": "S1",
+  "text": "With state fixed effects and HC1 errors, the evangelical-density coefficient is 0.0009 (SE 0.0009, p = 0.318), on 5030 municipalities.",
+  "numbers_verdict": "ok",
+  "interpretation": "ok",
+  "reason": "Column (1) coefficient 0.0009 with SE (0.0009) matches F38/F43, p=0.318 matches F150, and N=5030 matches F72.",
+  "numbers": [
+   {
+    "text_value": "0.0009",
+    "fact_id": "F38",
+    "table_value": "0.0009",
+    "where": "tab_principal / Densidade evangélica / (1) VD MQO",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.0009",
+    "fact_id": "F43",
+    "table_value": "(0.0009)",
+    "where": "tab_principal / Densidade evangélica (std. error) / (1) VD MQO",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.318",
+    "fact_id": "F150",
+    "table_value": "0.318",
+    "where": "_stats / evang_M1_p / value",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "5030",
+    "fact_id": "F72",
+    "table_value": "5030",
+    "where": "tab_principal / Observações / (1) VD MQO",
+    "status": "match",
+    "note": ""
+   }
+  ]
+ },
+ {
+  "id": "S2",
+  "text": "Adding the non-domestic notification proxy raises R² from 0.170 to 0.440; the proxy coefficient is 0.4244, significant at 1%, and evangelical density stays at 0.0009.",
+  "numbers_verdict": "ok",
+  "interpretation": "ok",
+  "reason": "R² 0.170 to 0.440 matches F77/F80, proxy coefficient 0.4244 matches F70 with *** (1%), and column (4) evangelical coefficient 0.0009 matches F41.",
+  "numbers": [
+   {
+    "text_value": "0.170",
+    "fact_id": "F77",
+    "table_value": "0.170",
+    "where": "tab_principal / R^2 / (1) VD MQO",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.440",
+    "fact_id": "F80",
+    "table_value": "0.440",
+    "where": "tab_principal / R^2 / (4) VD MQO",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.4244",
+    "fact_id": "F70",
+    "table_value": "0.4244***",
+    "where": "tab_principal / Notif. não-domésticas / (4) VD MQO",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.0009",
+    "fact_id": "F41",
+    "table_value": "0.0009",
+    "where": "tab_principal / Densidade evangélica / (4) VD MQO",
+    "status": "match",
+    "note": ""
+   }
+  ]
+ },
+ {
+  "id": "S3",
+  "text": "The Poisson model with a population offset gives -0.0077, an incidence-rate ratio of 0.9923, not significant.",
+  "numbers_verdict": "ok",
+  "interpretation": "ok",
+  "reason": "Poisson coefficient -0.0077 (F31) with SE (0.0075), t≈-1.0, no stars, so not significant; IRR 0.9923 matches F32.",
+  "numbers": [
+   {
+    "text_value": "-0.0077",
+    "fact_id": "F31",
+    "table_value": "-0.0077",
+    "where": "tab_poisson / Densidade evangélica / Coef.",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.9923",
+    "fact_id": "F32",
+    "table_value": "0.9923",
+    "where": "tab_poisson / Densidade evangélica / IRR",
+    "status": "match",
+    "note": ""
+   }
+  ]
+ },
+ {
+  "id": "S4",
+  "text": "In WLS the coefficient turns negative (-0.0028), not significant.",
+  "numbers_verdict": "ok",
+  "interpretation": "ok",
+  "reason": "WLS column (5) coefficient is -0.0028 (F42) with SE 0.0022, no stars, so not significant.",
+  "numbers": [
+   {
+    "text_value": "-0.0028",
+    "fact_id": "F42",
+    "table_value": "-0.0028",
+    "where": "tab_principal / Densidade evangélica / (5) VD WLS",
+    "status": "match",
+    "note": ""
+   }
+  ]
+ },
+ {
+  "id": "S5",
+  "text": "Across the six robustness columns, the coefficient reaches significance only once: at 10%, with errors clustered by state (0.0009*).",
+  "numbers_verdict": "ok",
+  "interpretation": "ok",
+  "reason": "Column 5 (Cluster UF) shows 0.0009* with SE 0.0005 (F116), the only starred value among the six robustness columns (F110, F111 has no stars), so significance at 10% holds.",
+  "numbers": [
+   {
+    "text_value": "0.0009*",
+    "fact_id": "F110",
+    "table_value": "0.0009*",
+    "where": "tab_robustez / Densidade evangélica / column 5",
+    "status": "match",
+    "note": ""
+   }
+  ]
+ },
+ {
+  "id": "S6",
+  "text": "With the 3-year denominator the coefficient is 0.0007 (p = 0.411).",
+  "numbers_verdict": "ok",
+  "interpretation": "ok",
+  "reason": "The 3-year denominator coefficient 0.0007 matches F87/F132, and p=0.411 matches F133.",
+  "numbers": [
+   {
+    "text_value": "0.0007",
+    "fact_id": "F132",
+    "table_value": "0.0007",
+    "where": "_refino / evang_3anos / value",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.411",
+    "fact_id": "F133",
+    "table_value": "0.411",
+    "where": "_refino / evang_3anos_p / value",
+    "status": "match",
+    "note": ""
+   }
+  ]
+ }
+]

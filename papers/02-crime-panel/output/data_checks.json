@@ -1,0 +1,117 @@
+{
+ "paper": "02-crime-panel",
+ "run_at": "2026-10-19T20:59:38+00:00",
+ "summary": {
+  "pass": 10,
+  "warn": 2,
+  "fail": 0
+ },
+ "inputs": {
+  "q3_base_crime.csv": "b4ef3abf3e89ca16"
+ },
+ "checks": [
+  {
+   "check": "balanced panel: 90 counties x 7 years",
+   "status": "pass",
+   "detail": "N=90, T=7, rows=630",
+   "value": {
+    "N": 90,
+    "T": 7,
+    "rows": 630
+   }
+  },
+  {
+   "check": "unique keys (county, year)",
+   "status": "pass",
+   "detail": "0 duplicated rows",
+   "value": 0
+  },
+  {
+   "check": "missing values: regression variables",
+   "status": "pass",
+   "detail": "no missing values in lcrmrte, lprbarr, lprbconv, lprbpris, lavgsen, lpolpc",
+   "value": {
+    "lcrmrte": 0,
+    "lprbarr": 0,
+    "lprbconv": 0,
+    "lprbpris": 0,
+    "lavgsen": 0,
+    "lpolpc": 0
+   }
+  },
+  {
+   "check": "log consistency: lcrmrte = log(crmrte)",
+   "status": "pass",
+   "detail": "max abs difference 2.36e-07",
+   "value": 2.3639367263683653e-07
+  },
+  {
+   "check": "log consistency: lprbarr = log(prbarr)",
+   "status": "pass",
+   "detail": "max abs difference 1.17e-07",
+   "value": 1.1723826442988639e-07
+  },
+  {
+   "check": "log consistency: lpolpc = log(polpc)",
+   "status": "pass",
+   "detail": "max abs difference 2.37e-07",
+   "value": 2.3742736665610664e-07
+  },
+  {
+   "check": "log consistency: lavgsen = log(avgsen)",
+   "status": "pass",
+   "detail": "max abs difference 1.19e-07",
+   "value": 1.1867869265103081e-07
+  },
+  {
+   "check": "range: crime rate",
+   "status": "pass",
+   "detail": "all 630 values in [0, 1] crimes per person",
+   "value": {
+    "min": 0.001812,
+    "max": 0.163835,
+    "outside": 0
+   }
+  },
+  {
+   "check": "range: police per capita",
+   "status": "pass",
+   "detail": "all 630 values in [0, 0.05] officers per person",
+   "value": {
+    "min": 0.000459,
+    "max": 0.035578,
+    "outside": 0
+   }
+  },
+  {
+   "check": "range: P(arrest) = arrests / offences",
+   "status": "warn",
+   "detail": "5 of 630 values outside [0, 1]  (min 0.05882, max 2.75)",
+   "value": {
+    "min": 0.058823,
+    "max": 2.75,
+    "outside": 5
+   }
+  },
+  {
+   "check": "range: P(conviction) = convictions / arrests",
+   "status": "warn",
+   "detail": "71 of 630 values outside [0, 1]  (min 0.06838, max 37)",
+   "value": {
+    "min": 0.068376,
+    "max": 37.0,
+    "outside": 71
+   }
+  },
+  {
+   "check": "range: year",
+   "status": "pass",
+   "detail": "all 630 values in [81, 87] (1981-1987)",
+   "value": {
+    "min": 81,
+    "max": 87,
+    "outside": 0
+   }
+  }
+ ]
+}

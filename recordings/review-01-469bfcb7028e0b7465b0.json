@@ -1,0 +1,121 @@
+{
+ "task": "review-01",
+ "model": "claude-haiku-5-5",
+ "recorded_at": "2026-10-19T20:56:46.099662+00:00",
+ "answer": {
+  "statements": [
+   {
+    "id": "S1",
+    "numbers": [
+     {
+      "text_value": "-0.002",
+      "fact_id": "F46",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.010",
+      "fact_id": "F48",
+      "verdict": "match"
+     }
+    ],
+    "reason": "F46 gives -0.002 and F48 gives SE (0.010) with no stars, so the static slope is insignificant.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "S2",
+    "numbers": [
+     {
+      "text_value": "0.398",
+      "fact_id": "F50",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.686",
+      "fact_id": "F52",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.007",
+      "fact_id": "F47",
+      "verdict": "match"
+     }
+    ],
+    "reason": "F50 and F52 are 0.398*** and 0.686***, significant at 1%; F47 gives unemployment 0.007 with SE 0.008, insignificant.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "S3",
+    "numbers": [
+     {
+      "text_value": "0.000",
+      "fact_id": "F66",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.421",
+      "fact_id": "F67",
+      "verdict": "match"
+     },
+     {
+      "text_value": "169",
+      "fact_id": "F65",
+      "verdict": "match"
+     }
+    ],
+    "reason": "F66 gives static R² 0.000, F67 dynamic R² 0.421, and F65 gives 169 observations for the dynamic model.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "S4",
+    "numbers": [
+     {
+      "text_value": "0.432",
+      "fact_id": "F63",
+      "verdict": "match"
+     }
+    ],
+    "reason": "F63 reports p = 0.432 for H0: γ+δ=1, which fails to reject; the statement's wording that the data do not reject is appropriate, though a vertical curve is only one reading of a unit-sum restriction.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "S5",
+    "numbers": [
+     {
+      "text_value": "0.111",
+      "fact_id": "F32",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.177",
+      "fact_id": "F33",
+      "verdict": "match"
+     }
+    ],
+    "reason": "F32 is the usual SE 0.111 and F33 the HAC SE 0.177; the HAC coefficient stays 0.686*** (F31), so significance holds.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "S6",
+    "numbers": [
+     {
+      "text_value": "0.783",
+      "fact_id": "F101",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.523",
+      "fact_id": "F119",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.001",
+      "fact_id": "F86",
+      "verdict": "match"
+     }
+    ],
+    "reason": "F101 gives expectation 0.783 with seasonal dummies, F119 gives R² 0.523, and F86 gives unemployment 0.001 in the no-COVID sample.",
+    "interpretation": "ok"
+   }
+  ]
+ }
+}

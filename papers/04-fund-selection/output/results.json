@@ -1,0 +1,163 @@
+{
+ "n_fund_years": 13610,
+ "n_funds": 5221,
+ "closed_share_pct": 0.7,
+ "pairs": [
+  "2021-2022",
+  "2022-2023",
+  "2023-2024",
+  "2024-2025"
+ ],
+ "persistence": {
+  "Equity": {
+   "q1_next": -3.34,
+   "q5_next": -2.23,
+   "q5_minus_q1": 1.11,
+   "q5_minus_q1_se": 4.61,
+   "slope": 0.094,
+   "slope_p": 0.0179
+  },
+  "Multi-asset": {
+   "q1_next": -0.67,
+   "q5_next": -1.08,
+   "q5_minus_q1": -0.42,
+   "q5_minus_q1_se": 2.68,
+   "slope": 0.094,
+   "slope_p": 0.0384
+  },
+  "Fixed income": {
+   "q1_next": -1.85,
+   "q5_next": -1.71,
+   "q5_minus_q1": 0.14,
+   "q5_minus_q1_se": 2.36,
+   "slope": 0.182,
+   "slope_p": 0.00512
+  }
+ },
+ "transition": {
+  "Equity": {
+   "best_stays_best_pct": 28.0,
+   "worst_stays_worst_pct": 31.6,
+   "worst_closed_pct": 1.1
+  },
+  "Multi-asset": {
+   "best_stays_best_pct": 29.2,
+   "worst_stays_worst_pct": 28.0,
+   "worst_closed_pct": 1.8
+  },
+  "Fixed income": {
+   "best_stays_best_pct": 39.3,
+   "worst_stays_worst_pct": 33.3,
+   "worst_closed_pct": 0.9
+  }
+ },
+ "costs": {
+  "Equity": {
+   "slope": -0.735,
+   "slope_se": 0.189,
+   "slope_p": 9.7e-05,
+   "cheap_third_next": -4.99,
+   "expensive_third_next": -7.18,
+   "cheap_third_median_cost": 0.16,
+   "expensive_third_median_cost": 2.82
+  },
+  "Multi-asset": {
+   "slope": -0.38,
+   "slope_se": 0.127,
+   "slope_p": 0.00278,
+   "cheap_third_next": -1.72,
+   "expensive_third_next": -2.59,
+   "cheap_third_median_cost": 0.07,
+   "expensive_third_median_cost": 2.95
+  },
+  "Fixed income": {
+   "slope": 0.061,
+   "slope_se": 0.08,
+   "slope_p": 0.444,
+   "cheap_third_next": -1.3,
+   "expensive_third_next": -1.53,
+   "cheap_third_median_cost": 0.04,
+   "expensive_third_median_cost": 1.17
+  }
+ },
+ "montecarlo": {
+  "Equity": {
+   "Random fund": {
+    "median": 0.69,
+    "p5": 0.23,
+    "p95": 1.89,
+    "beats_cdi_pct": 27.0
+   },
+   "Cheapest third": {
+    "median": 0.72,
+    "p5": 0.24,
+    "p95": 2.01,
+    "beats_cdi_pct": 30.0
+   },
+   "Last year's best quintile": {
+    "median": 0.66,
+    "p5": 0.2,
+    "p95": 2.07,
+    "beats_cdi_pct": 29.0
+   },
+   "Cheapest third, not in worst quintile": {
+    "median": 0.74,
+    "p5": 0.26,
+    "p95": 1.94,
+    "beats_cdi_pct": 31.0
+   }
+  },
+  "Multi-asset": {
+   "Random fund": {
+    "median": 0.85,
+    "p5": 0.47,
+    "p95": 1.44,
+    "beats_cdi_pct": 28.0
+   },
+   "Cheapest third": {
+    "median": 0.87,
+    "p5": 0.4,
+    "p95": 1.5,
+    "beats_cdi_pct": 32.0
+   },
+   "Last year's best quintile": {
+    "median": 0.82,
+    "p5": 0.35,
+    "p95": 1.81,
+    "beats_cdi_pct": 32.0
+   },
+   "Cheapest third, not in worst quintile": {
+    "median": 0.88,
+    "p5": 0.54,
+    "p95": 1.42,
+    "beats_cdi_pct": 30.0
+   }
+  },
+  "Fixed income": {
+   "Random fund": {
+    "median": 0.92,
+    "p5": 0.72,
+    "p95": 1.05,
+    "beats_cdi_pct": 14.0
+   },
+   "Cheapest third": {
+    "median": 0.93,
+    "p5": 0.64,
+    "p95": 1.07,
+    "beats_cdi_pct": 22.0
+   },
+   "Last year's best quintile": {
+    "median": 0.86,
+    "p5": 0.62,
+    "p95": 1.07,
+    "beats_cdi_pct": 15.0
+   },
+   "Cheapest third, not in worst quintile": {
+    "median": 0.96,
+    "p5": 0.75,
+    "p95": 1.05,
+    "beats_cdi_pct": 27.0
+   }
+  }
+ }
+}

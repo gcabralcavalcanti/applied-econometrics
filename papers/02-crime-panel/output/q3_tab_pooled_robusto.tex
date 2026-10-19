@@ -1,0 +1,27 @@
+\begin{table}[htbp]\centering
+\caption{MQO agrupado: erros convencionais vs.\ robustos de White (HC1)}\label{tab:q3_robusto}
+\small
+\begin{tabular}{lcc}
+\toprule
+ & \textbf{MQO usual} & \textbf{MQO + HC1} \\
+ & (1) & (2) \\
+\midrule
+ln(prob.\ pris\~ao) $\beta_1$ & -0,633*** & -0,633*** \\
+ & (0,033) & (0,047) \\
+ln(prob.\ condena\c{c}\~ao) & -0,452*** & -0,452*** \\
+ & (0,022) & (0,033) \\
+ln(prob.\ encarc.) & -0,150*** & -0,150** \\
+ & (0,049) & (0,061) \\
+ln(senten\c{c}a m\'edia) & -0,078** & -0,078* \\
+ & (0,038) & (0,047) \\
+ln(pol\'icia p.c.) $\beta_2$ & 0,352*** & 0,352*** \\
+ & (0,023) & (0,052) \\
+\midrule
+Controles + \textit{dummies} & Sim & Sim \\
+Erros-padrao & Convencional & Robusto (HC1) \\
+N (obs.) & 630 & 630 \\
+$R^2$ & 0,805 & 0,805 \\
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}{\footnotesize\itshape Erros-padrao entre parenteses. *** p$<$0,01; ** p$<$0,05; * p$<$0,10. Variavel dependente: ln(taxa de crime).}
+\end{table}

@@ -1,0 +1,31 @@
+\begin{table}[!htbp] \centering
+  \caption{Robustez do modelo dinâmico (coeficientes-chave)}
+\begin{tabular}{@{\extracolsep{5pt}}lcccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+& \multicolumn{4}{c}{\textit{Dependent variable: IPCA mensal}} \
+\cr \cline{2-5}
+\\[-1.8ex] & \multicolumn{1}{c}{Base} & \multicolumn{1}{c}{+ Sazonal} & \multicolumn{1}{c}{Sem COVID} & \multicolumn{1}{c}{+ Tendência}  \\
+\\[-1.8ex] & (1) & (2) & (3) & (4) \\
+\hline \\[-1.8ex]
+ Desemprego $u_t$ & 0.007$^{}$ & 0.008$^{}$ & 0.001$^{}$ & 0.007$^{}$ \\
+& (0.008) & (0.007) & (0.009) & (0.008) \\
+ Inflação defasada $\pi_{t-1}$ & 0.398$^{***}$ & 0.394$^{***}$ & 0.420$^{***}$ & 0.398$^{***}$ \\
+& (0.063) & (0.064) & (0.066) & (0.063) \\
+ Expectativa $E_t[\pi_{t+1}]$ & 0.686$^{***}$ & 0.783$^{***}$ & 0.649$^{***}$ & 0.690$^{***}$ \\
+& (0.111) & (0.125) & (0.113) & (0.113) \\
+ Tendência linear & & & & 0.000$^{}$ \\
+& & & & (0.000) \\
+ Dummies sazonais & Não & Sim & Não & Não \\
+ Breusch--Godfrey(12) $p$ & 7.6e-06 & 0.00055 & 4.4e-05 & 4.5e-06 \\
+\hline \\[-1.8ex]
+ Observations & 169 & 169 & 153 & 169 \\
+ $R^2$ & 0.421 & 0.523 & 0.423 & 0.421 \\
+ Adjusted $R^2$ & 0.411 & 0.480 & 0.411 & 0.407 \\
+ Residual Std. Error & 0.286 (df=165) & 0.268 (df=154) & 0.278 (df=149) & 0.286 (df=164) \\
+ F Statistic & 40.014$^{***}$ (df=3; 165) & 12.068$^{***}$ (df=14; 154) & 36.427$^{***}$ (df=3; 149) & 29.851$^{***}$ (df=4; 164) \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:} & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabular}
+\end{table}

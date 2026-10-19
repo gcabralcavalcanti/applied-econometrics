@@ -1,0 +1,256 @@
+{
+ "planted_errors": 18,
+ "caught": 16,
+ "missed": 2,
+ "clean_statements": 12,
+ "false_alarms": 0,
+ "catch_rate": 0.889,
+ "false_alarm_rate": 0.0,
+ "items": [
+  {
+   "id": "G1",
+   "planted": "",
+   "expected_flag": false,
+   "flagged": false,
+   "correct": true
+  },
+  {
+   "id": "G2",
+   "planted": "digits swapped (0.398)",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G3",
+   "planted": "significance claimed without stars",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G4",
+   "planted": "",
+   "expected_flag": false,
+   "flagged": false,
+   "correct": true
+  },
+  {
+   "id": "G5",
+   "planted": "non-rejection read as proof",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G6",
+   "planted": "wrong value (0.927)",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G7",
+   "planted": "",
+   "expected_flag": false,
+   "flagged": false,
+   "correct": true
+  },
+  {
+   "id": "G8",
+   "planted": "standard error read as a coefficient",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G9",
+   "planted": "",
+   "expected_flag": false,
+   "flagged": false,
+   "correct": true
+  },
+  {
+   "id": "G10",
+   "planted": "wrong value (56.24)",
+   "expected_flag": true,
+   "flagged": false,
+   "correct": false
+  },
+  {
+   "id": "G1",
+   "planted": "",
+   "expected_flag": false,
+   "flagged": false,
+   "correct": true
+  },
+  {
+   "id": "G2",
+   "planted": "elasticity read as percentage points",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G3",
+   "planted": "digits swapped (county FE = -0.395)",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G4",
+   "planted": "",
+   "expected_flag": false,
+   "flagged": false,
+   "correct": true
+  },
+  {
+   "id": "G5",
+   "planted": "standard error read as a coefficient",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G6",
+   "planted": "wrong value (191.60)",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G7",
+   "planted": "positive sign read as a reduction, causal wording",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G8",
+   "planted": "",
+   "expected_flag": false,
+   "flagged": false,
+   "correct": true
+  },
+  {
+   "id": "G9",
+   "planted": "causal claim from observational panel",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G10",
+   "planted": "",
+   "expected_flag": false,
+   "flagged": false,
+   "correct": true
+  },
+  {
+   "id": "G1",
+   "planted": "",
+   "expected_flag": false,
+   "flagged": false,
+   "correct": true
+  },
+  {
+   "id": "G2",
+   "planted": "significance claimed (p = 0.32) and causal wording",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G3",
+   "planted": "wrong value (0.440)",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": false
+  },
+  {
+   "id": "G4",
+   "planted": "",
+   "expected_flag": false,
+   "flagged": false,
+   "correct": true
+  },
+  {
+   "id": "G5",
+   "planted": "IRR misread (about 0.8% fewer)",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G6",
+   "planted": "wrong value (5,030)",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G7",
+   "planted": "",
+   "expected_flag": false,
+   "flagged": false,
+   "correct": true
+  },
+  {
+   "id": "G8",
+   "planted": "absence of evidence read as proof",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G9",
+   "planted": "wrong value (0.170)",
+   "expected_flag": true,
+   "flagged": true,
+   "correct": true
+  },
+  {
+   "id": "G10",
+   "planted": "",
+   "expected_flag": false,
+   "flagged": false,
+   "correct": true
+  }
+ ],
+ "papers": {
+  "01-phillips-curve": {
+   "statements": 6,
+   "numbers_checked": 14,
+   "numbers_not_in_tables": 0,
+   "flagged": [
+    "S4"
+   ]
+  },
+  "02-crime-panel": {
+   "statements": 6,
+   "numbers_checked": 13,
+   "numbers_not_in_tables": 0,
+   "flagged": [
+    "S5"
+   ]
+  },
+  "03-religion-and-domestic-violence": {
+   "statements": 6,
+   "numbers_checked": 14,
+   "numbers_not_in_tables": 0,
+   "flagged": [
+    "S5"
+   ]
+  }
+ },
+ "llm": {
+  "mode": "live",
+  "model": "claude-haiku-5-5",
+  "api_calls": 7,
+  "recorded_answers_used": 0,
+  "input_tokens": 43914,
+  "output_tokens": 7747,
+  "estimated_cost_usd": 0.00826
+ }
+}

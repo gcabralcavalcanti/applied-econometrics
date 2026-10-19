@@ -1,0 +1,28 @@
+\begin{table}[htbp]\centering
+\caption{Painel de duas vias: erros convencionais vs.\ clusterizados por condado}\label{tab:q3_cluster}
+\small
+\begin{tabular}{lcc}
+\toprule
+ & \textbf{Convencional} & \textbf{Cluster} \\
+ & (1) & (2) \\
+\midrule
+ln(prob.\ pris\~ao) $\beta_1$ & -0,360*** & -0,360*** \\
+ & (0,033) & (0,064) \\
+ln(prob.\ condena\c{c}\~ao) & -0,286*** & -0,286*** \\
+ & (0,021) & (0,056) \\
+ln(prob.\ encarc.) & -0,184*** & -0,184*** \\
+ & (0,033) & (0,049) \\
+ln(senten\c{c}a m\'edia) & -0,003 & -0,003 \\
+ & (0,027) & (0,037) \\
+ln(pol\'icia p.c.) $\beta_2$ & 0,422*** & 0,422*** \\
+ & (0,027) & (0,093) \\
+\midrule
+Efeitos fixos de condado & Sim & Sim \\
+Efeitos fixos de ano & Sim & Sim \\
+Erros-padrao & Convencional & Cluster (condado) \\
+N (obs.) & 630 & 630 \\
+$R^2$ & 0,370 & 0,370 \\
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}{\footnotesize\itshape Coeficientes identicos (mesma estimacao); muda so o erro-padrao. *** p$<$0,01; ** p$<$0,05; * p$<$0,10. Dep.: ln(taxa de crime). O cluster por condado admite correlacao serial arbitraria dentro de cada condado.}
+\end{table}

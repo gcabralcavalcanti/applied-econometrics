@@ -1,0 +1,268 @@
+{
+ "rounds": [
+  {
+   "memo": {
+    "recommendation": "Use fund fees as a screen: avoid funds in the most expensive third for equity and multi-asset menus, and do not select funds on last year's excess return alone, since past winners have not reliably repeated.",
+    "findings": [
+     {
+      "text": "In equity funds, each extra percentage point of annual expense ratio is associated with about 0.74 points less excess return the next year, and this is statistically significant.",
+      "facts": [
+       "F1",
+       "F4"
+      ]
+     },
+     {
+      "text": "Equity funds in the cheapest third returned about -5.0 points a year versus the CDI next year, against about -7.2 points in the most expensive third; all equity groups lagged the CDI, but the cheap group lagged least.",
+      "facts": [
+       "F19",
+       "F31",
+       "F22",
+       "F34"
+      ]
+     },
+     {
+      "text": "Over 10 years, a random equity fund ends at a median of 0.69 times the CDI wealth and beats the CDI 27% of the time; picking the cheapest third raises this only slightly to 0.72 and 30%.",
+      "facts": [
+       "F37",
+       "F40",
+       "F41",
+       "F44"
+      ]
+     },
+     {
+      "text": "Past performance is a weak guide. Among equity funds, last year's best quintile went on to return -2.23 points versus the CDI next year, close to the worst quintile's -3.34; the best-minus-worst gap of 1.11 is far inside its error range.",
+      "facts": [
+       "F97",
+       "F85",
+       "F100",
+       "F103"
+      ]
+     },
+     {
+      "text": "Persistence is somewhat better in fixed income, where the best group this year is more likely to stay best (39.3%, against a 20% chance), but even there the best-minus-worst next-year gap is only 0.14 points with a large error, and fixed income funds rarely beat the CDI over 10 years (14% for a random fund).",
+      "facts": [
+       "F117",
+       "F102",
+       "F103",
+       "F72"
+      ]
+     },
+     {
+      "text": "Fees do not explain multi-asset returns much (R-squared 0.019), and expense ratio slopes are negative but smaller than in equity; cheapest-third multi-asset funds returned -1.72 points versus -2.59 for the most expensive third.",
+      "facts": [
+       "F2",
+       "F17",
+       "F20",
+       "F32"
+      ]
+     }
+    ],
+    "risks": [
+     "Results are associations over 2021-2025 and not causal effects; fees may correlate with other fund traits such as strategy or size that drive returns.",
+     "Four year pairs is a short history, so the persistence and fee estimates could change materially with more years or a different market regime.",
+     "Monte Carlo results assume returns are drawn independently from the sample and ignore fund closures and manager changes, which are only partly captured.",
+     "Most fund groups lagged the CDI on average over this period, so conclusions about relative ranking may not transfer to a different rate environment."
+    ],
+    "next_steps": [
+     "Set a fee cap for equity and multi-asset menu options, targeting funds outside the most expensive third, and document the rule.",
+     "Stop using last year's excess return as the main selection criterion; review funds on fees, strategy fit and longer track records instead.",
+     "Re-run this analysis with additional years of data before revisiting any performance-based selection rule."
+    ]
+   },
+   "review": [
+    {
+     "id": "M1",
+     "text": "In equity funds, each extra percentage point of annual expense ratio is associated with about 0.74 points less excess return the next year, and this is statistically significant.",
+     "numbers_verdict": "ok",
+     "interpretation": "ok",
+     "reason": "Equity expense ratio slope is -0.735 (F1), which rounds to 0.74 in magnitude and carries three stars, so significance is correctly claimed.",
+     "numbers": [
+      {
+       "text_value": "0.74",
+       "fact_id": "F1",
+       "table_value": "-0.735***",
+       "where": "tab_costs / Expense ratio (slope) / Equity",
+       "status": "match",
+       "note": "python overrides model (mismatch)"
+      }
+     ]
+    },
+    {
+     "id": "M2",
+     "text": "Equity funds in the cheapest third returned about -5.0 points a year versus the CDI next year, against about -7.2 points in the most expensive third; all equity groups lagged the CDI, but the cheap group lagged least.",
+     "numbers_verdict": "ok",
+     "interpretation": "ok",
+     "reason": "Cheapest third equity is -4.99 (F19) and most expensive third is -7.18 (F31); both groups are negative and the cheap group lags least, consistent with the tables.",
+     "numbers": [
+      {
+       "text_value": "-5.0",
+       "fact_id": "F19",
+       "table_value": "-4.99",
+       "where": "tab_costs / Cheapest third: next-year excess / Equity",
+       "status": "match",
+       "note": "python overrides model (mismatch)"
+      },
+      {
+       "text_value": "-7.2",
+       "fact_id": "F31",
+       "table_value": "-7.18",
+       "where": "tab_costs / Most expensive third: next-year excess / Equity",
+       "status": "match",
+       "note": "python overrides model (mismatch)"
+      }
+     ]
+    },
+    {
+     "id": "M3",
+     "text": "Over 10 years, a random equity fund ends at a median of 0.69 times the CDI wealth and beats the CDI 27% of the time; picking the cheapest third raises this only slightly to 0.72 and 30%.",
+     "numbers_verdict": "ok",
+     "interpretation": "ok",
+     "reason": "Random fund median 0.69 (F37) and beats-CDI 27 (F40); cheapest third median 0.72 (F41) and 30 (F44).",
+     "numbers": [
+      {
+       "text_value": "0.69",
+       "fact_id": "F37",
+       "table_value": "0.69",
+       "where": "tab_montecarlo / Equity: Random fund / Median",
+       "status": "match",
+       "note": ""
+      },
+      {
+       "text_value": "27%",
+       "fact_id": "F40",
+       "table_value": "27",
+       "where": "tab_montecarlo / Equity: Random fund / Beats CDI (%)",
+       "status": "match",
+       "note": ""
+      },
+      {
+       "text_value": "0.72",
+       "fact_id": "F41",
+       "table_value": "0.72",
+       "where": "tab_montecarlo / Equity: Cheapest third / Median",
+       "status": "match",
+       "note": ""
+      },
+      {
+       "text_value": "30%",
+       "fact_id": "F44",
+       "table_value": "30",
+       "where": "tab_montecarlo / Equity: Cheapest third / Beats CDI (%)",
+       "status": "match",
+       "note": ""
+      }
+     ]
+    },
+    {
+     "id": "M4",
+     "text": "Past performance is a weak guide. Among equity funds, last year's best quintile went on to return -2.23 points versus the CDI next year, close to the worst quintile's -3.34; the best-minus-worst gap of 1.11 is far inside its error range.",
+     "numbers_verdict": "ok",
+     "interpretation": "ok",
+     "reason": "Equity Q5 next-year excess is -2.23 (F97), Q1 is -3.34 (F85), and Q5 minus Q1 is 1.11 (F100) with std. error 4.61 (F103), so the gap is well within error.",
+     "numbers": [
+      {
+       "text_value": "-2.23",
+       "fact_id": "F97",
+       "table_value": "-2.23",
+       "where": "tab_persistence / Q5 (best this year) / Equity",
+       "status": "match",
+       "note": ""
+      },
+      {
+       "text_value": "-3.34",
+       "fact_id": "F85",
+       "table_value": "-3.34",
+       "where": "tab_persistence / Q1 (worst this year) / Equity",
+       "status": "match",
+       "note": ""
+      },
+      {
+       "text_value": "1.11",
+       "fact_id": "F100",
+       "table_value": "1.11",
+       "where": "tab_persistence / Q5 minus Q1 / Equity",
+       "status": "match",
+       "note": ""
+      }
+     ]
+    },
+    {
+     "id": "M5",
+     "text": "Persistence is somewhat better in fixed income, where the best group this year is more likely to stay best (39.3%, against a 20% chance), but even there the best-minus-worst next-year gap is only 0.14 points with a large error, and fixed income funds rarely beat the CDI over 10 years (14% for a random fund).",
+     "numbers_verdict": "ok",
+     "interpretation": "ok",
+     "reason": "Fixed income best-stays-best is 39.3 (F117), Q5 minus Q1 is 0.14 (F102) with std. error 2.36 (F105), and random fund beats CDI 14 (F72).",
+     "numbers": [
+      {
+       "text_value": "39.3%",
+       "fact_id": "F117",
+       "table_value": "39.3",
+       "where": "tab_transition / Best quintile stays best (%) / Fixed income",
+       "status": "match",
+       "note": ""
+      },
+      {
+       "text_value": "0.14",
+       "fact_id": "F102",
+       "table_value": "0.14",
+       "where": "tab_persistence / Q5 minus Q1 / Fixed income",
+       "status": "match",
+       "note": ""
+      },
+      {
+       "text_value": "14%",
+       "fact_id": "F72",
+       "table_value": "14",
+       "where": "tab_montecarlo / Fixed income: Random fund / Beats CDI (%)",
+       "status": "match",
+       "note": ""
+      }
+     ]
+    },
+    {
+     "id": "M6",
+     "text": "Fees do not explain multi-asset returns much (R-squared 0.019), and expense ratio slopes are negative but smaller than in equity; cheapest-third multi-asset funds returned -1.72 points versus -2.59 for the most expensive third.",
+     "numbers_verdict": "ok",
+     "interpretation": "ok",
+     "reason": "Multi-asset R² is 0.019 (F17), expense slope -0.380 (F2) is smaller than equity's -0.735 (F1), cheapest third -1.72 (F20) and most expensive -2.59 (F32).",
+     "numbers": [
+      {
+       "text_value": "0.019",
+       "fact_id": "F17",
+       "table_value": "0.019",
+       "where": "tab_costs / R^2 / Multi-asset",
+       "status": "match",
+       "note": ""
+      },
+      {
+       "text_value": "-1.72",
+       "fact_id": "F20",
+       "table_value": "-1.72",
+       "where": "tab_costs / Cheapest third: next-year excess / Multi-asset",
+       "status": "match",
+       "note": ""
+      },
+      {
+       "text_value": "-2.59",
+       "fact_id": "F32",
+       "table_value": "-2.59",
+       "where": "tab_costs / Most expensive third: next-year excess / Multi-asset",
+       "status": "match",
+       "note": ""
+      }
+     ]
+    }
+   ],
+   "flags": []
+  }
+ ],
+ "llm": {
+  "mode": "demo",
+  "model": "claude-haiku-5-5",
+  "api_calls": 0,
+  "recorded_answers_used": 2,
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "estimated_cost_usd": 0.0
+ }
+}

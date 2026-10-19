@@ -1,0 +1,149 @@
+{
+ "task": "golden-01",
+ "model": "claude-haiku-5-5",
+ "recorded_at": "2026-10-19T20:56:50.620320+00:00",
+ "answer": {
+  "statements": [
+   {
+    "id": "G1",
+    "numbers": [
+     {
+      "text_value": "-0.002",
+      "fact_id": "F46",
+      "verdict": "match"
+     }
+    ],
+    "reason": "F46/F74 show the static unemployment coefficient is -0.002 with no stars, consistent with the statement.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "G2",
+    "numbers": [
+     {
+      "text_value": "0.389",
+      "fact_id": "F92",
+      "verdict": "mismatch"
+     }
+    ],
+    "reason": "The dynamic model's lagged inflation coefficient is 0.398 (F26/F50/F92), not 0.389.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G3",
+    "numbers": [
+     {
+      "text_value": "0.007",
+      "fact_id": "F47",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Dynamic unemployment coefficient is 0.007 (F47), but its standard error is 0.008 (F49) so t≈0.9 and it is not significant at 5%; no stars are shown.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G4",
+    "numbers": [
+     {
+      "text_value": "0.686",
+      "fact_id": "F52",
+      "verdict": "match"
+     }
+    ],
+    "reason": "F52 gives 0.686 with *** in the dynamic model, so it is significant at 1%.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "G5",
+    "numbers": [
+     {
+      "text_value": "0.432",
+      "fact_id": "F63",
+      "verdict": "match"
+     }
+    ],
+    "reason": "F63 gives p = 0.432 for H0: gamma+delta=1, which only fails to reject the restriction; it does not prove the long-run curve is vertical.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G6",
+    "numbers": [
+     {
+      "text_value": "1.927",
+      "fact_id": "F58",
+      "verdict": "mismatch"
+     }
+    ],
+    "reason": "The static model's Durbin-Watson statistic is 0.927 (F58/F78), not 1.927.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G7",
+    "numbers": [
+     {
+      "text_value": "0.111",
+      "fact_id": "F32",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.177",
+      "fact_id": "F33",
+      "verdict": "match"
+     }
+    ],
+    "reason": "F32 and F33 show the expectation standard error rises from 0.111 to 0.177 under HAC, and the coefficient 0.686*** stays significant (F31).",
+    "interpretation": "ok"
+   },
+   {
+    "id": "G8",
+    "numbers": [
+     {
+      "text_value": "0.686",
+      "fact_id": "F31",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.177",
+      "fact_id": "F33",
+      "verdict": "match"
+     }
+    ],
+    "reason": "HAC changes only the standard error (F33); the coefficient stays 0.686 (F31), so the statement's claim that the coefficient falls is contradicted by the tables.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G9",
+    "numbers": [
+     {
+      "text_value": "0.000",
+      "fact_id": "F66",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.421",
+      "fact_id": "F67",
+      "verdict": "match"
+     },
+     {
+      "text_value": "169",
+      "fact_id": "F65",
+      "verdict": "match"
+     }
+    ],
+    "reason": "F66 gives R² 0.000 for the static model, F67 gives 0.421 for the dynamic model, and F65 gives 169 observations.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "G10",
+    "numbers": [
+     {
+      "text_value": "65.24",
+      "fact_id": "F2",
+      "verdict": "mismatch"
+     }
+    ],
+    "reason": "The Breusch-Godfrey statistic for the static model is 56.24 (F2), not 65.24.",
+    "interpretation": "wrong"
+   }
+  ]
+ }
+}

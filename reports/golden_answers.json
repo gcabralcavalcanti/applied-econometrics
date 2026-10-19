@@ -1,0 +1,597 @@
+{
+ "01-phillips-curve": [
+  {
+   "id": "G1",
+   "text": "In the static model the unemployment coefficient is -0.002, with no stars: there is no static trade-off.",
+   "numbers_verdict": "ok",
+   "interpretation": "ok",
+   "reason": "F46/F74 show the static unemployment coefficient is -0.002 with no stars, consistent with the statement.",
+   "numbers": [
+    {
+     "text_value": "-0.002",
+     "fact_id": "F46",
+     "table_value": "-0.002",
+     "where": "q2_tab_phillips_dinamica / Desemprego u_t / Dependent variable: IPCA mensal \\ Estática (1)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G2",
+   "text": "In the dynamic model, lagged inflation has a coefficient of 0.389.",
+   "numbers_verdict": "error",
+   "interpretation": "wrong",
+   "reason": "The dynamic model's lagged inflation coefficient is 0.398 (F26/F50/F92), not 0.389.",
+   "numbers": [
+    {
+     "text_value": "0.389",
+     "fact_id": "F92",
+     "table_value": "0.398***",
+     "where": "q2_tab_robustez / Inflação defasada _t-1 / Dependent variable: IPCA mensal \\ Base (1)",
+     "status": "mismatch",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G3",
+   "text": "Unemployment is significant at the 5% level in the dynamic model, with a coefficient of 0.007.",
+   "numbers_verdict": "ok",
+   "interpretation": "wrong",
+   "reason": "Dynamic unemployment coefficient is 0.007 (F47), but its standard error is 0.008 (F49) so t≈0.9 and it is not significant at 5%; no stars are shown.",
+   "numbers": [
+    {
+     "text_value": "0.007",
+     "fact_id": "F47",
+     "table_value": "0.007",
+     "where": "q2_tab_phillips_dinamica / Desemprego u_t / Dinâmica (2)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G4",
+   "text": "Expectations dominate: the Focus coefficient is 0.686, significant at 1%.",
+   "numbers_verdict": "ok",
+   "interpretation": "ok",
+   "reason": "F52 gives 0.686 with *** in the dynamic model, so it is significant at 1%.",
+   "numbers": [
+    {
+     "text_value": "0.686",
+     "fact_id": "F52",
+     "table_value": "0.686***",
+     "where": "q2_tab_phillips_dinamica / Expectativa E_t[ _t+1] / Dinâmica (2)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G5",
+   "text": "The test of gamma + delta = 1 gives p = 0.432, which proves that the long-run Phillips curve is vertical.",
+   "numbers_verdict": "ok",
+   "interpretation": "wrong",
+   "reason": "F63 gives p = 0.432 for H0: gamma+delta=1, which only fails to reject the restriction; it does not prove the long-run curve is vertical.",
+   "numbers": [
+    {
+     "text_value": "0.432",
+     "fact_id": "F63",
+     "table_value": "0.432",
+     "where": "q2_tab_phillips_dinamica / H_0\\: + =1 (p-valor) / Dinâmica (2)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G6",
+   "text": "The Durbin-Watson statistic of the static model is 1.927.",
+   "numbers_verdict": "error",
+   "interpretation": "wrong",
+   "reason": "The static model's Durbin-Watson statistic is 0.927 (F58/F78), not 1.927.",
+   "numbers": [
+    {
+     "text_value": "1.927",
+     "fact_id": "F58",
+     "table_value": "0.927",
+     "where": "q2_tab_phillips_dinamica / Durbin--Watson / Dependent variable: IPCA mensal \\ Estática (1)",
+     "status": "mismatch",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G7",
+   "text": "With Newey-West errors the standard error on the expectation term rises from 0.111 to 0.177, and the coefficient stays significant.",
+   "numbers_verdict": "ok",
+   "interpretation": "ok",
+   "reason": "F32 and F33 show the expectation standard error rises from 0.111 to 0.177 under HAC, and the coefficient 0.686*** stays significant (F31).",
+   "numbers": [
+    {
+     "text_value": "0.111",
+     "fact_id": "F32",
+     "table_value": "(0.111)",
+     "where": "q2_tab_hac_comparacao / Expectativa E_t[ _t+1] (std. error) / Dependent variable: IPCA mensal \\ MQO usual (1)",
+     "status": "match",
+     "note": ""
+    },
+    {
+     "text_value": "0.177",
+     "fact_id": "F33",
+     "table_value": "(0.177)",
+     "where": "q2_tab_hac_comparacao / Expectativa E_t[ _t+1] (std. error) / MQO + HAC (L=4) (2)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G8",
+   "text": "HAC errors change the estimates: the expectation coefficient falls from 0.686 to 0.177.",
+   "numbers_verdict": "ok",
+   "interpretation": "wrong",
+   "reason": "HAC changes only the standard error (F33); the coefficient stays 0.686 (F31), so the statement's claim that the coefficient falls is contradicted by the tables.",
+   "numbers": [
+    {
+     "text_value": "0.686",
+     "fact_id": "F31",
+     "table_value": "0.686***",
+     "where": "q2_tab_hac_comparacao / Expectativa E_t[ _t+1] / MQO + HAC (L=4) (2)",
+     "status": "match",
+     "note": ""
+    },
+    {
+     "text_value": "0.177",
+     "fact_id": "F33",
+     "table_value": "(0.177)",
+     "where": "q2_tab_hac_comparacao / Expectativa E_t[ _t+1] (std. error) / MQO + HAC (L=4) (2)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G9",
+   "text": "The dynamic model raises R² from 0.000 to 0.421 on 169 monthly observations.",
+   "numbers_verdict": "ok",
+   "interpretation": "ok",
+   "reason": "F66 gives R² 0.000 for the static model, F67 gives 0.421 for the dynamic model, and F65 gives 169 observations.",
+   "numbers": [
+    {
+     "text_value": "0.000",
+     "fact_id": "F66",
+     "table_value": "0.000",
+     "where": "q2_tab_phillips_dinamica / R^2 / Dependent variable: IPCA mensal \\ Estática (1)",
+     "status": "match",
+     "note": ""
+    },
+    {
+     "text_value": "0.421",
+     "fact_id": "F67",
+     "table_value": "0.421",
+     "where": "q2_tab_phillips_dinamica / R^2 / Dinâmica (2)",
+     "status": "match",
+     "note": ""
+    },
+    {
+     "text_value": "169",
+     "fact_id": "F65",
+     "table_value": "169",
+     "where": "q2_tab_phillips_dinamica / Observations / Dinâmica (2)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G10",
+   "text": "In the static model the Breusch-Godfrey statistic is LM = 65.24.",
+   "numbers_verdict": "error",
+   "interpretation": "wrong",
+   "reason": "The Breusch-Godfrey statistic for the static model is 56.24 (F2), not 65.24.",
+   "numbers": [
+    {
+     "text_value": "65.24",
+     "fact_id": "F2",
+     "table_value": "56.24",
+     "where": "q2_tab_autocorrelacao / Breusch--Godfrey (12 defas.) / Estatística",
+     "status": "mismatch",
+     "note": ""
+    }
+   ]
+  }
+ ],
+ "02-crime-panel": [
+  {
+   "id": "G1",
+   "text": "Pooled OLS gives an elasticity of the crime rate with respect to the probability of arrest of -0.633.",
+   "numbers_verdict": "ok",
+   "interpretation": "ok",
+   "reason": "Pooled OLS coefficient on ln(prob. prisao)_1 is -0.633 (F134/F104).",
+   "numbers": [
+    {
+     "text_value": "-0.633",
+     "fact_id": "F134",
+     "table_value": "-0,633***",
+     "where": "q3_tab_pooled / ln(prob. prisao) _1 / MQO agrupado (1)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G2",
+   "text": "In the two-way fixed-effects model, a 1% higher probability of arrest goes with a crime rate 0.360 percentage points lower.",
+   "numbers_verdict": "ok",
+   "interpretation": "wrong",
+   "reason": "Two-way FE coefficient is -0.360 (F81), but it is an elasticity, not percentage points; statement misreads the unit.",
+   "numbers": [
+    {
+     "text_value": "-0.360",
+     "fact_id": "F81",
+     "table_value": "-0,360***",
+     "where": "q3_tab_duas_vias / ln(prob. prisao) _1 / EF duas vias (2)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G3",
+   "text": "County fixed effects shrink the arrest coefficient to -0.359.",
+   "numbers_verdict": "error",
+   "interpretation": "wrong",
+   "reason": "The county FE arrest coefficient is -0.395 (F80/F105); the two-way value is -0.360 (F81), so -0.359 matches neither.",
+   "numbers": [
+    {
+     "text_value": "-0.359",
+     "fact_id": "F81",
+     "table_value": "-0,360***",
+     "where": "q3_tab_duas_vias / ln(prob. prisao) _1 / EF duas vias (2)",
+     "status": "mismatch",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G4",
+   "text": "Clustering by county raises the standard error on police per capita from 0.027 to 0.093.",
+   "numbers_verdict": "ok",
+   "interpretation": "ok",
+   "reason": "Police s.e. goes from 0.027 (F19) to 0.093 (F20) under clustering, which is correct.",
+   "numbers": [
+    {
+     "text_value": "0.027",
+     "fact_id": "F19",
+     "table_value": "(0,027)",
+     "where": "q3_tab_cluster / ln(policia p.c.) _2 (std. error) / Convencional (1)",
+     "status": "match",
+     "note": ""
+    },
+    {
+     "text_value": "0.093",
+     "fact_id": "F20",
+     "table_value": "(0,093)",
+     "where": "q3_tab_cluster / ln(policia p.c.) _2 (std. error) / Cluster (2)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G5",
+   "text": "Clustering by county changes the police coefficient from 0.422 to 0.093.",
+   "numbers_verdict": "ok",
+   "interpretation": "wrong",
+   "reason": "Clustering changes only the standard error (0.093); the coefficient stays 0.422 (F17/F18), so the statement misreads a standard error as a coefficient.",
+   "numbers": [
+    {
+     "text_value": "0.422",
+     "fact_id": "F17",
+     "table_value": "0,422***",
+     "where": "q3_tab_cluster / ln(policia p.c.) _2 / Convencional (1)",
+     "status": "match",
+     "note": ""
+    },
+    {
+     "text_value": "0.093",
+     "fact_id": "F20",
+     "table_value": "(0,093)",
+     "where": "q3_tab_cluster / ln(policia p.c.) _2 (std. error) / Cluster (2)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G6",
+   "text": "The Breusch-Pagan test gives LM = 119.60.",
+   "numbers_verdict": "error",
+   "interpretation": "wrong",
+   "reason": "The Breusch-Pagan LM statistic in the tables is 191.60 (F128), not 119.60.",
+   "numbers": [
+    {
+     "text_value": "119.60",
+     "fact_id": "F128",
+     "table_value": "191,60",
+     "where": "q3_tab_heterocedasticidade / Breusch--Pagan / Estatistica LM",
+     "status": "mismatch",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G7",
+   "text": "More police per capita reduces crime: the two-way fixed-effects coefficient is 0.422.",
+   "numbers_verdict": "ok",
+   "interpretation": "wrong",
+   "reason": "Two-way FE police coefficient is 0.422 (F97), positive, so more police goes with more crime, not less.",
+   "numbers": [
+    {
+     "text_value": "0.422",
+     "fact_id": "F97",
+     "table_value": "0,422***",
+     "where": "q3_tab_duas_vias / ln(policia p.c.) _2 / EF duas vias (2)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G8",
+   "text": "The White test (LM = 410.04, p < 0.0001) rejects homoskedasticity.",
+   "numbers_verdict": "ok",
+   "interpretation": "ok",
+   "reason": "White LM 410.04 with p<0.0001 (F131, F133) rejects homoskedasticity, a correct reading.",
+   "numbers": [
+    {
+     "text_value": "410.04",
+     "fact_id": "F131",
+     "table_value": "410,04",
+     "where": "q3_tab_heterocedasticidade / White / Estatistica LM",
+     "status": "match",
+     "note": ""
+    },
+    {
+     "text_value": "<0.0001",
+     "fact_id": "F133",
+     "table_value": "<0,0001",
+     "where": "q3_tab_heterocedasticidade / White / p-valor",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G9",
+   "text": "Because the arrest coefficient is significant (-0.360), the panel shows that arrests cause crime to fall.",
+   "numbers_verdict": "ok",
+   "interpretation": "wrong",
+   "reason": "Coefficient -0.360 is significant (***), but the design is observational with simultaneity, so causal wording is inappropriate.",
+   "numbers": [
+    {
+     "text_value": "-0.360",
+     "fact_id": "F81",
+     "table_value": "-0,360***",
+     "where": "q3_tab_duas_vias / ln(prob. prisao) _1 / EF duas vias (2)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G10",
+   "text": "The panel has 630 observations and the pooled R² is 0.805.",
+   "numbers_verdict": "ok",
+   "interpretation": "ok",
+   "reason": "N = 630 (F144) and pooled R² = 0.805 (F145) are correctly reported.",
+   "numbers": [
+    {
+     "text_value": "630",
+     "fact_id": "F144",
+     "table_value": "630",
+     "where": "q3_tab_pooled / N (obs.) / MQO agrupado (1)",
+     "status": "match",
+     "note": ""
+    },
+    {
+     "text_value": "0.805",
+     "fact_id": "F145",
+     "table_value": "0,805",
+     "where": "q3_tab_pooled / R^2 / MQO agrupado (1)",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  }
+ ],
+ "03-religion-and-domestic-violence": [
+  {
+   "id": "G1",
+   "text": "With state fixed effects and HC1 errors, the evangelical-density coefficient is 0.0009 (SE 0.0009).",
+   "numbers_verdict": "ok",
+   "interpretation": "ok",
+   "reason": "Column (1) VD MQO coefficient is 0.0009 with SE (0.0009), matching F38 and F43.",
+   "numbers": [
+    {
+     "text_value": "0.0009",
+     "fact_id": "F38",
+     "table_value": "0.0009",
+     "where": "tab_principal / Densidade evangélica / (1) VD MQO",
+     "status": "match",
+     "note": ""
+    },
+    {
+     "text_value": "0.0009",
+     "fact_id": "F43",
+     "table_value": "(0.0009)",
+     "where": "tab_principal / Densidade evangélica (std. error) / (1) VD MQO",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G2",
+   "text": "Evangelical density significantly increases recorded domestic violence (coefficient 0.0009).",
+   "numbers_verdict": "ok",
+   "interpretation": "wrong",
+   "reason": "The coefficient 0.0009 in column (1) has SE (0.0009) and no stars (F43), so it is not significant; claiming significant increase contradicts the tables.",
+   "numbers": [
+    {
+     "text_value": "0.0009",
+     "fact_id": "F38",
+     "table_value": "0.0009",
+     "where": "tab_principal / Densidade evangélica / (1) VD MQO",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G3",
+   "text": "Adding the non-domestic notification proxy raises R² to 0.404.",
+   "numbers_verdict": "error",
+   "interpretation": "wrong",
+   "reason": "The R² for column 4 (with the non-domestic proxy) is 0.481 (F103), and column 3 is 0.440; 0.404 matches neither.",
+   "numbers": [
+    {
+     "text_value": "0.404",
+     "fact_id": "F103",
+     "table_value": "0.481",
+     "where": "tab_refino_denominador / R^2 / column 4",
+     "status": "mismatch",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G4",
+   "text": "The Poisson model with a population offset gives a coefficient of -0.0077, an incidence-rate ratio of 0.9923.",
+   "numbers_verdict": "ok",
+   "interpretation": "ok",
+   "reason": "Poisson coefficient -0.0077 and IRR 0.9923 match F31 and F32, with exp(-0.0077)≈0.9923.",
+   "numbers": [
+    {
+     "text_value": "-0.0077",
+     "fact_id": "F31",
+     "table_value": "-0.0077",
+     "where": "tab_poisson / Densidade evangélica / Coef.",
+     "status": "match",
+     "note": ""
+    },
+    {
+     "text_value": "0.9923",
+     "fact_id": "F32",
+     "table_value": "0.9923",
+     "where": "tab_poisson / Densidade evangélica / IRR",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G5",
+   "text": "The Poisson IRR of 0.9923 means each extra point of evangelical density goes with 99.23% fewer recorded cases.",
+   "numbers_verdict": "ok",
+   "interpretation": "wrong",
+   "reason": "An IRR of 0.9923 means a ~0.77% decrease in the expected rate per point, not 99.23% fewer cases (misreading of the IRR).",
+   "numbers": [
+    {
+     "text_value": "0.9923",
+     "fact_id": "F32",
+     "table_value": "0.9923",
+     "where": "tab_poisson / Densidade evangélica / IRR",
+     "status": "match",
+     "note": ""
+    },
+    {
+     "text_value": "99.23%",
+     "fact_id": "",
+     "table_value": null,
+     "where": null,
+     "status": "unverified",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G6",
+   "text": "The sample covers 5,300 municipalities.",
+   "numbers_verdict": "error",
+   "interpretation": "wrong",
+   "reason": "The sample has 5,030 municipalities (N_base and all N rows), not 5,300.",
+   "numbers": [
+    {
+     "text_value": "5,300",
+     "fact_id": "F144",
+     "table_value": "5030",
+     "where": "_stats / N_base / value",
+     "status": "mismatch",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G7",
+   "text": "Notification intensity matters: the proxy coefficient is 0.4244 and significant at 1%.",
+   "numbers_verdict": "ok",
+   "interpretation": "ok",
+   "reason": "Proxy coefficient 0.4244 matches F70 and is marked *** (p<0.01), consistent with the statement.",
+   "numbers": [
+    {
+     "text_value": "0.4244",
+     "fact_id": "F70",
+     "table_value": "0.4244***",
+     "where": "tab_principal / Notif. não-domésticas / (4) VD MQO",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G8",
+   "text": "Since the coefficient is not significant, the paper proves that evangelical density has no effect on domestic violence.",
+   "numbers_verdict": "ok",
+   "interpretation": "wrong",
+   "reason": "The evangelical coefficient is insignificant (F43), but a non-rejection cannot prove absence of effect, and the design is associational.",
+   "numbers": []
+  },
+  {
+   "id": "G9",
+   "text": "The base model's R² is 0.710.",
+   "numbers_verdict": "error",
+   "interpretation": "wrong",
+   "reason": "The base model R² (column 1, F77 and F145) is 0.170, not 0.710.",
+   "numbers": [
+    {
+     "text_value": "0.710",
+     "fact_id": "F77",
+     "table_value": "0.170",
+     "where": "tab_principal / R^2 / (1) VD MQO",
+     "status": "mismatch",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "G10",
+   "text": "In the WLS model the coefficient turns negative (-0.0028) but is not significant.",
+   "numbers_verdict": "ok",
+   "interpretation": "ok",
+   "reason": "WLS coefficient -0.0028 (F42) has SE (0.0022) with no stars, so it is not significant, matching the statement.",
+   "numbers": [
+    {
+     "text_value": "-0.0028",
+     "fact_id": "F42",
+     "table_value": "-0.0028",
+     "where": "tab_principal / Densidade evangélica / (5) VD WLS",
+     "status": "match",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

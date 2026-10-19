@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.env
+.cache/
+logs/
+# raw SINAN / ANATEL extracts are too large for git (see papers/03-*/input/README_DADOS.md)
+papers/03-religion-and-domestic-violence/input/tabela_sinan.csv
+papers/03-religion-and-domestic-violence/input/Meu_Municipio_Cobertura.csv
+# regenerated intermediates (run_all.py rebuilds them)
+papers/02-crime-panel/tmp/
+papers/03-religion-and-domestic-violence/tmp/*
+!papers/03-religion-and-domestic-violence/tmp/sinan_mun_ano.csv

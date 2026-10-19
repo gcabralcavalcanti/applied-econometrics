@@ -1,0 +1,20 @@
+{
+ "papers/01-phillips-curve/output/q2_tab_autocorrelacao.tex": "c7a5af109108f3fc829d0ce418a8043ffa5549f490bd7bbe58cc3c276134d776",
+ "papers/01-phillips-curve/output/q2_tab_estacionariedade.tex": "93477563f965d224040c5fca26fc7246068e4b67db843bad8dbebab39ba5b16c",
+ "papers/01-phillips-curve/output/q2_tab_hac_comparacao.tex": "9f7de3937ed3b3bfc5e6745f6de50a02acc55def17e32a51dbcc84274a08e421",
+ "papers/01-phillips-curve/output/q2_tab_phillips_dinamica.tex": "11050bb510bc75bd18a0e132699d3af826661cd1a6477bb44a642a257bec420a",
+ "papers/01-phillips-curve/output/q2_tab_phillips_estatica.tex": "9a75484165dde415ae452b2ccaaeb26519aa1df4726e2bb43389dfdafa56c05e",
+ "papers/01-phillips-curve/output/q2_tab_robustez.tex": "3cc76b3ac4f9f8ef187aba45d342d8f663ea933916bc95f4fd280707ccba450f",
+ "papers/02-crime-panel/output/q3_tab_cluster.tex": "d1cca63d3a0312e88492814ce1850082aa88d2696d199ab18113e564045ee785",
+ "papers/02-crime-panel/output/q3_tab_descritivas.tex": "8129f0ae575ed3fd2e8d434cb3c1e65dcc9f923cb191dd74c9462d1d77589899",
+ "papers/02-crime-panel/output/q3_tab_duas_vias.tex": "1edcaf95ba4449264f4af4b9a07acf0bd9c7bda0f65beb5507f92abfaf75cf27",
+ "papers/02-crime-panel/output/q3_tab_fe_condado.tex": "57ecb5f9933eeb87d794a35c8ed36f0b966d6719e321c15109bc5924b5eb3ddf",
+ "papers/02-crime-panel/output/q3_tab_heterocedasticidade.tex": "6dd8a379794d2865f6bbc39d5d603508178c90e655882e5d8f05f819c465940d",
+ "papers/02-crime-panel/output/q3_tab_pooled.tex": "8d3f0e63a4056b7075c38740bbd4af45b800c09e0db77af763b475e9ef283f8a",
+ "papers/02-crime-panel/output/q3_tab_pooled_robusto.tex": "3fa46b81bf957149182ff33dd136a6d1f80d50cde0386bdd16edb6c4a7e8cbe2",
+ "papers/03-religion-and-domestic-violence/output/tables/_stats.txt": "09c455654e6f935baaf1b9f99ba657206bc50dc42695334f1400a73277f6823a",
+ "papers/03-religion-and-domestic-violence/output/tables/tab_descritivas.tex": "2f36db91be473e6a56e20a887e1571225bc5013852b2e16408e72aeab366e467",
+ "papers/03-religion-and-domestic-violence/output/tables/tab_poisson.tex": "82279ba6983649b23525d05f5c851a1c004a69629a40309140d16fc46bd703f6",
+ "papers/03-religion-and-domestic-violence/output/tables/tab_principal.tex": "8ed00bc4d1980987e66c8bb8fe777316e72145a0c080566b1956718e3272392e",
+ "papers/03-religion-and-domestic-violence/output/tables/tab_robustez.tex": "07b2462de7a10caa07bd20a7e10a8154c784fdcee14a648d0de84eb752372342"
+}

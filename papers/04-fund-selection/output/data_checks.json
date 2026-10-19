@@ -1,0 +1,107 @@
+{
+ "paper": "04-fund-selection",
+ "run_at": "2026-10-19T21:00:00+00:00",
+ "summary": {
+  "pass": 7,
+  "warn": 5,
+  "fail": 0
+ },
+ "inputs": {
+  "menu.csv": "6c2db4fafd60ff36",
+  "monthly_quotas.csv.gz": "d1da1f6df56d31da",
+  "cdi.csv": "4b3e3597ffdc665c"
+ },
+ "checks": [
+  {
+   "check": "unique keys (year, fund)",
+   "status": "pass",
+   "detail": "0 duplicated rows",
+   "value": 0
+  },
+  {
+   "check": "menu size stable across years",
+   "status": "warn",
+   "detail": "funds with a December factsheet: 2021: 4612, 2022: 4821, 2023: 4729, 2024: 1144, 2025: 1051. After CVM Resolution 175 (2024) far fewer factsheets reach the open-data file",
+   "value": {
+    "2021": 4612,
+    "2022": 4821,
+    "2023": 4729,
+    "2024": 1144,
+    "2025": 1051
+   }
+  },
+  {
+   "check": "admin fee within 0-5.0% a year",
+   "status": "warn",
+   "detail": "54 of 12745 values outside (max 90,000); set to missing",
+   "value": 54
+  },
+  {
+   "check": "expense ratio within 0-10.0% of net assets",
+   "status": "warn",
+   "detail": "860 of 14829 values outside (min -15.28, max 98,164,092); set to missing",
+   "value": 860
+  },
+  {
+   "check": "every menu fund has an asset class",
+   "status": "pass",
+   "detail": "Equity, Multi-asset, Fixed income",
+   "value": {
+    "Multi-asset": 6415,
+    "Fixed income": 5586,
+    "Equity": 4356
+   }
+  },
+  {
+   "check": "unique keys (fund, month)",
+   "status": "pass",
+   "detail": "0 duplicated rows",
+   "value": 0
+  },
+  {
+   "check": "quotas are positive",
+   "status": "warn",
+   "detail": "1780 of 316,844 fund-months with quota <= 0 (funds being wound up); dropped",
+   "value": 1780
+  },
+  {
+   "check": "every month 2021-01 to 2026-09 has quotas",
+   "status": "pass",
+   "detail": "69 months",
+   "value": 69
+  },
+  {
+   "check": "menu funds found in the daily reports",
+   "status": "pass",
+   "detail": "99.5% of fund-years",
+   "value": 0.99517
+  },
+  {
+   "check": "no month-end return beyond ±50%",
+   "status": "warn",
+   "detail": "1303 of 310,954 fund-months (quota splits or typos); dropped from the returns",
+   "value": 1303
+  },
+  {
+   "check": "no gaps in months: CDI",
+   "status": "pass",
+   "detail": "69 months, 2021-01 to 2026-09, no gaps",
+   "value": {
+    "first": "2021-01",
+    "last": "2026-09",
+    "n": 69,
+    "gaps": 0
+   }
+  },
+  {
+   "check": "range: CDI",
+   "status": "pass",
+   "detail": "all 69 values in [0.1, 1.5] % per month",
+   "value": {
+    "min": 0.13,
+    "max": 1.28,
+    "outside": 0
+   }
+  }
+ ]
+}

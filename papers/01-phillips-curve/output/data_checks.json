@@ -1,0 +1,160 @@
+{
+ "paper": "01-phillips-curve",
+ "run_at": "2026-10-19T20:59:24+00:00",
+ "summary": {
+  "pass": 17,
+  "warn": 1,
+  "fail": 0
+ },
+ "inputs": {
+  "q2_ipca.csv": "659c7c11eccf28d6",
+  "q2_desemprego.csv": "e279a762e52f3dca",
+  "q2_focus_mensal.csv": "48e783b34c3b6963",
+  "q2_base_phillips.csv": "d2c53cbd09bad540"
+ },
+ "checks": [
+  {
+   "check": "missing values: IPCA (SGS 433)",
+   "status": "pass",
+   "detail": "no missing values in ipca",
+   "value": {
+    "ipca": 0
+   }
+  },
+  {
+   "check": "no gaps in months: IPCA",
+   "status": "pass",
+   "detail": "173 months, 2012-01 to 2026-05, no gaps",
+   "value": {
+    "first": "2012-01",
+    "last": "2026-05",
+    "n": 173,
+    "gaps": 0
+   }
+  },
+  {
+   "check": "range: IPCA monthly change",
+   "status": "pass",
+   "detail": "all 173 values in [-1.5, 3.5] % per month",
+   "value": {
+    "min": -0.68,
+    "max": 1.62,
+    "outside": 0
+   }
+  },
+  {
+   "check": "unit: IPCA is the monthly rate, not 12-month",
+   "status": "pass",
+   "detail": "median 0.43% (a 12-month series would sit near 4-6%)",
+   "value": 0.43
+  },
+  {
+   "check": "missing values: unemployment (SGS 24369)",
+   "status": "pass",
+   "detail": "no missing values in desemprego",
+   "value": {
+    "desemprego": 0
+   }
+  },
+  {
+   "check": "no gaps in months: unemployment",
+   "status": "pass",
+   "detail": "170 months, 2012-03 to 2026-04, no gaps",
+   "value": {
+    "first": "2012-03",
+    "last": "2026-04",
+    "n": 170,
+    "gaps": 0
+   }
+  },
+  {
+   "check": "range: unemployment rate",
+   "status": "pass",
+   "detail": "all 170 values in [3, 20] %",
+   "value": {
+    "min": 5.1,
+    "max": 14.9,
+    "outside": 0
+   }
+  },
+  {
+   "check": "Focus reference month parses as MM/YYYY",
+   "status": "pass",
+   "detail": "0 unparseable of 74771",
+   "value": 0
+  },
+  {
+   "check": "range: Focus median expectation",
+   "status": "pass",
+   "detail": "all 74771 values in [-1.5, 3.5] % per month",
+   "value": {
+    "min": -0.65,
+    "max": 1.4,
+    "outside": 0
+   }
+  },
+  {
+   "check": "timing: a t+1 Focus reading exists for every month t",
+   "status": "pass",
+   "detail": "all months covered",
+   "value": 0
+  },
+  {
+   "check": "missing values: regression base",
+   "status": "pass",
+   "detail": "no missing values in ipca, desemprego, exp_ipca_prox",
+   "value": {
+    "ipca": 0,
+    "desemprego": 0,
+    "exp_ipca_prox": 0
+   }
+  },
+  {
+   "check": "unique keys (data)",
+   "status": "pass",
+   "detail": "0 duplicated rows",
+   "value": 0
+  },
+  {
+   "check": "no gaps in months: regression base",
+   "status": "pass",
+   "detail": "170 months, 2012-03 to 2026-04, no gaps",
+   "value": {
+    "first": "2012-03",
+    "last": "2026-04",
+    "n": 170,
+    "gaps": 0
+   }
+  },
+  {
+   "check": "window starts where the shortest series starts (PNAD Continua)",
+   "status": "pass",
+   "detail": "base starts 2012-03-01",
+   "value": "2012-03-01"
+  },
+  {
+   "check": "unit: expectation and realised IPCA on the same scale",
+   "status": "pass",
+   "detail": "mean absolute gap 0.24 p.p. per month",
+   "value": 0.244614
+  },
+  {
+   "check": "large jumps: IPCA",
+   "status": "pass",
+   "detail": "no change above 5.0 robust SDs",
+   "value": []
+  },
+  {
+   "check": "large jumps: unemployment",
+   "status": "pass",
+   "detail": "no change above 5.0 robust SDs",
+   "value": []
+  },
+  {
+   "check": "break window present: COVID (2020-03 to 2021-06)",
+   "status": "warn",
+   "detail": "16 months inside the window; q2_7 re-estimates without them",
+   "value": 16
+  }
+ ]
+}

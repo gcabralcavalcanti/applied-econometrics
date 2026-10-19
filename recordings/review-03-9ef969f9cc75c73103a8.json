@@ -1,0 +1,121 @@
+{
+ "task": "review-03",
+ "model": "claude-haiku-5-5",
+ "recorded_at": "2026-10-19T20:57:04.816026+00:00",
+ "answer": {
+  "statements": [
+   {
+    "id": "S1",
+    "numbers": [
+     {
+      "text_value": "0.0009",
+      "fact_id": "F38",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.0009",
+      "fact_id": "F43",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.318",
+      "fact_id": "F150",
+      "verdict": "match"
+     },
+     {
+      "text_value": "5030",
+      "fact_id": "F72",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Column (1) coefficient 0.0009 with SE (0.0009) matches F38/F43, p=0.318 matches F150, and N=5030 matches F72.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "S2",
+    "numbers": [
+     {
+      "text_value": "0.170",
+      "fact_id": "F77",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.440",
+      "fact_id": "F80",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.4244",
+      "fact_id": "F70",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.0009",
+      "fact_id": "F41",
+      "verdict": "match"
+     }
+    ],
+    "reason": "R² 0.170 to 0.440 matches F77/F80, proxy coefficient 0.4244 matches F70 with *** (1%), and column (4) evangelical coefficient 0.0009 matches F41.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "S3",
+    "numbers": [
+     {
+      "text_value": "-0.0077",
+      "fact_id": "F31",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.9923",
+      "fact_id": "F32",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Poisson coefficient -0.0077 (F31) with SE (0.0075), t≈-1.0, no stars, so not significant; IRR 0.9923 matches F32.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "S4",
+    "numbers": [
+     {
+      "text_value": "-0.0028",
+      "fact_id": "F42",
+      "verdict": "match"
+     }
+    ],
+    "reason": "WLS column (5) coefficient is -0.0028 (F42) with SE 0.0022, no stars, so not significant.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "S5",
+    "numbers": [
+     {
+      "text_value": "0.0009*",
+      "fact_id": "F110",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Column 5 (Cluster UF) shows 0.0009* with SE 0.0005 (F116), the only starred value among the six robustness columns (F110, F111 has no stars), so significance at 10% holds.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "S6",
+    "numbers": [
+     {
+      "text_value": "0.0007",
+      "fact_id": "F132",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.411",
+      "fact_id": "F133",
+      "verdict": "match"
+     }
+    ],
+    "reason": "The 3-year denominator coefficient 0.0007 matches F87/F132, and p=0.411 matches F133.",
+    "interpretation": "ok"
+   }
+  ]
+ }
+}

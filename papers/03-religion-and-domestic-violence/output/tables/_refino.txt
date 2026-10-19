@@ -1,0 +1,7 @@
+municipios_ano_sem_registro=2163
+share_ano_sem_registro=43.0
+evang_3anos=0.0007
+evang_3anos_p=0.411
+R2_3anos=0.153
+media_vd=0.304
+media_vd3=0.263

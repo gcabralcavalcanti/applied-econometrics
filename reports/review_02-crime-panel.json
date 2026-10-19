@@ -1,0 +1,160 @@
+[
+ {
+  "id": "S1",
+  "text": "Specification: Pooled OLS; log P(arrest): -0.633; log police per capita: 0.352",
+  "numbers_verdict": "ok",
+  "interpretation": "ok",
+  "reason": "Pooled OLS table shows log P(arrest) coefficient -0.633 (F134) and log police per capita 0.352 (F142).",
+  "numbers": [
+   {
+    "text_value": "-0.633",
+    "fact_id": "F134",
+    "table_value": "-0,633***",
+    "where": "q3_tab_pooled / ln(prob. prisao) _1 / MQO agrupado (1)",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.352",
+    "fact_id": "F142",
+    "table_value": "0,352***",
+    "where": "q3_tab_pooled / ln(policia p.c.) _2 / MQO agrupado (1)",
+    "status": "match",
+    "note": ""
+   }
+  ]
+ },
+ {
+  "id": "S2",
+  "text": "Specification: County fixed effects; log P(arrest): -0.395; log police per capita: 0.422",
+  "numbers_verdict": "ok",
+  "interpretation": "ok",
+  "reason": "County fixed effects column shows -0.395 for log P(arrest) (F105) and 0.422 for police (F121).",
+  "numbers": [
+   {
+    "text_value": "-0.395",
+    "fact_id": "F105",
+    "table_value": "-0,395***",
+    "where": "q3_tab_fe_condado / ln(prob. prisao) _1 / EF de condado (2)",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.422",
+    "fact_id": "F121",
+    "table_value": "0,422***",
+    "where": "q3_tab_fe_condado / ln(policia p.c.) _2 / EF de condado (2)",
+    "status": "match",
+    "note": ""
+   }
+  ]
+ },
+ {
+  "id": "S3",
+  "text": "Specification: Two-way fixed effects; log P(arrest): -0.360; log police per capita: 0.422",
+  "numbers_verdict": "ok",
+  "interpretation": "ok",
+  "reason": "Two-way FE column shows -0.360 for log P(arrest) (F81) and 0.422 for police (F97).",
+  "numbers": [
+   {
+    "text_value": "-0.360",
+    "fact_id": "F81",
+    "table_value": "-0,360***",
+    "where": "q3_tab_duas_vias / ln(prob. prisao) _1 / EF duas vias (2)",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.422",
+    "fact_id": "F97",
+    "table_value": "0,422***",
+    "where": "q3_tab_duas_vias / ln(policia p.c.) _2 / EF duas vias (2)",
+    "status": "match",
+    "note": ""
+   }
+  ]
+ },
+ {
+  "id": "S4",
+  "text": "Breusch–Pagan LM = 191.60 and White LM = 410.04, both with p < 0.0001: heteroskedasticity is clear.",
+  "numbers_verdict": "ok",
+  "interpretation": "ok",
+  "reason": "Breusch-Pagan LM 191.60 (F128) and White LM 410.04 (F131), both p<0.0001 (F130, F133), supporting heteroskedasticity.",
+  "numbers": [
+   {
+    "text_value": "191.60",
+    "fact_id": "F128",
+    "table_value": "191,60",
+    "where": "q3_tab_heterocedasticidade / Breusch--Pagan / Estatistica LM",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "410.04",
+    "fact_id": "F131",
+    "table_value": "410,04",
+    "where": "q3_tab_heterocedasticidade / White / Estatistica LM",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.0001",
+    "fact_id": "F130",
+    "table_value": "<0,0001",
+    "where": "q3_tab_heterocedasticidade / Breusch--Pagan / p-valor",
+    "status": "match",
+    "note": ""
+   }
+  ]
+ },
+ {
+  "id": "S5",
+  "text": "In the two-way model, clustering by county raises the standard error on the arrest elasticity from 0.033 to 0.064.",
+  "numbers_verdict": "ok",
+  "interpretation": "ok",
+  "reason": "Table shows conventional SE 0.033 (F3) and clustered SE 0.064 (F4) for log P(arrest) in the two-way model.",
+  "numbers": [
+   {
+    "text_value": "0.033",
+    "fact_id": "F3",
+    "table_value": "(0,033)",
+    "where": "q3_tab_cluster / ln(prob. prisao) _1 (std. error) / Convencional (1)",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.064",
+    "fact_id": "F4",
+    "table_value": "(0,064)",
+    "where": "q3_tab_cluster / ln(prob. prisao) _1 (std. error) / Cluster (2)",
+    "status": "match",
+    "note": ""
+   }
+  ]
+ },
+ {
+  "id": "S6",
+  "text": "On police per capita the clustered standard error is 0.093, against 0.027 before.",
+  "numbers_verdict": "ok",
+  "interpretation": "ok",
+  "reason": "Clustered SE for police is 0.093 (F20) and conventional SE 0.027 (F19) in the two-way table.",
+  "numbers": [
+   {
+    "text_value": "0.093",
+    "fact_id": "F20",
+    "table_value": "(0,093)",
+    "where": "q3_tab_cluster / ln(policia p.c.) _2 (std. error) / Cluster (2)",
+    "status": "match",
+    "note": ""
+   },
+   {
+    "text_value": "0.027",
+    "fact_id": "F19",
+    "table_value": "(0,027)",
+    "where": "q3_tab_cluster / ln(policia p.c.) _2 (std. error) / Convencional (1)",
+    "status": "match",
+    "note": ""
+   }
+  ]
+ }
+]

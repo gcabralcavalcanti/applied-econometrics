@@ -1,0 +1,33 @@
+\begin{table}[!htbp] \centering
+  \caption{Curva de Phillips: especificação estática vs.\ dinâmica (MQO)}
+\begin{tabular}{@{\extracolsep{5pt}}lcc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+& \multicolumn{2}{c}{\textit{Dependent variable: IPCA mensal}} \
+\cr \cline{2-3}
+\\[-1.8ex] & \multicolumn{1}{c}{Estática} & \multicolumn{1}{c}{Dinâmica}  \\
+\\[-1.8ex] & (1) & (2) \\
+\hline \\[-1.8ex]
+ Desemprego $u_t$ & -0.002$^{}$ & 0.007$^{}$ \\
+& (0.010) & (0.008) \\
+ Inflação defasada $\pi_{t-1}$ & & 0.398$^{***}$ \\
+& & (0.063) \\
+ Expectativa $E_t[\pi_{t+1}]$ & & 0.686$^{***}$ \\
+& & (0.111) \\
+ Intercept & 0.491$^{***}$ & -0.066$^{}$ \\
+& (0.102) & (0.097) \\
+ Durbin--Watson & 0.927 & 2.558 \\
+ Efeito de longo prazo $\beta/(1-\gamma)$ & --- & 0.0114 \\
+ Breusch--Godfrey(12) $p$ & $<$0.001 & 7.59e-06 \\
+ $H_0\!: \gamma+\delta=1$ ($p$-valor) & --- & 0.432 \\
+\hline \\[-1.8ex]
+ Observations & 170 & 169 \\
+ $R^2$ & 0.000 & 0.421 \\
+ Adjusted $R^2$ & -0.006 & 0.411 \\
+ Residual Std. Error & 0.372 (df=168) & 0.286 (df=165) \\
+ F Statistic & 0.055$^{}$ (df=1; 168) & 40.014$^{***}$ (df=3; 165) \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:} & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabular}
+\end{table}

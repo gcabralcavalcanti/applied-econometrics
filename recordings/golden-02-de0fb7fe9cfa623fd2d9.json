@@ -1,0 +1,149 @@
+{
+ "task": "golden-02",
+ "model": "claude-haiku-5-5",
+ "recorded_at": "2026-10-19T20:57:00.637752+00:00",
+ "answer": {
+  "statements": [
+   {
+    "id": "G1",
+    "numbers": [
+     {
+      "text_value": "-0.633",
+      "fact_id": "F134",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Pooled OLS coefficient on ln(prob. prisao)_1 is -0.633 (F134/F104).",
+    "interpretation": "ok"
+   },
+   {
+    "id": "G2",
+    "numbers": [
+     {
+      "text_value": "-0.360",
+      "fact_id": "F81",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Two-way FE coefficient is -0.360 (F81), but it is an elasticity, not percentage points; statement misreads the unit.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G3",
+    "numbers": [
+     {
+      "text_value": "-0.359",
+      "fact_id": "F81",
+      "verdict": "mismatch"
+     }
+    ],
+    "reason": "The county FE arrest coefficient is -0.395 (F80/F105); the two-way value is -0.360 (F81), so -0.359 matches neither.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G4",
+    "numbers": [
+     {
+      "text_value": "0.027",
+      "fact_id": "F19",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.093",
+      "fact_id": "F20",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Police s.e. goes from 0.027 (F19) to 0.093 (F20) under clustering, which is correct.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "G5",
+    "numbers": [
+     {
+      "text_value": "0.422",
+      "fact_id": "F17",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.093",
+      "fact_id": "F20",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Clustering changes only the standard error (0.093); the coefficient stays 0.422 (F17/F18), so the statement misreads a standard error as a coefficient.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G6",
+    "numbers": [
+     {
+      "text_value": "119.60",
+      "fact_id": "F128",
+      "verdict": "mismatch"
+     }
+    ],
+    "reason": "The Breusch-Pagan LM statistic in the tables is 191.60 (F128), not 119.60.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G7",
+    "numbers": [
+     {
+      "text_value": "0.422",
+      "fact_id": "F97",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Two-way FE police coefficient is 0.422 (F97), positive, so more police goes with more crime, not less.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G8",
+    "numbers": [
+     {
+      "text_value": "410.04",
+      "fact_id": "F131",
+      "verdict": "match"
+     },
+     {
+      "text_value": "<0.0001",
+      "fact_id": "F133",
+      "verdict": "match"
+     }
+    ],
+    "reason": "White LM 410.04 with p<0.0001 (F131, F133) rejects homoskedasticity, a correct reading.",
+    "interpretation": "ok"
+   },
+   {
+    "id": "G9",
+    "numbers": [
+     {
+      "text_value": "-0.360",
+      "fact_id": "F81",
+      "verdict": "match"
+     }
+    ],
+    "reason": "Coefficient -0.360 is significant (***), but the design is observational with simultaneity, so causal wording is inappropriate.",
+    "interpretation": "wrong"
+   },
+   {
+    "id": "G10",
+    "numbers": [
+     {
+      "text_value": "630",
+      "fact_id": "F144",
+      "verdict": "match"
+     },
+     {
+      "text_value": "0.805",
+      "fact_id": "F145",
+      "verdict": "match"
+     }
+    ],
+    "reason": "N = 630 (F144) and pooled R² = 0.805 (F145) are correctly reported.",
+    "interpretation": "ok"
+   }
+  ]
+ }
+}

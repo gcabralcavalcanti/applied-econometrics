@@ -1,0 +1,119 @@
+{
+ "paper": "03-religion-and-domestic-violence",
+ "run_at": "2026-10-19T20:59:51+00:00",
+ "summary": {
+  "pass": 13,
+  "warn": 1,
+  "fail": 0
+ },
+ "inputs": {
+  "sinan_mun_ano.csv": "951d458ea5cf31f5",
+  "tabela2094_ibge.csv": "b17953a337f507c2",
+  "ibge_pib_2010_com_id_municipio.csv": "9c45920f350dd0b4",
+  "base_corte_2011_2013.csv": "191133d55b1a2fb9"
+ },
+ "checks": [
+  {
+   "check": "range: SINAN year",
+   "status": "pass",
+   "detail": "all 46203 values in [2009, 2019] ",
+   "value": {
+    "min": 2009,
+    "max": 2019,
+    "outside": 0
+   }
+  },
+  {
+   "check": "unique keys (municipio_id, ano)",
+   "status": "pass",
+   "detail": "0 duplicated rows",
+   "value": 0
+  },
+  {
+   "check": "SINAN counts are consistent: female <= domestic <= total",
+   "status": "pass",
+   "detail": "holds in every municipality-year",
+   "value": null
+  },
+  {
+   "check": "SINAN sex coding produces female victims (0/1 coding, not 'F')",
+   "status": "pass",
+   "detail": "750,248 female domestic-violence notifications",
+   "value": 750248
+  },
+  {
+   "check": "municipality codes have 7 digits",
+   "status": "pass",
+   "detail": "SINAN and controls",
+   "value": null
+  },
+  {
+   "check": "merge coverage: controls / municipalities in the GDP table",
+   "status": "pass",
+   "detail": "5546 of 5565 (99.7%); the rest failed the name match or the income filter",
+   "value": 0.9965858041329739
+  },
+  {
+   "check": "range: evangelical density",
+   "status": "pass",
+   "detail": "all 5546 values in [0, 100] % of residents",
+   "value": {
+    "min": 0.422684,
+    "max": 85.836425,
+    "outside": 0
+   }
+  },
+  {
+   "check": "range: GDP per capita (after filter and winsorising)",
+   "status": "pass",
+   "detail": "all 5546 values in [500, 200000] R$",
+   "value": {
+    "min": 2988.374091,
+    "max": 64964.351412,
+    "outside": 0
+   }
+  },
+  {
+   "check": "IBGE API: every code in the base is an official municipality",
+   "status": "pass",
+   "detail": "5030 codes checked against 5571 official municipalities",
+   "value": 0
+  },
+  {
+   "check": "IBGE API: names in the GDP table match the official names",
+   "status": "pass",
+   "detail": "0 of 5030 differ (renamed since 2010 or spelling): ",
+   "value": 0
+  },
+  {
+   "check": "missing values: regression base",
+   "status": "pass",
+   "detail": "no missing values in vd, evang, l_renda, l_pop, notif_nondom",
+   "value": {
+    "vd": 0,
+    "evang": 0,
+    "l_renda": 0,
+    "l_pop": 0,
+    "notif_nondom": 0
+   }
+  },
+  {
+   "check": "unique keys (municipio_id)",
+   "status": "pass",
+   "detail": "0 duplicated rows",
+   "value": 0
+  },
+  {
+   "check": "every municipality has notifications in all 3 years (2011-2013)",
+   "status": "warn",
+   "detail": "2163 municipalities (43.0%) have a year with no record; their rate is averaged over the years that exist, which overstates it",
+   "value": 2163
+  },
+  {
+   "check": "share of municipalities with zero recorded cases",
+   "status": "pass",
+   "detail": "15.4% (motivates the Poisson model)",
+   "value": 0.1536779324055666
+  }
+ ]
+}
