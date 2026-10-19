@@ -8,7 +8,7 @@ Division of labour:
     python -m applied_econometrics.review           # review each paper README's Result section, score the golden set
     python -m applied_econometrics.review --demo    # recorded answers only (no API key, no cost)
 
-Outputs: reports/review_<paper>.json and .md, reports/golden_score.json.
+Outputs: papers/<paper>/output/review.json and .md, tests/golden/score.json and answers.json.
 """
 
 from __future__ import annotations
@@ -266,27 +266,24 @@ def write_md(paper: str, verdicts: list[dict], path: Path) -> None:
             f"| {v['id']} | {v['text'].replace('|', '/')} | {nums} | {v['interpretation']} | "
             f"{v['reason'].replace('|', '/')} |"
         )
-    responses_file = config.REPORTS / "author_responses.json"
-    responses = json.loads(responses_file.read_text(encoding="utf-8")).get(paper, {}) if responses_file.exists() else {}
     flagged = [v["id"] for v in verdicts if v["numbers_verdict"] == "error" or v["interpretation"] == "wrong"]
     lines += ["", "## Flags and the author's answer", ""]
-    lines += [f"- **{i}**: {responses.get(i, 'not answered yet')}" for i in flagged] or ["No flags."]
+    lines += [f"- **{i}**: not answered yet" for i in flagged] or ["No flags."]
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main(mode: str = "auto") -> dict:
     llm = LLM(mode=mode)
-    config.REPORTS.mkdir(exist_ok=True)
     golden = json.loads((config.GOLDEN / "statements.json").read_text(encoding="utf-8"))
     golden_results, summary = {}, {}
     for paper in PAPERS:
         sts = split_statements(result_section(config.PAPERS / paper / "README.md"))
         statements = [{"id": f"S{i}", "text": t} for i, t in enumerate(sts, start=1)]
         verdicts = review(llm, paper, statements, f"review-{paper[:2]}")
-        (config.REPORTS / f"review_{paper}.json").write_text(
+        (config.PAPERS / paper / "output" / "review.json").write_text(
             json.dumps(verdicts, ensure_ascii=False, indent=1), encoding="utf-8"
         )
-        write_md(paper, verdicts, config.REPORTS / f"review_{paper}.md")
+        write_md(paper, verdicts, config.PAPERS / paper / "output" / "review.md")
         flagged = [v["id"] for v in verdicts if v["numbers_verdict"] == "error" or v["interpretation"] == "wrong"]
         unverified = sum(n["status"] == "unverified" for v in verdicts for n in v["numbers"])
         checked = sum(n["status"] != "unverified" for v in verdicts for n in v["numbers"])
@@ -304,8 +301,8 @@ def main(mode: str = "auto") -> dict:
     score = score_golden(golden_results)
     score["papers"] = summary
     score["llm"] = llm.summary()
-    (config.REPORTS / "golden_score.json").write_text(json.dumps(score, ensure_ascii=False, indent=1), encoding="utf-8")
-    (config.REPORTS / "golden_answers.json").write_text(
+    (config.GOLDEN / "score.json").write_text(json.dumps(score, ensure_ascii=False, indent=1), encoding="utf-8")
+    (config.GOLDEN / "answers.json").write_text(
         json.dumps(golden_results, ensure_ascii=False, indent=1), encoding="utf-8"
     )
     print(

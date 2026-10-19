@@ -1,5 +1,7 @@
 # 02 · Crime and deterrence: a county panel
 
+> The final report ([final-reports/02-crime-panel.pdf](../../final-reports/02-crime-panel.pdf)) is generated automatically from the code's outputs. The main output is the quantitative part: data, checks, models and tables. It extracts the quantitative work of a longer paper I wrote for a UFRJ econometrics course; the full paper is available on request.
+
 ## Question
 Do counties with a higher probability of arrest, conviction and prison have less crime, and how much of the answer
 changes once fixed county traits, common year shocks and serial correlation are handled?
@@ -42,7 +44,9 @@ Reading: higher arrest probability goes with less crime even within a county. Th
 classic simultaneity sign (counties hire police where crime is high), so none of this is a causal estimate.
 
 ## AI review
-`python -m applied_econometrics.review` checks every sentence above against the tables: see `reports/review_02-crime-panel.md`.
+`python -m applied_econometrics.review` checks every sentence above against the tables: see [output/review.md](output/review.md).
 
 ## Run
+Runs without an API key, replaying recorded answers. Set `ANTHROPIC_API_KEY` to call Claude live.
+
 `python run_all.py 02` · tables in `output/` (LaTeX, decimal comma, as submitted), figures as PDF and PNG. Summary with the main tables and figures: [final-reports/02-crime-panel.pdf](../../final-reports/02-crime-panel.pdf).

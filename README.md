@@ -1,7 +1,9 @@
 # Applied econometrics
 
-Four short empirical papers built the same way: Python pulls public data, automatic checks gate every regression, each
-specification step has a stated reason, and an AI reviewer checks every number in the write-up against the tables.
+Four short empirical studies built the same way: Python pulls public data, automatic checks gate every regression,
+each specification step has a stated reason, and an AI reviewer checks every number in the write-up against the tables.
+Studies 01–03 come from my part of coursework for a UFRJ econometrics course; study 04 (fund selection) was built now,
+for this portfolio.
 
 ![Public data only](https://img.shields.io/badge/data-public%20only-2a78d6)
 ![Built with AI assistance](https://img.shields.io/badge/built%20with-AI%20assistance-52514e)
@@ -15,8 +17,8 @@ specification step has a stated reason, and an AI reviewer checks every number i
 | [03](papers/03-religion-and-domestic-violence/) | Does evangelical density go with recorded domestic violence? | No robust association (0.0009, p = 0.325, 5,046 municipalities); recorded rates follow notification intensity | [PDF](final-reports/03-religion-and-domestic-violence.pdf) |
 | [04](papers/04-fund-selection/) | Picking retail funds: do past winners repeat, and what do fees cost? | Past returns barely help; each point of expense ratio costs 0.735 points a year in equity funds | [PDF](final-reports/04-fund-selection.pdf) |
 
-- **AI reviewer:** caught 18 of 18 planted errors on a 30-statement golden set, with 0 false alarms; on the four
-  write-ups, 60 numbers checked and 0 flags (`reports/`).
+- **AI reviewer:** checks that every number in each write-up matches its table cell and that each coefficient is read
+  correctly; on the four write-ups, 60 numbers checked, 0 flags (`papers/*/output/review.md`).
 - **Data checks:** 48 pass, 9 warnings, 0 fail. One of them stopped a silent merge error in paper 03: the graded
   version had lost São Paulo, Rio de Janeiro and Brasília in a name match.
 - **Reproducible:** the 13 tables of papers 01–02 are byte-identical to the versions submitted for grading; every run
@@ -34,8 +36,8 @@ python run_all.py --download   # pull the data again from the BCB, IBGE and CVM 
 python -m pytest               # 26 tests, no API calls
 ```
 
-Python 3.10+ (tested on 3.14, Windows 11). With `ANTHROPIC_API_KEY` set (or a `.env`, see `.env.example`) the reviewer
-calls the API; without it, it replays the answers in `recordings/`.
+Runs without an API key, replaying recorded answers. Set `ANTHROPIC_API_KEY` to call Claude live (or use a `.env`,
+see `.env.example`). Python 3.10+, tested on 3.14 (Windows 11).
 
 ## How it works
 
@@ -46,9 +48,8 @@ calls the API; without it, it replays the answers in `recordings/`.
 3. **Model:** each paper README has a table "Specification and refinement": every step, why it was taken, what it showed.
 4. **Report:** `run_all.py` writes the tables, the figures and `final-reports/<paper>.pdf`, then compares the tables
    with the snapshot.
-5. **Review:** Python extracts every number from the tables; Claude Haiku maps each number in the write-up to a cell and
-   judges the reading (significance, sign, units, causal wording); Python re-checks every mapped number.
-   Details, and how the golden-set score was reached: [docs/ai-reviewer.md](docs/ai-reviewer.md).
+5. **Review:** an AI reviewer checks each number in the write-up against the tables and each coefficient reading;
+   Python re-checks every number the model matched. Details: [docs/ai-reviewer.md](docs/ai-reviewer.md).
 
 ## Data
 
@@ -70,8 +71,9 @@ Everything is public data. Nothing comes from a client, an employer or a private
 
 ## Origin and role
 
-Papers 01–03 started as Econometrics I coursework (B.Sc. in Economics, Federal University of Rio de Janeiro, 2026),
-written in a group; only my parts are here. 01 is all mine. In 02 I wrote all the code; the written interpretation was a
+Studies 01–03 come from Econometrics I coursework (B.Sc. in Economics, Federal University of Rio de Janeiro, 2026),
+written in a group; only my parts are here, and each final report extracts the quantitative work of a longer paper (the
+full papers are available on request). Study 04 was built for this portfolio from public CVM data. 01 is all mine. In 02 I wrote all the code; the written interpretation was a
 teammate's and is not published. In 03 the topic and a first pipeline came from a teammate, and neither that code nor
 its data files are here; I re-scoped the design, wrote the code in this folder, and ran the estimation and the AI review
 loop. The data checks, the AI reviewer, the refinements in 03 and paper 04 were added afterwards. The coursework code was

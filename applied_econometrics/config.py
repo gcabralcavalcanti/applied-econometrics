@@ -5,8 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PAPERS = ROOT / "papers"
-RECORDINGS = ROOT / "recordings"  # recorded LLM answers: response cache + demo mode (versioned)
-REPORTS = ROOT / "reports"  # reviewer reports (versioned, so the repo shows real output)
+RECORDINGS = ROOT / "tests" / "recorded"  # recorded LLM answers: response cache + demo mode (versioned)
 LOGS = ROOT / "logs"  # one JSON line per LLM call (not versioned)
 SCHEMAS = ROOT / "applied_econometrics" / "schemas"
 GOLDEN = ROOT / "tests" / "golden"
@@ -20,7 +19,7 @@ PRICE_PER_MTOK = {"claude-haiku-5-5": (0.10, 0.50)}  # USD (input, output), Anth
 MAX_CALLS_PER_RUN = int(os.environ.get("APPLIED_ECON_MAX_CALLS", "20"))
 MAX_TOKENS = 8000  # per answer, thinking included; a review of ~10 statements uses ~1-3k
 # Thinking off: on the golden set it caught 16-17 of 18 planted errors across runs; low-effort thinking
-# caught 16 at a similar cost, so it is off (reports/experiments/).
+# caught 16 at a similar cost, so it is off (tests/golden/experiments/).
 THINKING = os.environ.get("APPLIED_ECON_THINKING", "0") == "1"
 EFFORT = "low"
 TIMEOUT_S = 60.0

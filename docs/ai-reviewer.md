@@ -15,7 +15,7 @@ error read as coefficient, significance claimed without stars, elasticity read a
 claim, "proves" from a non-rejection) and 12 correct. With the final prompt, three live runs caught 18, 17 and 18 of the
 18 planted errors, with 0 false alarms on the 12 correct statements.
 
-How it got there, measured on the golden set each time (`reports/experiments/`):
+How it got there, measured on the golden set each time (`tests/golden/experiments/`):
 
 | Change | Planted errors caught | False alarms on the real write-ups |
 |---|---|---|
@@ -29,10 +29,10 @@ Putting the reason before the verdict removed the false alarms whose own reason 
 main miss: the model saw that "R² = 0.404" was wrong but filed it as *not in tables*, which left Python nothing to check.
 
 **On the real write-ups**: 26 statements, 60 numbers, 59 matched to a cell and confirmed by Python (one is computed in
-the text), 0 flags (`reports/review_*.md`).
+the text), 0 flags (`papers/*/output/review.md`).
 
 **Cost and safety**: one full review is 7 calls, about 45k input tokens, **US$ 0.008**; the committee memo with its review,
 about US$ 0.004. Hard cap of 20 calls per run, 60 s timeout, SDK retries for network errors, one retry when the answer fails the schema or the checker (e.g. a number
-that is not in the statement), one JSON log line per call with tokens. Answers are recorded in `recordings/`: the same
+that is not in the statement), one JSON log line per call with tokens. Answers are recorded in `tests/recorded/`: the same
 request is never paid twice, and without a key the reviewer replays them (demo mode, used by the tests).
 The key is read from `ANTHROPIC_API_KEY` or a local `.env` (see `.env.example`) and never printed or committed.

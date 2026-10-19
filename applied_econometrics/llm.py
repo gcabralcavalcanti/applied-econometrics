@@ -1,7 +1,7 @@
 """Thin, defensive wrapper around the Claude API.
 
 - JSON answers constrained by a JSON Schema (structured outputs) and validated again locally.
-- Every answer is recorded under recordings/<task>-<hash>.json. The same request is never paid twice,
+- Every answer is recorded under tests/recorded/<task>-<hash>.json. The same request is never paid twice,
   and without an API key the recordings replay the run (demo mode).
 - Call cap per run, timeout, SDK retries, one retry when the answer fails our checks,
   and a JSON log line per call with tokens and cost.

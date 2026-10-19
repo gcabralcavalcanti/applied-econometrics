@@ -1,5 +1,7 @@
 # 03 · Evangelical density and recorded domestic violence in Brazilian municipalities
 
+> The final report ([final-reports/03-religion-and-domestic-violence.pdf](../../final-reports/03-religion-and-domestic-violence.pdf)) is generated automatically from the code's outputs. The main output is the quantitative part: data, checks, models and tables. It extracts the quantitative work of a longer paper I wrote for a UFRJ econometrics course; the full paper is available on request.
+
 ## Question
 Do municipalities with a larger share of evangelicals record more (or less) domestic violence against women?
 
@@ -46,8 +48,10 @@ Reading: no robust association. What explains recorded rates is how much a munic
 composition. Associational, not causal; the denominator is the whole population, not women at risk.
 
 ## AI review
-`python -m applied_econometrics.review` checks every sentence above against the tables: see `reports/review_03-religion-and-domestic-violence.md`.
+`python -m applied_econometrics.review` checks every sentence above against the tables: see [output/review.md](output/review.md).
 
 ## Run
+Runs without an API key, replaying recorded answers. Set `ANTHROPIC_API_KEY` to call Claude live.
+
 `python run_all.py 03` · `python code/00_download_ibge.py` pulls the IBGE inputs again · tables in `output/tables/`,
 figures in `output/figures/`, summary in [final-reports/03-religion-and-domestic-violence.pdf](../../final-reports/03-religion-and-domestic-violence.pdf). The decision log and the AI reviews are in Portuguese.

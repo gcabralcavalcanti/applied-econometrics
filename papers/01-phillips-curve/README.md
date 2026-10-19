@@ -1,5 +1,7 @@
 # 01 · Is there a Phillips-curve trade-off in Brazil? (2012–2026)
 
+> The final report ([final-reports/01-phillips-curve.pdf](../../final-reports/01-phillips-curve.pdf)) is generated automatically from the code's outputs. The main output is the quantitative part: data, checks, models and tables. It extracts the quantitative work of a longer paper I wrote for a UFRJ econometrics course; the full paper is available on request.
+
 ## Question
 Does higher unemployment go with lower inflation in Brazil, once inflation inertia and expectations are in the model?
 
@@ -39,7 +41,9 @@ expectation and IPCA on the same scale, no duplicates, and a warning that the CO
 Reading: Brazilian inflation is driven by inertia and expectations; labour-market slack barely shows up. Descriptive, not causal: expectations are endogenous and the model uses the unemployment rate, not the gap to its natural rate.
 
 ## AI review
-`python -m applied_econometrics.review` checks every sentence above against the tables: see `reports/review_01-phillips-curve.md`.
+`python -m applied_econometrics.review` checks every sentence above against the tables: see [output/review.md](output/review.md).
 
 ## Run
+Runs without an API key, replaying recorded answers. Set `ANTHROPIC_API_KEY` to call Claude live.
+
 `python run_all.py 01` · tables in `output/` (LaTeX, as submitted), figures as PDF. Table labels are in Portuguese, as graded. Summary with the main tables and figures: [final-reports/01-phillips-curve.pdf](../../final-reports/01-phillips-curve.pdf).

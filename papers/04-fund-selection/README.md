@@ -1,5 +1,7 @@
 # 04 · Picking funds from a retail menu: does past performance help, and what do fees cost?
 
+> The final report ([final-reports/04-fund-selection.pdf](../../final-reports/04-fund-selection.pdf)) is generated automatically from the code's outputs. The main output is the quantitative part: data, checks, models and tables. This study was built for this portfolio from public CVM data.
+
 ## Question
 An investment committee must choose which funds to offer on a menu (a company savings plan, a platform shortlist).
 Two questions decide the rule: do last year's winners keep winning, and do cheaper funds leave investors better off?
@@ -50,9 +52,11 @@ history: these are associations in one period, not a law.
 `code/04_memo.py`: Claude writes the memo from the four tables, citing a cell for every number. Python rejects a draft
 whose numbers are not in the cells it cites; the reviewer checks each finding; flagged findings go back to the writer
 once. Current memo: 6 findings, none flagged (`output/committee_memo.md`). During development a first draft read the
-persistence table backwards and the reviewer caught it; the case is in `reports/experiments/memo_draft_caught.md`.
+persistence table backwards and the reviewer caught it; the case is in [docs/memo-draft-caught.md](../../docs/memo-draft-caught.md).
 Cost of the memo with its review: about US$ 0.004.
 
 ## Run
+Runs without an API key, replaying recorded answers. Set `ANTHROPIC_API_KEY` to call Claude live.
+
 `python run_all.py 04` (offline from `data/`) · `python code/01_fetch_and_build.py` to pull everything again from the CVM. Summary with the main tables and figures: [final-reports/04-fund-selection.pdf](../../final-reports/04-fund-selection.pdf).
 All inputs are public CVM and BCB data.
