@@ -1,0 +1,6 @@
+download: 00_download_ibge.py
+00_aggregate_sinan.py
+01_build_base.py
+q4_checks.py
+02_analysis.py
+03_refinement_denominator.py

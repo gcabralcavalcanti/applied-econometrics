@@ -7,22 +7,27 @@ What could silently go wrong here, and the check that catches it:
  - log variables that do not match their levels                       -> log consistency
  - "probabilities" above 1 (a known quirk of this dataset)            -> range warning
 """
+
 import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-RAIZ = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(RAIZ.parent.parent))
-from aecon.checks import Report, WARN  # noqa: E402
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT.parent.parent))
+from applied_econometrics.checks import WARN, Report
 
-base = pd.read_csv(RAIZ / "tmp" / "q3_base_crime.csv")
-r = Report("02-crime-panel", [RAIZ / "tmp" / "q3_base_crime.csv"])
+base = pd.read_csv(ROOT / "tmp" / "q3_base_crime.csv")
+r = Report("02-crime-panel", [ROOT / "tmp" / "q3_base_crime.csv"])
 
 N, T = base["county"].nunique(), base["year"].nunique()
-r.add("balanced panel: 90 counties x 7 years", (N, T, len(base)) == (90, 7, 630),
-      f"N={N}, T={T}, rows={len(base)}", {"N": N, "T": T, "rows": len(base)})
+r.add(
+    "balanced panel: 90 counties x 7 years",
+    (N, T, len(base)) == (90, 7, 630),
+    f"N={N}, T={T}, rows={len(base)}",
+    {"N": N, "T": T, "rows": len(base)},
+)
 r.no_duplicates(base, ["county", "year"])
 used = ["lcrmrte", "lprbarr", "lprbconv", "lprbpris", "lavgsen", "lpolpc"]
 r.no_missing(base, used, "missing values: regression variables")
@@ -36,4 +41,4 @@ r.in_range(base["prbarr"], 0, 1, "P(arrest) = arrests / offences", "", WARN)
 r.in_range(base["prbconv"], 0, 1, "P(conviction) = convictions / arrests", "", WARN)
 r.in_range(base["year"], 81, 87, "year", "(1981-1987)")
 
-r.finish(RAIZ / "output" / "data_checks.json")
+r.finish(ROOT / "output" / "data_checks.json")

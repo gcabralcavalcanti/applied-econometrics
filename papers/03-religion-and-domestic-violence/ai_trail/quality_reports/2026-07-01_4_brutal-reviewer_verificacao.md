@@ -2,13 +2,13 @@
 Data: 2026-07-01 · Natureza: confirmar que os FATAL sumiram (reexecução independente da análise)
 
 ## Status de cada FATAL/MAJOR
-- [FATAL] Sonda tautológica (vd ⊂ notif total) → ✅ RESOLVIDO: proxy agora é NÃO-doméstica; R² 0,17→0,44 (não mais 0,76).
-- [FATAL] MQO/contagem/denominador → ⚠️ PARCIAL: Poisson com offset adicionado (evang NS); offset ainda é pop. total (limitação assumida).
-- [FATAL] Robustez auto-contraditória (N=5304; evang −0,0039***) → ✅ RESOLVIDO: amostra comum (4.956) + EF UF + winsorização → janela 2013–15 = +0,0016 (p=0,15), NS. Reexecutado e confirmado: TODAS as 9 janelas móveis dão evang ~0, p∈[0,14; 0,44].
-- [FATAL] Título "Internet" sem dado → ✅ RESOLVIDO: fora do título, rebaixada a limitação.
+- [FATAL] Sonda tautológica (vd ⊂ notif total) → RESOLVIDO: proxy agora é NÃO-doméstica; R² 0,17→0,44 (não mais 0,76).
+- [FATAL] MQO/contagem/denominador → PARCIAL: Poisson com offset adicionado (evang NS); offset ainda é pop. total (limitação assumida).
+- [FATAL] Robustez auto-contraditória (N=5304; evang −0,0039***) → RESOLVIDO: amostra comum (4.956) + EF UF + winsorização → janela 2013–15 = +0,0016 (p=0,15), NS. Reexecutado e confirmado: TODAS as 9 janelas móveis dão evang ~0, p∈[0,14; 0,44].
+- [FATAL] Título "Internet" sem dado → RESOLVIDO: fora do título, rebaixada a limitação.
 - [trecho removido]
-- [MAJOR] VVO / EF de UF → ✅ RESOLVIDO (Oster não feito); [MAJOR] mecanismo causal → ✅ rebaixado a associativo; [MAJOR] R² não comparável → ✅ nota; [MAJOR] proxy mono-citada/sinal ambíguo → ✅; [MAJOR] painel inédito → ✅ corte transversal; [MAJOR] outliers renda → ✅ 3 expurgados+winsor; [MAJOR] forma funcional → ✅ Poisson; [MAJOR] endogeneidade → ⚠️ PARCIAL (EF UF + linguagem rebaixada; CNES/DEAM indisponíveis).
-- [MINOR] falácia ecológica / clusters / g.l. → ✅ todos tratados.
+- [MAJOR] VVO / EF de UF → RESOLVIDO (Oster não feito); [MAJOR] mecanismo causal → rebaixado a associativo; [MAJOR] R² não comparável → nota; [MAJOR] proxy mono-citada/sinal ambíguo → resolvido; [MAJOR] painel inédito → corte transversal; [MAJOR] outliers renda → 3 expurgados+winsor; [MAJOR] forma funcional → Poisson; [MAJOR] endogeneidade → PARCIAL (EF UF + linguagem rebaixada; CNES/DEAM indisponíveis).
+- [MINOR] falácia ecológica / clusters / g.l. → todos tratados.
 
 Placar FATAL: 6 resolvidos, 2 parciais (mesmo tema: denominador de pop. em risco — mitigado por Poisson, rotulado como limitação).
 

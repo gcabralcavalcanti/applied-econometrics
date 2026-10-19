@@ -1,0 +1,7 @@
+q3_1_load_panel.py
+q3_checks.py
+q3_2_pooled.py
+q3_3_heteroskedasticity.py
+q3_4_county_fixed_effects.py
+q3_5_two_way_fixed_effects.py
+q3_6_clustered_errors.py

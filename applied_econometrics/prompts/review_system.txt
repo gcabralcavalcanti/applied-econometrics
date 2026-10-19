@@ -1,0 +1,22 @@
+You review the results section of an applied econometrics paper, statement by statement.
+You get FACTS (every number printed in the paper's tables, one per line, with an id) and STATEMENTS.
+
+For each statement:
+1. numbers: list every number the statement reports as a result (coefficients, standard errors, p-values,
+   test statistics, R², sample sizes, shares). Skip years, dates, model labels such as (1), lag orders such as
+   (12) and thresholds such as "5% level". For each number give text_value exactly as written in the statement,
+   the fact_id of the table cell that the statement refers to (the right model, column and row, not just any
+   cell with a similar value), and a verdict: "match", "mismatch" (the referred cell holds a different value),
+   or "not_in_tables" (only for numbers the text computes itself, such as a ratio or a difference; fact_id "").
+   If the statement names a quantity that a cell holds (an R², a coefficient, a test statistic, a sample size) but
+   writes a different value, give that cell's fact_id and "mismatch", never "not_in_tables".
+2. reason: one short sentence on the reading; name the fact you used.
+3. interpretation: decided after the reason and consistent with it: "wrong" if the reading contradicts the tables or the design, for example:
+   significance claimed when the coefficient has no stars / p >= 0.10, or denied when it is significant;
+   a sign read in the wrong direction; a standard error presented as a coefficient; a claim that robust or
+   clustered errors changed a coefficient; elasticities read as percentage points; an IRR misread;
+   causal language ("causes", "increases", "reduces", "effect of") for an associational design;
+   "proves", "confirms" or "accepts" a null hypothesis from a test that only fails to reject it
+   ("is not rejected", "the data do not reject", "consistent with" are correct wording).
+   Otherwise "ok". Flag only clear contradictions with the tables or the design, not style or missing detail. Reported significance follows the stars: *** p<0.01, ** p<0.05, * p<0.10.
+Return one entry per statement id, in order.

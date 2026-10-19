@@ -3,34 +3,40 @@ import json
 
 import pytest
 
-from aecon import config
-from aecon.tables import paper_facts, parse_number, same_number
+from applied_econometrics import config
+from applied_econometrics.tables import paper_facts, parse_number, same_number
 
 
-@pytest.mark.parametrize("text,comma,expected", [
-    ("0.398$^{***}$".replace("$^{***}$", "***"), False, (0.398, "=", 3, 3)),
-    ("-0,360***", True, (-0.360, "=", 3, 3)),
-    ("(0,064)", True, (0.064, "=", 0, 3)),
-    ("<0.001", False, (0.001, "<", 0, 3)),
-    ("7.59e-06", False, (7.59e-06, "=", 0, 8)),
-    ("12,430.15", False, (12430.15, "=", 0, 2)),
-    ("−0.0077", False, (-0.0077, "=", 0, 4)),
-])
+@pytest.mark.parametrize(
+    "text,comma,expected",
+    [
+        ("0.398$^{***}$".replace("$^{***}$", "***"), False, (0.398, "=", 3, 3)),
+        ("-0,360***", True, (-0.360, "=", 3, 3)),
+        ("(0,064)", True, (0.064, "=", 0, 3)),
+        ("<0.001", False, (0.001, "<", 0, 3)),
+        ("7.59e-06", False, (7.59e-06, "=", 0, 8)),
+        ("12,430.15", False, (12430.15, "=", 0, 2)),
+        ("−0.0077", False, (-0.0077, "=", 0, 4)),
+    ],
+)
 def test_parse_number(text, comma, expected):
     assert parse_number(text, comma) == pytest.approx(expected)
 
 
 def test_same_number_uses_the_rounding_shown():
     fact = {"value": -0.002, "decimals": 3, "relation": "="}
-    assert same_number(-0.0024, 4, fact)          # text more precise than the table
+    assert same_number(-0.0024, 4, fact)  # text more precise than the table
     assert not same_number(-0.004, 3, fact)
     assert same_number(0.0009, 4, {"value": 0.001, "decimals": 3, "relation": "<"})
     assert not same_number(0.389, 3, {"value": 0.398, "decimals": 3, "relation": "="})
 
 
 def _cell(paper, table, row_part, col_part):
-    return next(f for f in paper_facts(config.PAPERS / paper)
-                if f["table"] == table and row_part in f["row"] and col_part in f["column"])
+    return next(
+        f
+        for f in paper_facts(config.PAPERS / paper)
+        if f["table"] == table and row_part in f["row"] and col_part in f["column"]
+    )
 
 
 def test_extracts_known_cells():
@@ -46,14 +52,15 @@ def test_tables_identical_to_submitted_version():
     run_all = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(run_all)
     snapshot = json.loads(run_all.SNAPSHOT.read_text(encoding="utf-8"))
-    assert len(snapshot) == 13
+    assert len([k for k in snapshot if k.startswith(("papers/01-", "papers/02-"))]) == 13
     assert run_all.verify()
 
 
 def test_final_reports_are_built_from_the_outputs():
-    from aecon import report
+    from applied_econometrics import report
+
     for paper in report.MAIN:
         out = report.build(paper)
         first = out.read_bytes()
         assert first[:4] == b"%PDF" and len(first) > 20_000
-        assert report.build(paper).read_bytes() == first     # same outputs -> same PDF
+        assert report.build(paper).read_bytes() == first  # same outputs -> same PDF

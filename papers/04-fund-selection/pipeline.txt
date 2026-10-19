@@ -1,0 +1,3 @@
+download: 01_fetch_and_build.py
+02_checks.py
+03_analysis.py

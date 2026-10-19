@@ -42,7 +42,7 @@ Reading: higher arrest probability goes with less crime even within a county. Th
 classic simultaneity sign (counties hire police where crime is high), so none of this is a causal estimate.
 
 ## AI review
-`python -m aecon.review` checks every sentence above against the tables: see `reports/review_02-crime-panel.md`.
+`python -m applied_econometrics.review` checks every sentence above against the tables: see `reports/review_02-crime-panel.md`.
 
 ## Run
-`python run_all.py 02` · tables in `output/` (LaTeX, decimal comma, as submitted), figures as PDF and PNG. Summary with the main tables and figures: `final-report.pdf`.
+`python run_all.py 02` · tables in `output/` (LaTeX, decimal comma, as submitted), figures as PDF and PNG. Summary with the main tables and figures: [final-reports/02-crime-panel.pdf](../../final-reports/02-crime-panel.pdf).

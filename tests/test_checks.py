@@ -3,8 +3,8 @@ import json
 import pandas as pd
 import pytest
 
-from aecon import config
-from aecon.checks import FAIL, PASS, WARN, Report
+from applied_econometrics import config
+from applied_econometrics.checks import FAIL, PASS, WARN, Report
 
 
 def test_report_statuses_and_exit(tmp_path):
@@ -21,8 +21,15 @@ def test_report_statuses_and_exit(tmp_path):
     assert saved["summary"] == {PASS: 0, WARN: 1, FAIL: 2}
 
 
-@pytest.mark.parametrize("paper,warns", [("01-phillips-curve", 1), ("02-crime-panel", 2),
-                                         ("03-religion-and-domestic-violence", 1), ("04-fund-selection", 5)])
+@pytest.mark.parametrize(
+    "paper,warns",
+    [
+        ("01-phillips-curve", 1),
+        ("02-crime-panel", 2),
+        ("03-religion-and-domestic-violence", 1),
+        ("04-fund-selection", 5),
+    ],
+)
 def test_shipped_data_passes_its_checks(paper, warns):
     report = json.loads((config.PAPERS / paper / "output" / "data_checks.json").read_text(encoding="utf-8"))
     assert report["summary"][FAIL] == 0

@@ -1,0 +1,8 @@
+download: q2_1_download_series.py
+q2_2_build_base.py
+q2_checks.py
+q2_3_static_phillips.py
+q2_4_diagnostics.py
+q2_5_dynamic_model.py
+q2_6_hac.py
+q2_7_robustness.py

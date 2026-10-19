@@ -1,6 +1,6 @@
 {
  "paper": "01-phillips-curve",
- "run_at": "2026-10-19T21:26:20+00:00",
+ "run_at": "2026-10-19T21:51:03+00:00",
  "summary": {
   "pass": 17,
   "warn": 1,
@@ -141,13 +141,13 @@
   {
    "check": "large jumps: IPCA",
    "status": "pass",
-   "detail": "no change above 5.0 robust SDs",
+   "detail": "no change above 5.0 MAD-based SDs",
    "value": []
   },
   {
    "check": "large jumps: unemployment",
    "status": "pass",
-   "detail": "no change above 5.0 robust SDs",
+   "detail": "no change above 5.0 MAD-based SDs",
    "value": []
   },
   {

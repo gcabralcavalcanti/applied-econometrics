@@ -1,16 +1,15 @@
-"""
-run_all.py - single entry point. For each paper: (download) -> build the base -> data checks
--> estimation -> tables -> final-report.pdf. Then it compares the tables of papers 01-02 with the versions submitted for grading.
+"""Run every paper end to end: base -> data checks -> models -> tables -> final-reports/<paper>.pdf.
 
     python run_all.py                 # all papers, from the shipped data
-    python run_all.py --download      # papers 01, 03 and 04 pull their data again first (changes the sample)
-    python run_all.py 01 03           # only some papers
+    python run_all.py 01 03           # some papers
+    python run_all.py --download      # pull the data again first (changes the numbers)
+    python run_all.py --review        # also the AI reviewer and the committee memo (recorded answers without a key)
     python run_all.py --verify        # only compare the tables on disk with the snapshot
-    python run_all.py --review        # also the AI reviewer and the AI committee memo (live with a key,
-                                      # recorded answers without)
 
-A data check marked FAIL stops the paper before any regression runs.
+Each paper lists its scripts, in order, in papers/<paper>/pipeline.txt. A data check marked FAIL stops the run.
+The tables of papers 01-02 in the snapshot are the versions submitted for grading.
 """
+
 import hashlib
 import json
 import os
@@ -21,21 +20,24 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 PAPERS = ROOT / "papers"
 SNAPSHOT = ROOT / "tests" / "table_snapshot.json"
-# UTF-8 everywhere (Windows consoles default to cp1252; tables contain accents)
-ENV = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8", "SOURCE_DATE_EPOCH": "0"}  # fixed dates in PDFs
+# UTF-8 on Windows consoles; fixed dates so figures and PDFs are byte-identical between runs
+ENV = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8", "SOURCE_DATE_EPOCH": "0"}
 
-STEPS = {
-    "01": ("01-phillips-curve", [
-        "q2_2_organiza_base.py", "q2_checks.py", "q2_3_phillips_estatica.py", "q2_4_diagnosticos.py",
-        "q2_5_modelo_dinamico.py", "q2_6_hac.py", "q2_7_robustez.py"]),
-    "02": ("02-crime-panel", [
-        "q3_1_carrega_painel.py", "q3_checks.py", "q3_2_pooled.py", "q3_3_heterocedasticidade.py",
-        "q3_4_efeitos_fixos.py", "q3_5_duas_vias.py", "q3_6_cluster.py"]),
-    "03": ("03-religion-and-domestic-violence", [
-        "00_agrega_sinan.py", "01_monta_base.py", "q4_checks.py", "02_analise.py",
-        "03_refino_denominador.py"]),
-    "04": ("04-fund-selection", ["02_checks.py", "03_analysis.py"]),
-}
+
+def papers() -> dict[str, Path]:
+    return {p.name[:2]: p for p in sorted(PAPERS.glob("0*-*")) if (p / "pipeline.txt").exists()}
+
+
+def steps(paper: Path, download: bool) -> list[str]:
+    out = []
+    for line in (paper / "pipeline.txt").read_text(encoding="utf-8").splitlines():
+        line = line.split("#")[0].strip()
+        if line.startswith("download:"):
+            if download:
+                out.append(line.split(":", 1)[1].strip())
+        elif line:
+            out.append(line)
+    return out
 
 
 def run(script: Path, *args: str) -> None:
@@ -46,22 +48,22 @@ def run(script: Path, *args: str) -> None:
 
 
 def table_files() -> list[Path]:
-    # papers 01-02 are compared with the versions submitted for grading; paper 03 now runs on inputs this
-    # repository downloads itself, so its tables are not the submitted ones (see its README)
-    return sorted(p for p in PAPERS.glob("0[1-2]-*/output/**/*")
-                  if p.suffix == ".tex" or p.name == "_stats.txt")
+    return sorted(p for p in PAPERS.glob("0*-*/output/**/*") if p.suffix == ".tex" or p.name.startswith("_"))
 
 
 def digest(p: Path) -> str:
-    # normalise line endings so a checkout with CRLF does not count as a change
-    return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+    return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()  # CRLF checkouts count as equal
 
 
 def verify() -> bool:
     snap = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
     current = {p.relative_to(ROOT).as_posix(): digest(p) for p in table_files()}
     changed = [k for k in snap if current.get(k) != snap[k]]
-    print(f"\nTables identical to the submitted version: {len(snap) - len(changed)}/{len(snap)}")
+    graded = [k for k in snap if k.startswith(("papers/01-", "papers/02-"))]
+    print(
+        f"\nTables identical to the snapshot: {len(snap) - len(changed)}/{len(snap)} "
+        f"({len(graded) - len([k for k in changed if k in graded])}/{len(graded)} graded tables of papers 01-02)"
+    )
     for k in changed:
         print(f"  CHANGED: {k}")
     return not changed
@@ -70,24 +72,20 @@ def verify() -> bool:
 if __name__ == "__main__":
     args = [a.lower() for a in sys.argv[1:]]
     if "--snapshot" in args:  # maintainer only: freeze the current tables as the reference
-        SNAPSHOT.write_text(json.dumps({p.relative_to(ROOT).as_posix(): digest(p) for p in table_files()},
-                                       indent=1), encoding="utf-8")
+        snap = {p.relative_to(ROOT).as_posix(): digest(p) for p in table_files()}
+        SNAPSHOT.write_text(json.dumps(snap, indent=1), encoding="utf-8")
         sys.exit(f"Snapshot written: {SNAPSHOT.relative_to(ROOT)}")
     if "--verify" in args:
         sys.exit(0 if verify() else 1)
-    chosen = [a for a in args if a in STEPS] or list(STEPS)
+    chosen = [k for k in papers() if k in args] or list(papers())
     for key in chosen:
-        folder, steps = STEPS[key]
-        code = PAPERS / folder / "code"
-        if "--download" in args and key in ("01", "03", "04"):
-            steps = [{"01": "q2_1_baixa_series.py", "03": "00_baixa_ibge.py",
-                      "04": "01_fetch_and_build.py"}[key]] + steps
-        for s in steps:
-            run(code / s)
-        run(ROOT / "aecon" / "report.py", key)   # papers/<paper>/final-report.pdf
+        paper = papers()[key]
+        for s in steps(paper, "--download" in args):
+            run(paper / "code" / s)
+        run(ROOT / "applied_econometrics" / "report.py", key)
     if "--download" not in args and not verify():
-        sys.exit("Some tables differ from the submitted version.")
+        sys.exit("Some tables differ from the snapshot.")
     if "--review" in args:
-        run(ROOT / "aecon" / "review.py")
+        run(ROOT / "applied_econometrics" / "review.py")
         run(PAPERS / "04-fund-selection" / "code" / "04_memo.py")
-    print("\nAll done. Final reports in papers/*/final-report.pdf; tables, figures and data checks in papers/*/output.")
+    print("\nDone. Reports in final-reports/; tables, figures and data checks in papers/*/output.")
