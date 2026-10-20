@@ -300,11 +300,11 @@ def main(mode: str = "auto") -> dict:
         )
     score = score_golden(golden_results)
     score["papers"] = summary
-    score["llm"] = llm.summary()
     (config.GOLDEN / "score.json").write_text(json.dumps(score, ensure_ascii=False, indent=1), encoding="utf-8")
     (config.GOLDEN / "answers.json").write_text(
         json.dumps(golden_results, ensure_ascii=False, indent=1), encoding="utf-8"
     )
+    score["llm"] = llm.summary()  # printed, not saved: it changes with the mode and the cache
     print(
         json.dumps(
             {

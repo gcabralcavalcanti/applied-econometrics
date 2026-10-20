@@ -95,7 +95,7 @@ def main(mode: str = "auto") -> dict:
             check,
             3000,
         )
-    out = {"rounds": rounds, "llm": llm.summary()}
+    out = {"rounds": rounds}
     (ROOT / "output" / "committee_memo.json").write_text(
         json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8"
     )
@@ -132,6 +132,7 @@ def main(mode: str = "auto") -> dict:
     lines += ["", "## Risks", ""] + [f"- {r}" for r in memo["risks"]]
     lines += ["", "## Next steps", ""] + [f"- {s}" for s in memo["next_steps"]]
     (ROOT / "output" / "committee_memo.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    out["llm"] = llm.summary()
     flagged = [v["id"] for v in verdicts if v["numbers_verdict"] != "ok" or v["interpretation"] != "ok"]
     print(f"Memo: {len(memo['findings'])} findings, flagged by the reviewer: {flagged or 'none'}; {llm.summary()}")
     return out

@@ -10,7 +10,6 @@ from __future__ import annotations
 import hashlib
 import json
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
@@ -112,7 +111,6 @@ class Report:
         counts = {s: sum(r["status"] == s for r in self.results) for s in (PASS, WARN, FAIL)}
         report = {
             "paper": self.paper,
-            "run_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "summary": counts,
             "inputs": {str(p.name): sha256(p) for p in self.inputs if p.exists()},
             "checks": self.results,

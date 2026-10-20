@@ -255,14 +255,5 @@
    ],
    "flags": []
   }
- ],
- "llm": {
-  "mode": "demo",
-  "model": "claude-haiku-5-5",
-  "api_calls": 0,
-  "recorded_answers_used": 2,
-  "input_tokens": 0,
-  "output_tokens": 0,
-  "estimated_cost_usd": 0.0
- }
+ ]
 }
