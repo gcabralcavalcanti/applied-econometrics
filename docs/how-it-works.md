@@ -2,6 +2,22 @@
 
 The detail behind the README: the pipeline, the data, where each study comes from, and what was measured.
 
+## How I use it
+
+- **While doing the coursework (2026):** I wrote the code with Claude as a coding assistant, one numbered script per
+  step. For each modelling choice I wrote down why (monthly or 12-month inflation, ADF and KPSS together, how to deal
+  with autocorrelation); those notes became the "Specification and refinement" table in each study's `method.md`.
+  Study 03 required AI: I ran the research with an agent workflow and four adversarial AI reviews; the decision log and
+  the reviews are in [papers/03-religion-and-domestic-violence/ai_trail/](../papers/03-religion-and-domestic-violence/ai_trail/).
+- **Before handing it in:** I reran everything in a clean environment to check that it reproduced. That run found a
+  broken dependency pin that would have stopped the grader's run. The same check is now automatic: every run compares
+  each table with its stored fingerprint.
+- **For the oral exam:** I turned my own doubts about each result into flashcards.
+- **Now:** nothing runs on a schedule. I run a study again when I change the code or when new data is out
+  (`python run_all.py --download`), look at what changed, and run the AI reviewer if the write-up changed. Study 04 was
+  built this way from scratch, and the same pattern (data checks before the model, recorded AI answers, a reviewer
+  measured against known answers) is the one I reuse in my other repositories.
+
 ## Pipeline
 
 1. **Collect:** each paper downloads its own data from public APIs and keeps the raw files, so it also runs offline.

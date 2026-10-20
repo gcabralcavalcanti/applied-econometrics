@@ -40,6 +40,7 @@ Runs without an API key, replaying recorded answers. Set `ANTHROPIC_API_KEY` to 
 
 ## More
 
+- [How I use it](docs/how-it-works.md#how-i-use-it): how I worked on these studies and how I use them now.
 - [How it works](docs/how-it-works.md): the pipeline, the data, the results in numbers, origin and role.
 - [RUNBOOK.md](RUNBOOK.md): updating the data and what to do when something fails.
 

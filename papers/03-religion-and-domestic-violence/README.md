@@ -26,4 +26,5 @@ composition. Associational, not causal; the denominator is the whole population,
 
 ## More
 - [How it was built](method.md): data, data checks, every modelling step and why.
+- [AI research trail](ai_trail/): the decision log and the four adversarial AI reviews of the original study (in Portuguese).
 - [Final report (PDF)](../../final-reports/03-religion-and-domestic-violence.pdf) · [AI review of this page](output/review.md)
