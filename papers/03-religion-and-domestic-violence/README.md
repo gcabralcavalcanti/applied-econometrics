@@ -8,7 +8,7 @@ Do municipalities with a larger share of evangelicals record more (or less) dome
 ## Data
 | Input | Source | Unit |
 |---|---|---|
-| Domestic-violence notifications, 2009–2019 | Ministry of Health, SINAN microdata (public, via basedosdados), aggregated by `code/00_aggregate_sinan.py` | cases per municipality-year |
+| Domestic-violence notifications, 2009-2019 | Ministry of Health, SINAN microdata (public, via basedosdados), aggregated by `code/00_aggregate_sinan.py` | cases per municipality-year |
 | Population and evangelicals | IBGE Census 2010, SIDRA table 2094, pulled by `code/00_download_ibge.py` | persons |
 | GDP per municipality, 2010 | IBGE SIDRA table 5938, pulled by `code/00_download_ibge.py` | R$ |
 | Official list of municipalities | IBGE localities API, pulled by `code/q4_checks.py` | code and name |
@@ -18,12 +18,12 @@ all the processing is done by the code here. Its municipality-year aggregate, pr
 is (`tmp/sinan_mun_ano.csv`). `code/q4_checks.py` runs after the base is built and before any regression, and writes
 `output/data_checks.json` (14 pass, 1 warning): SINAN year range, counts consistent (female ≤ domestic ≤ total), the 0/1
 sex coding producing female victims, 7-digit codes, merge coverage, all 27 state capitals present, every code an
-official municipality in the IBGE API, names matching the official names, density within 0–100%.
+official municipality in the IBGE API, names matching the official names, density within 0-100%.
 
 ## Specification and refinement
 | Step | Why | What it showed |
 |---|---|---|
-| Rate per 1,000 residents, 2011–2013 average | one year is too noisy for small towns | 15.3% of municipalities still record zero |
+| Rate per 1,000 residents, 2011-2013 average | one year is too noisy for small towns | 15.3% of municipalities still record zero |
 | OLS with state fixed effects, HC1 errors | states differ in health systems and reporting; the White test rejects homoskedasticity | no association |
 | Quadratic and log(1+y) forms | the link could be non-linear or driven by outliers | no association |
 | Non-domestic notification proxy | SINAN records violence where the health network reports it; a municipality that notifies more of everything records more domestic violence too | R² jumps from 0.171 to 0.439; evangelical density unchanged |

@@ -10,7 +10,7 @@ Two questions decide the rule: do last year's winners keep winning, and do cheap
 | Input | Source (pulled by `code/01_fetch_and_build.py`) | What it gives |
 |---|---|---|
 | Daily fund reports, 2021-01 to 2026-09 (69 files, ~730 MB) | CVM open data, `INF_DIARIO` | month-end quota and net assets of every fund |
-| Fund factsheets (lâminas), December 2021–2025 | CVM open data, `LAMINA` | admin fee, expense ratio, performance fee; only retail funds file one |
+| Fund factsheets (lâminas), December 2021-2025 | CVM open data, `LAMINA` | admin fee, expense ratio, performance fee; only retail funds file one |
 | Fund registers, old and CVM Resolution 175 | CVM open data, `CAD` | asset class: equity, multi-asset, fixed income |
 | CDI, monthly | BCB SGS series 4391 | the benchmark a saver gets for free |
 
@@ -19,10 +19,10 @@ actually buy then, with the fees stated then. Building it date by date keeps fun
 Only month-end quotas of menu funds are kept (`data/monthly_quotas.csv.gz`), so the paper runs offline.
 
 `code/02_checks.py` writes `output/data_checks.json` (7 pass, 5 warnings, 0 fail). The warnings are real problems of the
-public data, each handled in the analysis: 54 admin fees outside 0–5% a year (up to 90,000, a unit error) and 860
-expense ratios outside 0–10% (negative or in the millions) are set to missing; 1,780 fund-months with a zero quota
+public data, each handled in the analysis: 54 admin fees outside 0-5% a year (up to 90,000, a unit error) and 860
+expense ratios outside 0-10% (negative or in the millions) are set to missing; 1,780 fund-months with a zero quota
 (funds being wound up) and 1,303 month-end returns beyond ±50% (splits, typos) are dropped; and after Resolution 175
-far fewer factsheets reach the open-data file (about 4,700 funds a year in 2021–2023, about 1,100 in 2024–2025).
+far fewer factsheets reach the open-data file (about 4,700 funds a year in 2021-2023, about 1,100 in 2024-2025).
 
 ## Specification and refinement
 | Step | Why | What it showed |
@@ -45,7 +45,7 @@ far fewer factsheets reach the open-data file (about 4,700 funds a year in 2021�
 - Picking from the cheapest third and skipping last year's worst quintile gives the best median in every class: 0.74 in equity, 0.88 in multi-asset and 0.96 in fixed income.
 
 Reading: past returns barely help; fees do. A menu rule of "cheapest third within each class, minus last year's
-worst" beats picking at random or chasing winners, but in 2021–2025 even that trailed the CDI. Four year pairs is a short
+worst" beats picking at random or chasing winners, but in 2021-2025 even that trailed the CDI. Four year pairs is a short
 history: these are associations in one period, not a law.
 
 ## AI memo for the committee

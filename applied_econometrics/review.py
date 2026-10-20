@@ -260,7 +260,7 @@ def write_md(paper: str, verdicts: list[dict], path: Path) -> None:
                 f"{n['text_value']} → {n['status']}" + (f" ({n['table_value']})" if n["status"] == "mismatch" else "")
                 for n in v["numbers"]
             )
-            or "—"
+            or "none"
         )
         lines.append(
             f"| {v['id']} | {v['text'].replace('|', '/')} | {nums} | {v['interpretation']} | "

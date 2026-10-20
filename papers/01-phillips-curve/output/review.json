@@ -4,7 +4,7 @@
   "text": "In the static model the unemployment coefficient is -0.002 (SE 0.010), with no stars: no static trade-off.",
   "numbers_verdict": "ok",
   "interpretation": "ok",
-  "reason": "F74 gives -0.002 and F75 gives SE (0.010) with no stars, so the static unemployment coefficient is insignificant.",
+  "reason": "F74 gives -0.002 with SE (0.010) and no stars in the static model, so no significance is claimed.",
   "numbers": [
    {
     "text_value": "-0.002",
@@ -29,29 +29,29 @@
   "text": "In the dynamic model, lagged inflation has a coefficient of 0.398 and the Focus expectation 0.686, both significant at 1%; unemployment stays insignificant at 0.007.",
   "numbers_verdict": "ok",
   "interpretation": "ok",
-  "reason": "F92 and F100 carry *** (significant at 1%) and F84 gives 0.007 with no stars, so the statement matches the dynamic model's table.",
+  "reason": "F26 and F30 carry three stars (p<0.01) and F22 for unemployment has no stars, so the reading is correct.",
   "numbers": [
    {
     "text_value": "0.398",
-    "fact_id": "F92",
+    "fact_id": "F26",
     "table_value": "0.398***",
-    "where": "q2_tab_robustez / Inflação defasada π_t-1 / Dependent variable: IPCA mensal Base (1)",
+    "where": "q2_tab_hac_comparacao / Inflação defasada π_t-1 / Dependent variable: IPCA mensal MQO usual (1)",
     "status": "match",
     "note": ""
    },
    {
     "text_value": "0.686",
-    "fact_id": "F100",
+    "fact_id": "F30",
     "table_value": "0.686***",
-    "where": "q2_tab_robustez / Expectativa E_t[π_t+1] / Dependent variable: IPCA mensal Base (1)",
+    "where": "q2_tab_hac_comparacao / Expectativa E_t[π_t+1] / Dependent variable: IPCA mensal MQO usual (1)",
     "status": "match",
     "note": ""
    },
    {
     "text_value": "0.007",
-    "fact_id": "F84",
+    "fact_id": "F22",
     "table_value": "0.007",
-    "where": "q2_tab_robustez / Desemprego u_t / Dependent variable: IPCA mensal Base (1)",
+    "where": "q2_tab_hac_comparacao / Desemprego u_t / Dependent variable: IPCA mensal MQO usual (1)",
     "status": "match",
     "note": ""
    }
@@ -62,29 +62,29 @@
   "text": "R² rises from 0.000 to 0.421, on 169 monthly observations.",
   "numbers_verdict": "ok",
   "interpretation": "ok",
-  "reason": "F80 gives static R² 0.000, F118 gives dynamic R² 0.421, and F114 gives 169 observations for the dynamic model.",
+  "reason": "F66 gives static R² 0.000, F67 dynamic R² 0.421, and F65 has 169 observations in the dynamic model.",
   "numbers": [
    {
     "text_value": "0.000",
-    "fact_id": "F80",
+    "fact_id": "F66",
     "table_value": "0.000",
-    "where": "q2_tab_phillips_estatica / R^2 / Dependent variable: IPCA mensal IPCA mensal (π_t) (1)",
+    "where": "q2_tab_phillips_dinamica / R^2 / Dependent variable: IPCA mensal Estática (1)",
     "status": "match",
     "note": ""
    },
    {
     "text_value": "0.421",
-    "fact_id": "F118",
+    "fact_id": "F67",
     "table_value": "0.421",
-    "where": "q2_tab_robustez / R^2 / Dependent variable: IPCA mensal Base (1)",
+    "where": "q2_tab_phillips_dinamica / R^2 / Dinâmica (2)",
     "status": "match",
     "note": ""
    },
    {
     "text_value": "169",
-    "fact_id": "F114",
+    "fact_id": "F65",
     "table_value": "169",
-    "where": "q2_tab_robustez / Observations / Dependent variable: IPCA mensal Base (1)",
+    "where": "q2_tab_phillips_dinamica / Observations / Dinâmica (2)",
     "status": "match",
     "note": ""
    }
@@ -95,7 +95,7 @@
   "text": "H0: γ + δ = 1 is not rejected (p = 0.432): the data do not reject a vertical long-run Phillips curve.",
   "numbers_verdict": "ok",
   "interpretation": "ok",
-  "reason": "F63 gives p = 0.432 for H0: γ+δ=1, which is not rejected; the statement correctly words this as 'not rejected' rather than confirming the null.",
+  "reason": "F63 gives p = 0.432 for H0: γ+δ=1, which is not rejected; the statement wording 'do not reject' is appropriate, though a vertical long-run curve is only a restriction-test reading.",
   "numbers": [
    {
     "text_value": "0.432",
@@ -109,10 +109,10 @@
  },
  {
   "id": "S5",
-  "text": "With Newey–West errors the standard error on the expectation term rises from 0.111 to 0.177; it stays significant.",
+  "text": "With Newey-West errors the standard error on the expectation term rises from 0.111 to 0.177; it stays significant.",
   "numbers_verdict": "ok",
   "interpretation": "ok",
-  "reason": "F32 gives the usual SE 0.111 and F33 gives the HAC SE 0.177 for the expectation term; with the coefficient 0.686*** kept, it stays significant.",
+  "reason": "F32 shows SE 0.111 under usual OLS and F33 shows 0.177 under HAC; F31 coefficient 0.686 *** remains, so significance holds at 1%.",
   "numbers": [
    {
     "text_value": "0.111",
@@ -137,7 +137,7 @@
   "text": "With seasonal dummies the expectation coefficient is 0.783 and R² 0.523; without the COVID months unemployment is 0.001.",
   "numbers_verdict": "ok",
   "interpretation": "ok",
-  "reason": "F101 gives 0.783 for the expectation with seasonal dummies, F119 gives R² 0.523, and F86 gives unemployment 0.001 in the sem-COVID model.",
+  "reason": "F101 gives 0.783 with seasonal dummies, F119 gives R² 0.523, and F86 gives unemployment 0.001 in the no-COVID model.",
   "numbers": [
    {
     "text_value": "0.783",
