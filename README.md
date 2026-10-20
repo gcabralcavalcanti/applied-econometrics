@@ -22,7 +22,8 @@ for this portfolio.
 - **Data checks:** 48 pass, 9 warnings, 0 fail. One of them stopped a silent merge error in paper 03: the graded
   version had lost São Paulo, Rio de Janeiro and Brasília in a name match.
 - **Reproducible:** the 13 tables of papers 01-02 are byte-identical to the versions submitted for grading; every run
-  rebuilds identical tables, figures and PDFs (`tests/table_snapshot.json`).
+  rebuilds identical tables, figures and PDFs. A fingerprint of every table is stored in `tests/table_snapshot.json`,
+  and each run compares the new tables with it.
 
 ![Fees and next-year returns (paper 04)](papers/04-fund-selection/output/fig_costs.png)
 
@@ -47,8 +48,8 @@ see `.env.example`). Python 3.10+, tested on 3.14 (Windows 11). What to do when 
    `output/data_checks.json` (missing values, date gaps, units, ranges, duplicates, merge coverage, official codes).
    A FAIL stops the run.
 3. **Model:** each paper README has a table "Specification and refinement": every step, why it was taken, what it showed.
-4. **Report:** `run_all.py` writes the tables, the figures and `final-reports/<paper>.pdf`, then compares the tables
-   with the snapshot.
+4. **Report:** `run_all.py` writes the tables, the figures and `final-reports/<paper>.pdf`, then compares each table
+   with its stored fingerprint.
 5. **Review:** an AI reviewer checks each number in the write-up against the tables and each coefficient reading;
    Python re-checks every number the model matched. Details: [docs/ai-reviewer.md](docs/ai-reviewer.md).
 
@@ -78,7 +79,7 @@ full papers are available on request). Study 04 was built for this portfolio fro
 teammate's and is not published. In 03 the topic and a first pipeline came from a teammate, and neither that code nor
 its data files are here; I re-scoped the design, wrote the code in this folder, and ran the estimation and the AI review
 loop. The data checks, the AI reviewer, the refinements in 03 and paper 04 were added afterwards. The coursework code was
-later translated to English (names, comments, layout); it is the same code, and the snapshot test shows the tables
+later translated to English (names, comments, layout); it is the same code, and the table-fingerprint test shows the tables
 did not change.
 
 ## How AI was used
