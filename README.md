@@ -1,5 +1,7 @@
 # Applied econometrics
 
+**[See it working](https://gcabralcavalcanti.github.io/applied-econometrics/)** · [Overview, 1 page (PDF)](overview.pdf) · [The four reports (PDF)](final-reports/)
+
 Four short empirical studies on Brazilian and US data, each rebuilt end to end by code: the data is downloaded,
 checked, modelled, and every number in the write-up is checked against the tables by an AI reviewer.
 

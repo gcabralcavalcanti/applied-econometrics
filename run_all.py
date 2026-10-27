@@ -88,4 +88,5 @@ if __name__ == "__main__":
     if "--review" in args:
         run(ROOT / "applied_econometrics" / "review.py")
         run(PAPERS / "04-fund-selection" / "code" / "04_memo.py")
-    print("\nDone. Reports in final-reports/; tables, figures and data checks in papers/*/output.")
+    run(ROOT / "applied_econometrics" / "page.py")
+    print("\nDone. Reports in final-reports/; figures and data checks in papers/*/output; one page: output/index.html.")

@@ -100,6 +100,7 @@ ax.annotate(
 _source_note(fig2, BCB_SOURCE)
 fig2.subplots_adjust(left=0.09, right=0.985, top=0.92, bottom=0.12)
 fig2.savefig(OUT_DIR / "q2_fig_phillips_scatter.pdf")
+fig2.savefig(OUT_DIR / "q2_fig_phillips_scatter.png", dpi=150)
 plt.close(fig2)
 
 # Covariate labels match the ones in q2_5 and q2_6.
